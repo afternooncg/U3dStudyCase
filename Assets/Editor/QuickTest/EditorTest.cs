@@ -83,7 +83,7 @@ public class EditorTest  {
              TextureImporter ti = (TextureImporter)TextureImporter.GetAtPath(AssetDatabase.GetAssetPath(obj));
              ti.textureType = TextureImporterType.GUI;
              ti.filterMode = FilterMode.Point;
-             ti.textureFormat = TextureImporterFormat.RGBA32;
+             //ti.textureFormat = TextureImporterFormat.RGBA32;
 
              string targetPath = Application.dataPath + "/StreamAssets/" + obj.name + ".assetbundle";
              /*

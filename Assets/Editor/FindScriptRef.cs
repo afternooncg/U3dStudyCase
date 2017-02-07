@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
+using UnityEditor.SceneManagement;
 
 public class FindScriptRef : EditorWindow
 {
@@ -94,13 +95,13 @@ public class FindScriptRef : EditorWindow
             progress += 0.5f / guids.Length;
 		}
 
-        string curScene = EditorApplication.currentScene;
-        EditorApplication.SaveScene();
+        string curScene = EditorSceneManager.GetActiveScene().name;
+        EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
 
         string[] scenes = Directory.GetFiles(Application.dataPath, "*.unity", SearchOption.AllDirectories);
         foreach (var scene in scenes)
         {
-            EditorApplication.OpenScene(scene);
+            EditorSceneManager.OpenScene(scene);
 
             foreach (GameObject obj in FindObjectsOfType<GameObject>())
             {
@@ -117,7 +118,7 @@ public class FindScriptRef : EditorWindow
             progress += 0.5f / scenes.Length;
         }
 
-        EditorApplication.OpenScene(curScene);
+        EditorSceneManager.OpenScene(curScene);
         isFinding = false;
 		Debug.Log ("finish");
 	}

@@ -211,7 +211,7 @@ public class TestExecuteMenu : ScriptableObject
                 Debug.Log("assetPath:" + assetPath);
 
                 TextureImporter textureImporter = AssetImporter.GetAtPath(assetPath) as TextureImporter;
-                Debug.Log("textureImporter:" + textureImporter.textureType + "    " + textureImporter.textureFormat);
+             //   Debug.Log("textureImporter:" + textureImporter.textureType + "    " + textureImporter.textureFormat);
 
                 Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(assetPath);
                 if (tex)

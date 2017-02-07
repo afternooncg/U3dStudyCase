@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadResTestMain : MonoBehaviour {
 
@@ -48,7 +49,7 @@ public class LoadResTestMain : MonoBehaviour {
 
         register_load(E_LoadSetup.END, null, 0);
 
-        GameObject.Find("ProgBar").GetComponent<UIProgressBar>().value = m_currLoadProgress = 0f;
+        GameObject.Find("Slider").GetComponent<Slider>().value = m_currLoadProgress = 0f;
         Debug.Log("test");
 	}
 	
@@ -64,7 +65,7 @@ public class LoadResTestMain : MonoBehaviour {
         if (m_currentLoaded == E_LoadSetup.NONE)
         {
             m_currentLoaded++;
-            GameObject.Find("ProgBar").GetComponent<UIProgressBar>().value = 0;
+            GameObject.Find("Slider").GetComponent<Slider>().value = 0;
             return false;
         }
 
@@ -85,7 +86,7 @@ public class LoadResTestMain : MonoBehaviour {
                 Debug.Log("addPro:" + addPro);
                 m_currLoadProgress += addPro;
 
-                GameObject.Find("ProgBar").GetComponent<UIProgressBar>().value = m_currLoadProgress;
+                GameObject.Find("Slider").GetComponent<Slider>().value = m_currLoadProgress;
 
                 if (obj.CurrentCount == obj.Total)
                 {
@@ -101,7 +102,7 @@ public class LoadResTestMain : MonoBehaviour {
 
             m_listLoaders.RemoveAt(0);
             m_currentLoaded++;
-            GameObject.Find("ProgBar").GetComponent<UIProgressBar>().value = m_currLoadProgress = 1f;
+            GameObject.Find("Slider").GetComponent<Slider>().value = m_currLoadProgress = 1f;
             Debug.Log("LoadComplete");
             return true;
         }

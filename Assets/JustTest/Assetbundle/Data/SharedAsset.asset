@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9099763ad04e38d4991cc221a8257f15, type: 3}
+  m_Name: SharedAsset
+  m_EditorClassIdentifier: 
+  FontsShareName: FontsShare
+  AltasesShareName: AltasesShare
+  TexturesShareName: TexturesShare
+  ShadersShareName: ShadersShare
+  Fonts: []
+  Altases: []
+  Textures:
+  - {fileID: 0}
+  Shaders:
+  - {fileID: 4800000, guid: 981c01d26c49a914bbb47407ec6172f5, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 2a5b4506eb6bdb44598d4d20e0ab93df, type: 2}
+  - {fileID: 2100000, guid: e48a1fe6d711f664b83264bab176f46b, type: 2}
+  - {fileID: 2100000, guid: 614a5cd5e92732d46808f4fba5067e4d, type: 2}
