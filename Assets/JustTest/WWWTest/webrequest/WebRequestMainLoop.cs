@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using System.IO;
 
 public class WebRequestMainLoop : MonoBehaviour
 {
@@ -66,7 +67,12 @@ public class WebRequestMainLoop : MonoBehaviour
         else if (ureq.responseCode != 200)
             GameObject.Find("Text").GetComponent<Text>().text = "Error url";
         else
+        {
             GameObject.Find("Text").GetComponent<Text>().text = ureq.downloadHandler.text;
+
+            
+
+        }
 
 
         ureq.Dispose();

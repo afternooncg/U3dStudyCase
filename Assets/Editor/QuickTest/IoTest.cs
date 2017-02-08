@@ -16,6 +16,12 @@ public class IoTest  {
                 
         Debug.Log("File.Exists: " + File.Exists(dir));
 
+
+        FileInfo fileInfo = new FileInfo(dir);
+        Debug.Log("FileInfo.Exists: " + fileInfo.Exists);
+
+        
+
         string filePath = "i:/testunity.txt";
         if (File.Exists(filePath))
             File.Delete(filePath);
@@ -35,7 +41,13 @@ public class IoTest  {
         
     }
 
-
+    [MenuItem("QuickTest/Io/ShowUnitySystemPath")]
+    public static void ShowUnitySystemPath()
+    {
+        Debug.Log("Application.persistentDataPath: " + Application.persistentDataPath);
+        Debug.Log("Application.streamingAssetsPath: " + Application.streamingAssetsPath);
+        Debug.Log("Application.dataPath: " + Application.dataPath); 
+    }
     
 
 

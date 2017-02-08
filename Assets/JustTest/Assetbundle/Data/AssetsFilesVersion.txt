@@ -3,5 +3,5 @@ assets/justtest/assetbundle/resource/materials/mat1.mat.unity3d,a95d3575ed18c774
 assets/justtest/assetbundle/resource/materials/mat2.mat.unity3d,dcb88da68cb10ed78b66e1780dfbf44b
 assets/justtest/assetbundle/resource/materials/mat3.mat.unity3d,1e08cb3313cff55a0405942ab1fe293c
 assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d,89c2ea4fae72cab1ea0ae14646691b38
-bagicon,6b5702a0edb8c46b13bc2d51d6c5cad9
-bagsprite,86c2d91d22085a3148bfba7831babccf
+bagicon,22
+bagsprite,11

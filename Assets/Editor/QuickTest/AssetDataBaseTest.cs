@@ -66,7 +66,7 @@ public class AssetDataBaseTest {
         string appdataPath = Application.dataPath.Replace('/', '\\');
         Debug.Log(appdataPath);
 
-
+        
         
         DirectoryInfo dirInfo = new DirectoryInfo(path);
         FileInfo[] allFileInfos = dirInfo.GetFiles();
