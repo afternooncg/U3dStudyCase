@@ -76,7 +76,8 @@ public class TestAssetbundleMain : MonoBehaviour
 
 
 
-    public void handleTestLoader()
+    #region 测试单独Loader
+ public void handleTestLoader()
     {
 
         RemoteFileLoader.LoadInfo li = new RemoteFileLoader.LoadInfo();
@@ -124,7 +125,15 @@ public class TestAssetbundleMain : MonoBehaviour
     {    
         GameObject.Find("Text").GetComponent<Text>().text += "loading...the same complete";
     }
+ #endregion
 
+
+    public void handleTestRemoteManger()
+    {
+
+        RemoteAssetBundleManager.Instance.Init();
+    
+    }
 
 
     void OnDestroy()

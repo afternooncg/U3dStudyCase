@@ -686,7 +686,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1025640261}
-        m_MethodName: handleTestLoader
+        m_MethodName: handleTestRemoteManger
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

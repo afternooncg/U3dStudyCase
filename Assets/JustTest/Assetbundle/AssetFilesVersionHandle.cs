@@ -80,7 +80,7 @@ public class AssetFilesVersionHandle : MonoBehaviour
     }
 
 
-    IEnumerator StartCheck()
+    IEnumerator Start()
     {
         string str = "";
 
@@ -347,7 +347,7 @@ void filterNeedUpdateFiles(string localStr, string remoteStr)
             {//保存新的
                 Debug.Log("Save new from remote");
                 
-                SaveToPersistentPath(m_www.text);
+                SaveToPersistentPath(m_req.downloadHandler.text);
 
                 if (OnGetFilterListsCallBack != null)
                     OnGetFilterListsCallBack(ref m_NeedDownFiles);
