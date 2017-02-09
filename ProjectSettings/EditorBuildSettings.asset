@@ -4,4 +4,18 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+  - enabled: 1
+    path: Assets/JustTest/IOTest/IoTest.unity
+  - enabled: 1
+    path: Assets/JustTest/Assetbundle/TestAssetbundle.unity
+  - enabled: 1
+    path: Assets/JustTest/LoadFun/LoadResTest.unity
+  - enabled: 1
+    path: Assets/JustTest/WWWTest/webrequest/WebRequest.unity
+  - enabled: 1
+    path: Assets/JustTest/WWWTest/www/LoaingScene.unity
+  - enabled: 1
+    path: Assets/JustTest/WWWTest/www/WwwTest.unity

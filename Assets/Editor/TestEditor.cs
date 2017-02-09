@@ -22,6 +22,9 @@ public class TestEditor : Editor {
 		*/
 
 		GUILayout.Label ("This is a Label in a Custom Editor");
+
+        
+
 	}
 }
 

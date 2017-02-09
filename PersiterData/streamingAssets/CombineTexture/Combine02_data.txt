@@ -1,0 +1,108 @@
+{"frames": {
+
+"CityOutsideObject/Textures/grass01.png":
+{
+	"frame": {"x":267,"y":614,"w":76,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":76,"h":72},
+	"sourceSize": {"w":80,"h":75}
+},
+"CityOutsideObject/Textures/grass03.png":
+{
+	"frame": {"x":817,"y":589,"w":165,"h":153},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":2,"w":165,"h":153},
+	"sourceSize": {"w":200,"h":157}
+},
+"CityOutsideObject/Textures/tree01.png":
+{
+	"frame": {"x":830,"y":1,"w":169,"h":275},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":15,"w":169,"h":275},
+	"sourceSize": {"w":188,"h":309}
+},
+"CityOutsideObject/Textures/tree01_2.png":
+{
+	"frame": {"x":1001,"y":1,"w":169,"h":275},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":15,"w":169,"h":275},
+	"sourceSize": {"w":188,"h":309}
+},
+"CityOutsideObject/Textures/tree02.png":
+{
+	"frame": {"x":1,"y":1,"w":291,"h":302},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":4,"w":291,"h":302},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree03.png":
+{
+	"frame": {"x":294,"y":1,"w":282,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":4,"w":282,"h":305},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree03_2.png":
+{
+	"frame": {"x":1,"y":305,"w":282,"h":305},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":4,"w":282,"h":305},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree04.png":
+{
+	"frame": {"x":578,"y":1,"w":250,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":5,"w":250,"h":292},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree04_2.png":
+{
+	"frame": {"x":817,"y":295,"w":250,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":5,"w":250,"h":292},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree05.png":
+{
+	"frame": {"x":285,"y":308,"w":264,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":3,"w":264,"h":304},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree05_2.png":
+{
+	"frame": {"x":1,"y":612,"w":264,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":3,"w":264,"h":304},
+	"sourceSize": {"w":300,"h":309}
+},
+"CityOutsideObject/Textures/tree05_4.png":
+{
+	"frame": {"x":551,"y":308,"w":264,"h":304},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":3,"w":264,"h":304},
+	"sourceSize": {"w":300,"h":309}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Combine02.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d756a69d22892ef1482d820fe3704e4b:6731c69a0b4a933cace58261ccdf1a13:393d96d176a95f0bcf338a24ef904d27$"
+}
+}

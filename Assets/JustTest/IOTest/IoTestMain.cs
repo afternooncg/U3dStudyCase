@@ -22,7 +22,9 @@ public class IoTestMain : MonoBehaviour {
         UIEventListener.Get(GameObject.Find("BtnAppendTxt")).onClick = onAppendTxtFile;
         UIEventListener.Get(GameObject.Find("BtnCreateBin")).onClick = onCreateBinFile;
         UIEventListener.Get(GameObject.Find("BtnDelFile")).onClick = onDeleteFile;
-
+        UIEventListener.Get(GameObject.Find("BtnShowAppPath")).onClick = onShowAppPath;
+        UIEventListener.Get(GameObject.Find("BtnTestCopyFolder")).onClick = OnTestCopyPerfore;
+        
         m_input = GameObject.Find("Text").GetComponent<UIInput>();
 
         
@@ -96,8 +98,7 @@ public class IoTestMain : MonoBehaviour {
         FileHelper.DeleteFile(path);
 
     }
-
-
+    
     IEnumerator loadAssetAndSaveLocal()
     {
 
@@ -122,4 +123,63 @@ public class IoTestMain : MonoBehaviour {
 
     
     }
+
+
+    public void onShowAppPath(GameObject go)
+    {
+        m_input.value = "Application.dataPath: " + Application.dataPath + "\n";
+        m_input.value += "Application.persistentDataPath: " + Application.persistentDataPath + "\n";
+        m_input.value += "Application.streamingAssetsPath: " + Application.streamingAssetsPath + "\n";
+
+        string newPath = Path.Combine(PubConfig.PersiterPath, "streamingAssets");
+        if(!Directory.Exists(newPath))
+            Directory.CreateDirectory(newPath);
+
+        FileHelper.CopyDirectory(Application.streamingAssetsPath, newPath);
+
+
+        
+
+        RemoteFileLoader.LoadInfo li = new RemoteFileLoader.LoadInfo();
+        li.assetName = "testcount.txt";
+        li.remoteUrl = PubConfig.RemoteWWWRoot;
+        li.autoDestroy = true;
+        li.loadFinished = OnLoadTestCountTxtFinished;
+
+        new GameObject("loadtxt").AddComponent<RemoteFileLoader>().BeginLoad(li);
+        
+    }
+
+
+    void OnLoadTestCountTxtFinished(DownloadHandler handle, string path)
+    {
+
+        string file = Path.Combine(Path.Combine(PubConfig.PersiterPath, "streamingAssets"), AssetFilesVersionHandle.ConfigFileName);
+        FileHelper.CreateTxtFile(file, handle.text);
+
+        m_input.value += FileHelper.ReadTxtFile(file);
+
+
+        
+    }
+
+
+
+    #region 测试大量文件复制效率
+  void OnTestCopyPerfore(GameObject go)
+    {
+        float begin = Time.realtimeSinceStartup;
+
+        m_input.value = begin.ToString() +　"\n";
+
+        string newPath = Path.Combine(PubConfig.PersiterPath, "streamingAssets");
+        if (!Directory.Exists(newPath))
+            Directory.CreateDirectory(newPath);
+
+        FileHelper.CopyDirectory(Path.Combine(Application.streamingAssetsPath,"Test") , newPath);
+
+        m_input.value += ((Time.realtimeSinceStartup - begin)).ToString() ;
+
+    }
+  #endregion
 }

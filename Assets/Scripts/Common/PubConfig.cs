@@ -9,5 +9,5 @@ public class PubConfig {
 #else 
     public static string  PersiterPath = Application.persistentDataPath;
 #endif
-    public const string RemoteWWWRoot = "http://127.0.0.1:92";
+    public const string RemoteWWWRoot = "http://10.0.16.49:92";
 }

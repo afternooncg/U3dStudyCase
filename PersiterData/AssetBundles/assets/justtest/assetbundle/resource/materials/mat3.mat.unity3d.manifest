@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 553286261
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ad3f88815eb2b77371d655d615454653
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0b04a37228feb7b9c312fb0cfbaa19c4
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/JustTest/Assetbundle/Resource/Materials/mat3.mat
+Dependencies:
+- H:/StudyCode/unity5/U3dStudyCase/PersiterData/AssetBundles/assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d

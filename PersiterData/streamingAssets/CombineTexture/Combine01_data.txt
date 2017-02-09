@@ -1,0 +1,108 @@
+{"frames": {
+
+"Soldier/arrowfire2.png":
+{
+	"frame": {"x":131,"y":29,"w":209,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":10,"w":209,"h":18},
+	"sourceSize": {"w":256,"h":41}
+},
+"Soldier/bow.png":
+{
+	"frame": {"x":131,"y":1,"w":256,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":26},
+	"sourceSize": {"w":256,"h":26}
+},
+"Soldier/elf_d1.png":
+{
+	"frame": {"x":1,"y":1,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"Soldier/elf_d2.png":
+{
+	"frame": {"x":203,"y":121,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"Soldier/footman_d1.png":
+{
+	"frame": {"x":1,"y":208,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"Soldier/footman_d2.png":
+{
+	"frame": {"x":192,"y":251,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"Soldier/lance.png":
+{
+	"frame": {"x":131,"y":49,"w":155,"h":70},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":155,"h":70},
+	"sourceSize": {"w":155,"h":70}
+},
+"Soldier/shield_d1.png":
+{
+	"frame": {"x":131,"y":208,"w":59,"h":124},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":59,"h":124},
+	"sourceSize": {"w":64,"h":128}
+},
+"Soldier/shield_d2.png":
+{
+	"frame": {"x":131,"y":334,"w":59,"h":124},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":59,"h":124},
+	"sourceSize": {"w":64,"h":128}
+},
+"Soldier/sword.png":
+{
+	"frame": {"x":1,"y":131,"w":200,"h":75},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":75},
+	"sourceSize": {"w":200,"h":75}
+},
+"Soldier/warhorse_d1.png":
+{
+	"frame": {"x":1,"y":338,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"Soldier/warhorse_d2.png":
+{
+	"frame": {"x":322,"y":251,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Combine01.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:db357eefafece5dae87781ca26ec19ac:f92b518de9c46e2a697911df768fe699:7661565eba757a7c592d2c258aa951ac$"
+}
+}

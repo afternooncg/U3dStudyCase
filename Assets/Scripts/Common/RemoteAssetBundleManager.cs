@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -46,64 +47,56 @@ public class RemoteAssetBundleManager : MonoBehaviour
 
     void Awake()
     {
-        Init();
+        CreateLoader();
     }
 
 
     public void Init()
     {
-        CreateLoader();
-        m_versionHandle = gameObject.AddComponent<AssetFilesVersionHandle>();
-        m_versionHandle.Init(UpdateRemoteFiles);
+        if (m_versionHandle == null)
+        {
+            m_versionHandle = gameObject.AddComponent<AssetFilesVersionHandle>();
+            m_versionHandle.Init(UpdateRemoteFiles);
+        }
     }
-
 
     void UpdateRemoteFiles(ref List<string> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
-
-            RemoteFileLoader.LoadInfo li = new RemoteFileLoader.LoadInfo();
-            li.assetName = list[i];
-            li.remoteUrl = PubConfig.RemoteWWWRoot;
-            //li.loadProgress = loadindMat;
-            li.loadFinished = loadAssetAndSaveLocal;           
-            
-            RemoteFileLoader loader = new GameObject("testLoader").AddComponent<RemoteFileLoader>();
-            loader.BeginLoad(li);
-        
+            LoadAsset(list[i], loadAssetAndSaveLocal, null);        
         }
     }
 
     void loadAssetAndSaveLocal(DownloadHandler handler, string path)
-    { 
-      
-        
-        //FileHelper.CreateBinFile( Path.com  handler.data, handler.data.Length)
+    {
+        Debug.Log("save path " + path);
+        FileHelper.CreateBinFile(Path.Combine(AssetFilesVersionHandle.PersiterAssetSavePathRoot, path), handler.data, handler.data.Length);
     }
 
-    public void LoadAsset(string assetName, RemoteFileLoader.OnLoadFinished loadFinished = null, RemoteFileLoader.OnLoadProgress loadProgress = null)
+    #region 加载资源文件
+  public void LoadAsset(string assetName, RemoteFileLoader.OnLoadFinished loadFinished = null, RemoteFileLoader.OnLoadProgress loadProgress = null)
     {
         RemoteFileLoader.LoadInfo li = new RemoteFileLoader.LoadInfo()
         {
             assetName = assetName,                                    
             loadFinished = loadFinished,
-            loadProgress = loadProgress
+            loadProgress = loadProgress,
+            remoteUrl = PubConfig.RemoteWWWRoot
         };        
 
         loadQueue.Enqueue(li);                
         CheckLoadQueue();
     }
-
-
-
+  #endregion
+        
     #region 创建加载器队列
     private void CreateLoader()
     {
         DestroyLoader();
         for (int i = 0; i < loaderCount; i++)
         {
-            RemoteFileLoader item = new GameObject("_AssetLoaderBuildin").AddComponent<RemoteFileLoader>();  //{ hideFlags = HideFlags.HideAndDontSave }
+            RemoteFileLoader item = new GameObject("_RemoteFileLoader").AddComponent<RemoteFileLoader>();  //{ hideFlags = HideFlags.HideAndDontSave }
             loaders.Add(item);
         }
     }

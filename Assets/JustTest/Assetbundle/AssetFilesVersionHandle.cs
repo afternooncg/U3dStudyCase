@@ -16,6 +16,10 @@ public class AbVo
 public class AssetFilesVersionHandle : MonoBehaviour
 {
     
+    public const string AssetBundleManifestFileName = "AssetBundles";
+    
+    public const string AssetBundleManifestClassName = "AssetBundleManifest";
+    
     public const string ConfigFileName = "AssetsFilesVersion.txt";                        //配置文件名
     
     string m_PersiterConfigFileSavePath = "";                                                //设备配置文件保存位置
@@ -30,7 +34,7 @@ public class AssetFilesVersionHandle : MonoBehaviour
     }
     static string m_LocalAssetSavePathRoot = "";                                           //游戏内AssetBunlde根目录
 
-    static string m_RemoteConfigUrl = "http://127.0.0.1:92/" + ConfigFileName;           //远程加载地址
+    static string m_RemoteConfigUrl = "http://10.0.16.49:92/" + ConfigFileName;           //远程加载地址
 
     List<KeyValuePair<string, string>> m_data1;
     List<KeyValuePair<string, string>> m_data2;
@@ -61,7 +65,7 @@ public class AssetFilesVersionHandle : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANEALONE_WIN
         m_PersiterAssetSavePathRoot = Application.dataPath.Replace("Assets", "PersiterData/AssetBundles/");
 #else
-        m_LocalAssetSavePathRoot = Path.Combine(Application.persistentDataPath, AssetBundles); 
+        m_LocalAssetSavePathRoot = Path.Combine(Application.persistentDataPath, "AssetBundles"); 
 #endif
 
         m_PersiterConfigFileSavePath = Path.Combine(m_PersiterAssetSavePathRoot, ConfigFileName);
@@ -77,17 +81,27 @@ public class AssetFilesVersionHandle : MonoBehaviour
     {
         OnGetFilterListsCallBack -= callback;
         OnGetFilterListsCallBack += callback;
+
+        //StartCoroutine(StartCheckAssetsVersion());
     }
 
 
-    IEnumerator Start()
+    void Start()
+    {         
+#if !UNITY_EDITOR
+        StartCoroutine(StartCheckeRemoteAssets());
+#endif
+    }
+
+    IEnumerator StartCheckeRemoteAssets()
     {
         string str = "";
 
         if (GetLocalVersion() > GetPersiterVersion())
         {//游戏内写设备保存位置
 
-            Directory.Delete(m_PersiterConfigFileSavePath, true);
+            if (Directory.Exists(m_PersiterAssetSavePathRoot))
+                Directory.Delete(m_PersiterAssetSavePathRoot, true);
 
             Directory.CreateDirectory(m_PersiterAssetSavePathRoot);
 
@@ -343,12 +357,12 @@ void filterNeedUpdateFiles(string localStr, string remoteStr)
 
             filterNeedUpdateFiles(readFileContent(m_PersiterConfigFileSavePath), m_req.downloadHandler.text);
 
+            SaveToPersistentPath(m_req.downloadHandler.text);
+
             if (m_NeedDownFiles.Count > 0)            
             {//保存新的
-                Debug.Log("Save new from remote");
-                
-                SaveToPersistentPath(m_req.downloadHandler.text);
 
+                Debug.Log("Save new from remote");
                 if (OnGetFilterListsCallBack != null)
                     OnGetFilterListsCallBack(ref m_NeedDownFiles);
             }            

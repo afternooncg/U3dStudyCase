@@ -1,0 +1,1 @@
+{"list":[{"kind":11,"level":0,"uid":0,"gridIndex":0,"posIndex":0,"state":0,"timeLimit":0},{"kind":12,"level":0,"uid":0,"gridIndex":0,"posIndex":0,"state":0,"timeLimit":0}]}

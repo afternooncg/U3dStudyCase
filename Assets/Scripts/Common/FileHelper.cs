@@ -60,6 +60,10 @@ public class FileHelper
             if (t.Exists)
                 File.Delete(path);
 
+            string folderPath = Path.GetDirectoryName(path);
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
             sw = t.Create();
 
             sw.Write(info, 0, length);
