@@ -21,11 +21,25 @@ public class Main : MonoBehaviour {
     List<GameObject> m_subBtns;
     int m_currentMenuId = 0;
 
+    GameObject m_mainframe;
+    GameObject m_closeframe;
+
 	void Start () {
 
-        GameObject mainframe = GameObject.Instantiate(Resources.Load<GameObject>("MainFrame"));
-        mainframe.transform.parent = GameObject.Find("UIRoot").transform;
-        resetGameObjectTrans(mainframe);
+        m_mainframe = GameObject.Instantiate(Resources.Load<GameObject>("MainFrame"));
+        m_mainframe.transform.parent = GameObject.Find("UIRoot").transform;
+        resetGameObjectTrans(m_mainframe);
+
+        m_closeframe = GameObject.Instantiate(Resources.Load<GameObject>("PubCloseFrame"));
+        m_closeframe.transform.parent = GameObject.Find("UIRoot").transform;
+        resetGameObjectTrans(m_closeframe);
+        UIEventListener.Get(m_closeframe.transform.FindChild("btnClosebg").gameObject).onClick = delegate(GameObject go)
+        {
+            Application.Quit();
+        };
+            
+        
+        
 
 
         m_bgmat = GameObject.Find("bg").GetComponent<Renderer>().material;
@@ -65,6 +79,11 @@ public class Main : MonoBehaviour {
         m_left.Reposition();
         m_right.Reposition();
 	}
+
+    private void onBtnClosenew()
+    {
+        Application.Quit();
+    }
 
     private void onSubMenuClick(GameObject go)
     {
@@ -149,8 +168,8 @@ public class Main : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-        if(Input.GetKeyDown(KeyCode.Escape))  
-            Application.Quit();
+        //if(Input.GetKeyDown(KeyCode.Escape))  
+            //Application.Quit();
         
         float v = Time.deltaTime * m_bgMovSpeed * 0.02f;
         m_bgmat.mainTextureOffset += new Vector2(v, v);
