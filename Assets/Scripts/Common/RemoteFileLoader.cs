@@ -62,7 +62,7 @@ public class RemoteFileLoader : MonoBehaviour {
                         
 
             string localUrl = li.remoteUrl + "/" + li.assetName;
-                                           
+            Debug.Log("loadformurl: " + localUrl);
 
             UnityWebRequest req = null;
             WebRequestRef iteratorVariable3 = null;

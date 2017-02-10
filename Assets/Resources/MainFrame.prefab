@@ -619,6 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4943882110373730}
   - component: {fileID: 114850838948953444}
+  - component: {fileID: 114005503787183254}
   m_Layer: 8
   m_Name: bgtex
   m_TagString: Untagged
@@ -1594,6 +1595,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 200, y: 40, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114005503787183254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798489161430318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2747e3775af504da1a4d5a46c5a1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 0
+  style: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 3
+  steeperCurves: 0
+  tweenGroup: 0
+  useFixedUpdate: 1
+  onFinished: []
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: 0
+  to: 0.696
 --- !u!114 &114005546180818564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2182,7 +2225,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.46948355
+  aspectRatio: 150
 --- !u!114 &114119253682651940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4104,7 +4147,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.74491394
+  aspectRatio: 238
 --- !u!114 &114803071977584130
 MonoBehaviour:
   m_ObjectHideFlags: 1

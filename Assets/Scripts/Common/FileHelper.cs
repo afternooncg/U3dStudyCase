@@ -144,4 +144,25 @@ public class FileHelper
         }
     }
     #endregion
+
+
+    public static void DeleteDirectory(string targetdir)
+    {
+        string[] files = Directory.GetFiles(targetdir);
+        string[] dirs = Directory.GetDirectories(targetdir);
+
+        foreach (string file in files)
+        {
+            File.SetAttributes(file, FileAttributes.Normal);
+            File.Delete(file);
+        }
+
+        foreach (string dir in dirs)
+        {
+            DeleteDirectory(dir);
+        }
+
+        Directory.Delete(targetdir, false);
+    }
+
 }

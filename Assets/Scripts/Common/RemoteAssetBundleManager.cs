@@ -58,6 +58,8 @@ public class RemoteAssetBundleManager : MonoBehaviour
             m_versionHandle = gameObject.AddComponent<AssetFilesVersionHandle>();
             m_versionHandle.Init(UpdateRemoteFiles);
         }
+        else
+            StartCoroutine(m_versionHandle.StartCheckeRemoteAssets());
     }
 
     void UpdateRemoteFiles(ref List<string> list)
@@ -66,6 +68,7 @@ public class RemoteAssetBundleManager : MonoBehaviour
         {
             LoadAsset(list[i], loadAssetAndSaveLocal, null);        
         }
+        
     }
 
     void loadAssetAndSaveLocal(DownloadHandler handler, string path)

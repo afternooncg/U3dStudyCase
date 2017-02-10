@@ -65,7 +65,7 @@ public class AssetFilesVersionHandle : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANEALONE_WIN
         m_PersiterAssetSavePathRoot = Application.dataPath.Replace("Assets", "PersiterData/AssetBundles/");
 #else
-        m_LocalAssetSavePathRoot = Path.Combine(Application.persistentDataPath, "AssetBundles"); 
+        m_PersiterAssetSavePathRoot = Path.Combine(Application.persistentDataPath, "AssetBundles"); 
 #endif
 
         m_PersiterConfigFileSavePath = Path.Combine(m_PersiterAssetSavePathRoot, ConfigFileName);
@@ -93,7 +93,7 @@ public class AssetFilesVersionHandle : MonoBehaviour
 //#endif
     }
 
-    IEnumerator StartCheckeRemoteAssets()
+    public IEnumerator StartCheckeRemoteAssets()
     {
         string str = "";
 
@@ -365,7 +365,12 @@ void filterNeedUpdateFiles(string localStr, string remoteStr)
                 Debug.Log("Save new from remote");
                 if (OnGetFilterListsCallBack != null)
                     OnGetFilterListsCallBack(ref m_NeedDownFiles);
-            }            
+                m_NeedDownFiles.Clear();
+            }
+
+            m_req.Dispose();
+            m_req = null;
+
         }
         else
         {

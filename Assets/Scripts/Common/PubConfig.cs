@@ -12,4 +12,6 @@ public class PubConfig {
     public const string RemoteWWWRoot = "http://10.0.16.49:92";
 
     public static int NGUILayer = LayerMask.NameToLayer("NGUI");
+    public static int NGUIHIDDENLayer = LayerMask.NameToLayer("NGUIHIDDEN");
+    
 }

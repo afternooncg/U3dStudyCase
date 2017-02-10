@@ -26,7 +26,7 @@ public class AbToolMenu
        if (!Directory.Exists(AssetBundleHandle.PersistentDataPath))
          Directory.CreateDirectory(AssetBundleHandle.PersistentDataPath);
 
-        BuildPipeline.BuildAssetBundles(AssetBundleHandle.PersistentDataPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+        BuildPipeline.BuildAssetBundles(AssetBundleHandle.PersistentDataPath, BuildAssetBundleOptions.None, BuildTarget.Android);
         Debug.Log("test");
     }
 

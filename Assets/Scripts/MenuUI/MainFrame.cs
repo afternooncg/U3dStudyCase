@@ -251,6 +251,7 @@ public class MainFrame : BaseFrame
 public static void SetMainCamaeraCullMask()
     {
         Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << PubConfig.NGUILayer);
+        Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << PubConfig.NGUIHIDDENLayer);
     }
 #endregion
 }
