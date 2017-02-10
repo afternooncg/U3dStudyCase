@@ -10,11 +10,11 @@ public class WebRequestMainLoop : MonoBehaviour
 {
 
 
-
+    Text m_Output;
     // Use this for initialization
     void Start()
     {
-
+        m_Output = gameObject.transform.Find("Text").GetComponent<Text>();
 
     }
 
@@ -36,7 +36,7 @@ public class WebRequestMainLoop : MonoBehaviour
 
     private IEnumerator TestGet()
     {
-        GameObject.Find("Text").GetComponent<Text>().text = "Wait for begin load txt...";
+       m_Output.text = "Wait for begin load txt...";
 
         yield return new WaitForSeconds(1);
 
@@ -53,22 +53,22 @@ public class WebRequestMainLoop : MonoBehaviour
         {
             if (ureq.isError)
             {
-                GameObject.Find("Text").GetComponent<Text>().text = "Error";
+               m_Output.text = "Error";
                 break;
             }
-            GameObject.Find("Text").GetComponent<Text>().text = ureq.downloadProgress.ToString();
+           m_Output.text = ureq.downloadProgress.ToString();
 
             yield return 0;
         }
 
 
         if (ureq.isError || !string.IsNullOrEmpty(ureq.error))
-            GameObject.Find("Text").GetComponent<Text>().text = "Error";
+           m_Output.text = "Error";
         else if (ureq.responseCode != 200)
-            GameObject.Find("Text").GetComponent<Text>().text = "Error url";
+           m_Output.text = "Error url";
         else
         {
-            GameObject.Find("Text").GetComponent<Text>().text = ureq.downloadHandler.text;
+           m_Output.text = ureq.downloadHandler.text;
 
             
 
@@ -88,25 +88,25 @@ public class WebRequestMainLoop : MonoBehaviour
 
     private IEnumerator TestGetTexture()
     {
-        GameObject.Find("Text").GetComponent<Text>().text = "Wait for begin load texture...";
+       m_Output.text = "Wait for begin load texture...";
 
         yield return new WaitForSeconds(1);
 
-        UnityWebRequest ureq = UnityWebRequest.GetTexture("http://127.0.0.1:92/test.jpg");
-        //UnityWebRequest ureq = UnityWebRequest.GetTexture("http://127.0.0.1:92/test1.jpg");  //错误的url也无法触发isError属性
+        UnityWebRequest ureq = UnityWebRequest.GetTexture(PubConfig.RemoteWWWRoot  + "/test.jpg");
+        //UnityWebRequest ureq = UnityWebRequest.GetTexture(PubConfig.RemoteWWWRoot  +"/test1.jpg");  //错误的url也无法触发isError属性
 
         ureq.Send();
         
         while (!ureq.isDone)
         {
-            GameObject.Find("Text").GetComponent<Text>().text = ureq.downloadProgress.ToString();            
+           m_Output.text = ureq.downloadProgress.ToString();            
             yield return 0;
         }
 
           if (ureq.isError || ureq.responseCode != 200)
           {
                 
-              GameObject.Find("Text").GetComponent<Text>().text = "Error img url";            
+             m_Output.text = "Error img url";            
           }
         else
           {
@@ -129,21 +129,21 @@ public class WebRequestMainLoop : MonoBehaviour
 
     IEnumerator GetAb()
     {
-        UnityWebRequest ureq = UnityWebRequest.GetAssetBundle("http://127.0.0.1:92/Assetbundle/assets/1390616300363.jpg");
+        UnityWebRequest ureq = UnityWebRequest.GetAssetBundle(PubConfig.RemoteWWWRoot  +"/Assetbundle/assets/1390616300363.jpg");
         ureq.Send();
 
         while (!ureq.isDone)
         {
             
-            GameObject.Find("Text").GetComponent<Text>().text = ureq.downloadProgress.ToString();
+           m_Output.text = ureq.downloadProgress.ToString();
 
             yield return 0;
         }
 
         if (ureq.isError || !string.IsNullOrEmpty(ureq.error))
-            GameObject.Find("Text").GetComponent<Text>().text = "Error ab url";
+           m_Output.text = "Error ab url";
         else if (ureq.responseCode != 200)
-            GameObject.Find("Text").GetComponent<Text>().text = "Error ab url";
+           m_Output.text = "Error ab url";
         else
         {
             AssetBundle ab = ((DownloadHandlerAssetBundle)ureq.downloadHandler).assetBundle;
@@ -182,15 +182,15 @@ public class WebRequestMainLoop : MonoBehaviour
 
 
 
-        UnityWebRequest ureq = UnityWebRequest.Post("http://127.0.0.1:92/testpost.asp", formData);
+        UnityWebRequest ureq = UnityWebRequest.Post(PubConfig.RemoteWWWRoot + "/testpost.asp", formData);
         ureq.uploadHandler.contentType = "multipart/form-data";
         yield return ureq.Send();
 
         if(ureq.isError || ureq.responseCode != 200)
-            GameObject.Find("Text").GetComponent<Text>().text = "Error post url";
+           m_Output.text = "Error post url";
         else
 
-            GameObject.Find("Text").GetComponent<Text>().text = ureq.downloadHandler.text;
+           m_Output.text = ureq.downloadHandler.text;
         yield return 0;
     }
 

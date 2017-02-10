@@ -13,6 +13,11 @@ public class Main : MonoBehaviour {
 	void Start () {
         if (LoopBg != null)
             m_bgmat = LoopBg.GetComponent<Renderer>().material;
+
+
+        Application.targetFrameRate = 60;   //fps设置
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;  //不灭屏?
+
 	}
 	
 	// Update is called once per frame
