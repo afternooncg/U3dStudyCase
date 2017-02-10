@@ -85,9 +85,9 @@ public class RemoteFileLoader : MonoBehaviour {
 
             while (!req.isDone)
             {
-                if (req.error != null)
+                if (req.error != null || req.responseCode!=200)
                 {
-                    Debug.LogWarning(req.error);
+                    Debug.LogWarning(string.IsNullOrEmpty(req.error) ?  localUrl + "  ResponseCode:" + req.responseCode : req.error);
                     break;
                 }
                 if (li.loadProgress != null)
