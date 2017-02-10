@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 220219035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 30, z: 1}
+  m_LocalScale: {x: 40, y: 25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -379,6 +379,18 @@ Prefab:
     - target: {fileID: 1448452456541898, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
       propertyPath: m_Name
       value: UIRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032892100138294, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.0027816412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032892100138294, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.0027816412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032892100138294, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.0027816412
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
