@@ -10,4 +10,6 @@ public class PubConfig {
     public static string  PersiterPath = Application.persistentDataPath;
 #endif
     public const string RemoteWWWRoot = "http://10.0.16.49:92";
+
+    public static int NGUILayer = LayerMask.NameToLayer("NGUI");
 }

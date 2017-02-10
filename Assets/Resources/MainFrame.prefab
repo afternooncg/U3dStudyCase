@@ -337,6 +337,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4972375516276720}
   - component: {fileID: 114415882214057040}
+  - component: {fileID: 54216474132041146}
+  - component: {fileID: 114348181279902184}
   m_Layer: 8
   m_Name: MainFrame
   m_TagString: Untagged
@@ -1388,7 +1390,7 @@ Transform:
   m_GameObject: {fileID: 1467254664946382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 319.5, y: 319.5, z: 319.5}
   m_Children:
   - {fileID: 4521616716495008}
   - {fileID: 4943882110373730}
@@ -1409,6 +1411,21 @@ Transform:
   m_Father: {fileID: 4567212609383508}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54216474132041146
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467254664946382}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65019240758275318
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2159,13 +2176,13 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 300
-  mHeight: 639
+  mHeight: 2
   mDepth: 1
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 150
+  aspectRatio: 0.46948355
 --- !u!114 &114119253682651940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2787,6 +2804,20 @@ MonoBehaviour:
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
   onClick: []
+--- !u!114 &114348181279902184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467254664946382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6e3ffb7a6601d488dc2e869d6644ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BtnPrefab: {fileID: 1703226146785680, guid: 86e01415cc6c0b04f83cdba32fe9a83f, type: 2}
+  BtnPrefabSub: {fileID: 1766600925494074, guid: 7266aafd063ed774792c22b3a28020bb,
+    type: 2}
 --- !u!114 &114348374835494944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4067,13 +4098,13 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 476
-  mHeight: 639
+  mHeight: 2
   mDepth: 2
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 238
+  aspectRatio: 0.74491394
 --- !u!114 &114803071977584130
 MonoBehaviour:
   m_ObjectHideFlags: 1

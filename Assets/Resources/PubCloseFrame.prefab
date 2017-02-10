@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500761824943944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 575, y: 287, z: 0}
+  m_LocalPosition: {x: 387, y: 265, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4471224429382620}
@@ -255,32 +255,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftAnchor:
-    target: {fileID: 0}
+    target: {fileID: 4633673979806722}
     relative: 1
-    absolute: -55
+    absolute: -69
   rightAnchor:
-    target: {fileID: 0}
+    target: {fileID: 4633673979806722}
     relative: 1
-    absolute: -23
+    absolute: 0
   bottomAnchor:
-    target: {fileID: 0}
+    target: {fileID: 4633673979806722}
     relative: 1
-    absolute: -49
+    absolute: -62
   topAnchor:
-    target: {fileID: 0}
+    target: {fileID: 4633673979806722}
     relative: 1
-    absolute: -17
+    absolute: -5
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 32
-  mHeight: 32
+  mWidth: 69
+  mHeight: 57
   mDepth: 9
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1
+  aspectRatio: 1.2280701
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -419,7 +419,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3006
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0

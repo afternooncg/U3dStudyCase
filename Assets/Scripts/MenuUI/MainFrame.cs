@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Main : MonoBehaviour {
+public class MainFrame : BaseFrame
+{
 
     public GameObject BtnPrefab;
     public GameObject BtnPrefabSub;
@@ -14,47 +15,60 @@ public class Main : MonoBehaviour {
     UIGrid m_left;
     UIGrid m_right;
 
-    Material  m_bgmat;
-    float m_bgMovSpeed = 1.2f;
+  
 	// Use this for initialization
 
     List<GameObject> m_subBtns;
     int m_currentMenuId = 0;
 
-    GameObject m_mainframe;
-    GameObject m_closeframe;
+    
+    GameObject m_subcloseframe;
+    PubCloseFrame m_closeframe;
 
     bool m_isRoot = true;
 
 	void Start () {
 
-        m_mainframe = GameObject.Instantiate(Resources.Load<GameObject>("MainFrame"));
-        m_mainframe.transform.parent = GameObject.Find("UIRoot").transform;
-        resetGameObjectTrans(m_mainframe);
 
-        m_closeframe = GameObject.Instantiate(Resources.Load<GameObject>("PubCloseFrame"));
-        m_closeframe.transform.parent = GameObject.Find("UIRoot").transform;
-        resetGameObjectTrans(m_closeframe);
+        SetMainCamaeraCullMask();
+
+        m_subcloseframe = GameObject.Instantiate(Resources.Load<GameObject>("PubCloseFrame"));
+        m_subcloseframe.transform.parent = GameObject.Find("UIRoot").transform;
+        ResetGameObjectTrans(m_subcloseframe);
+
+
+        
+
         UIEventListener.Get(GameObject.Find("btnClose").gameObject).onClick = delegate(GameObject go)
         {
             if (m_isRoot)
-                Application.Quit();
+            {
+               // GameObject.Find("CloseFrame").GetComponent<PubCloseFrame>().Open();
+                if (m_closeframe == null)
+                {
+                    GameObject goclose = GameObject.Instantiate(Resources.Load<GameObject>("CloseFrame"));
+                    m_closeframe = goclose.GetComponent<PubCloseFrame>();
+                    goclose.transform.parent = GameObject.Find("UIRoot").transform;
+                    ResetGameObjectTrans(goclose);
+                }
+
+                m_closeframe.Open();
+
+            }
             else
             {
                 m_isRoot = true;
-                m_mainframe.SetActive(true);
+                this.Open();
 
-                SceneManager.LoadScene("Main");
+                StartCoroutine("LoadSubScene", "Main");
 
-                m_bgmat = null;
+                
             }
         };
-            
-        
-        
 
 
-        m_bgmat = GameObject.Find("bg").GetComponent<Renderer>().material;
+
+   
 
         m_left = GameObject.Find("BtnGrid").GetComponent<UIGrid>();
         m_right = GameObject.Find("SubBtnGrid").GetComponent<UIGrid>();
@@ -90,23 +104,34 @@ public class Main : MonoBehaviour {
 
         m_left.Reposition();
         m_right.Reposition();
+        m_right.transform.parent.GetComponent<UIScrollView>().ResetPosition();
 	}
 
-    private void onBtnClosenew()
+
+    IEnumerator LoadSubScene(string name)
     {
-        Application.Quit();
+        AsyncOperation op = SceneManager.LoadSceneAsync(name);
+
+        while (!op.isDone)
+        {
+            yield return null;
+        }
+
+        SetMainCamaeraCullMask();
     }
+
 
     private void onSubMenuClick(GameObject go)
     {
         int index = m_right.GetIndex(go.transform);
 
         MenuConfig.SubMenu[] submenus = m_menuConfig.Menus[m_currentMenuId].SubMenuItem;
-
-        SceneManager.LoadScene(submenus[index].SceneName);
-
+        this.Close();
         m_isRoot = false;
-        m_mainframe.SetActive(false);
+        
+        StartCoroutine("LoadSubScene", submenus[index].SceneName);
+        
+        
     }
 
     private void onMenuClick(GameObject go)
@@ -137,7 +162,7 @@ public class Main : MonoBehaviour {
         {
             GameObject btn = popFreeBtn();
             btn.transform.parent = m_right.transform;
-            resetGameObjectTrans(btn);
+            ResetGameObjectTrans(btn);
             btn.layer =  m_right.gameObject.layer;
             btn.SetActive(true);   //ugui bug? 需要重新显示下
             btn.transform.FindChild("Label").GetComponent<UILabel>().text = submenus[i].ButtnText;
@@ -167,7 +192,7 @@ public class Main : MonoBehaviour {
 
         }
 
-        resetGameObjectTrans(go);
+        ResetGameObjectTrans(go);
         
         
         return go;
@@ -186,26 +211,24 @@ public class Main : MonoBehaviour {
         //if(Input.GetKeyDown(KeyCode.Escape))  
             //Application.Quit();
         
-        float v = Time.deltaTime * m_bgMovSpeed * 0.02f;
-
-        if (m_bgmat != null)
-            m_bgmat.mainTextureOffset += new Vector2(v, v);
-        else
-        {
-            if (GameObject.Find("bg") != null)
-                m_bgmat = GameObject.Find("bg").GetComponent<Renderer>().material;
-        }
-
+       
 	}
+  
 
 
-    void resetGameObjectTrans(GameObject go)
+    public static  void ResetGameObjectTrans(GameObject go)
     {
         if (go != null)
         {
             go.transform.localPosition = Vector3.zero;
             go.transform.localScale = Vector3.one;
+            go.transform.localRotation = Quaternion.identity; 
         }
     }
 
+
+    public static void SetMainCamaeraCullMask()
+    {
+        Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << PubConfig.NGUILayer);   
+    }
 }

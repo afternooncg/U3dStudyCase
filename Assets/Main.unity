@@ -280,18 +280,6 @@ Prefab:
       propertyPath: m_Name
       value: UIRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 4032892100138294, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.0031595577
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032892100138294, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.0031595577
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032892100138294, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.0031595577
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae8bb6f27328abd42a9c28a64293e9a0, type: 2}
   m_IsPrefabParent: 0
@@ -307,6 +295,7 @@ GameObject:
   - component: {fileID: 1756094397}
   - component: {fileID: 1756094396}
   - component: {fileID: 1756094395}
+  - component: {fileID: 1756094400}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -359,7 +348,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -382,3 +371,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756094400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756094394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1801fd55f96fa948951ae27019e2b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoopBg: {fileID: 220219035}

@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114027200619974248}
   - component: {fileID: 54093346223136220}
   - component: {fileID: 114566315290483344}
-  - component: {fileID: 114597967266206894}
   m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
@@ -56,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1448452456541898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0031298904, y: 0.0031298904, z: 0.0031298904}
+  m_LocalScale: {x: 0.00309119, y: 0.00309119, z: 0.00309119}
   m_Children:
   - {fileID: 4039320681108588}
   m_Father: {fileID: 0}
@@ -225,20 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24edff263aa58649b34b83e9ef37ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114597967266206894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1448452456541898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6e3ffb7a6601d488dc2e869d6644ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BtnPrefab: {fileID: 1703226146785680, guid: 86e01415cc6c0b04f83cdba32fe9a83f, type: 2}
-  BtnPrefabSub: {fileID: 1766600925494074, guid: 7266aafd063ed774792c22b3a28020bb,
-    type: 2}
 --- !u!114 &114774524961289802
 MonoBehaviour:
   m_ObjectHideFlags: 1
