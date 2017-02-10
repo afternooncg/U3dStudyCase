@@ -24,6 +24,8 @@ public class Main : MonoBehaviour {
     GameObject m_mainframe;
     GameObject m_closeframe;
 
+    bool m_isRoot = true;
+
 	void Start () {
 
         m_mainframe = GameObject.Instantiate(Resources.Load<GameObject>("MainFrame"));
@@ -33,9 +35,19 @@ public class Main : MonoBehaviour {
         m_closeframe = GameObject.Instantiate(Resources.Load<GameObject>("PubCloseFrame"));
         m_closeframe.transform.parent = GameObject.Find("UIRoot").transform;
         resetGameObjectTrans(m_closeframe);
-        UIEventListener.Get(m_closeframe.transform.FindChild("btnClosebg").gameObject).onClick = delegate(GameObject go)
+        UIEventListener.Get(GameObject.Find("btnClose").gameObject).onClick = delegate(GameObject go)
         {
-            Application.Quit();
+            if (m_isRoot)
+                Application.Quit();
+            else
+            {
+                m_isRoot = true;
+                m_mainframe.SetActive(true);
+
+                SceneManager.LoadScene("Main");
+
+                m_bgmat = null;
+            }
         };
             
         
@@ -93,6 +105,8 @@ public class Main : MonoBehaviour {
 
         SceneManager.LoadScene(submenus[index].SceneName);
 
+        m_isRoot = false;
+        m_mainframe.SetActive(false);
     }
 
     private void onMenuClick(GameObject go)
@@ -115,7 +129,7 @@ public class Main : MonoBehaviour {
         for (int i = 0; i < list.Count; i++)
         {
             pushFreeBtn(list[i].gameObject);
-            m_right.RemoveChild(list[i]);
+            m_right.RemoveChild(list[i]);         
         }
 
 
@@ -124,7 +138,8 @@ public class Main : MonoBehaviour {
             GameObject btn = popFreeBtn();
             btn.transform.parent = m_right.transform;
             resetGameObjectTrans(btn);
-            
+            btn.layer =  m_right.gameObject.layer;
+            btn.SetActive(true);   //ugui bug? 需要重新显示下
             btn.transform.FindChild("Label").GetComponent<UILabel>().text = submenus[i].ButtnText;
             UIEventListener.Get(btn).onClick = onSubMenuClick;
         }
@@ -144,7 +159,7 @@ public class Main : MonoBehaviour {
         {
             go = m_subBtns[m_subBtns.Count - 1];
             m_subBtns.RemoveAt(m_subBtns.Count - 1);
-            go.SetActive(true);   
+           // go.SetActive(true);   
         }
         else
         {
@@ -172,7 +187,15 @@ public class Main : MonoBehaviour {
             //Application.Quit();
         
         float v = Time.deltaTime * m_bgMovSpeed * 0.02f;
-        m_bgmat.mainTextureOffset += new Vector2(v, v);
+
+        if (m_bgmat != null)
+            m_bgmat.mainTextureOffset += new Vector2(v, v);
+        else
+        {
+            if (GameObject.Find("bg") != null)
+                m_bgmat = GameObject.Find("bg").GetComponent<Renderer>().material;
+        }
+
 	}
 
 

@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 114353861448554800}
   - component: {fileID: 114236217887516276}
   m_Layer: 8
-  m_Name: ButtonSkin0
+  m_Name: btnClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +419,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3006
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0

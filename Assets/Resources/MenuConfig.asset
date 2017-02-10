@@ -33,6 +33,6 @@ MonoBehaviour:
   - TypeName: LoadFun
     SubMenuItem:
     - ButtnText: LoadingDemo
-      SceneName: LoaderResTest
+      SceneName: LoadResTest
   - TypeName: Thread
     SubMenuItem: []
