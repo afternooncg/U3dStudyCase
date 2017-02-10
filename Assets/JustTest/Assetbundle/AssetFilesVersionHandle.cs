@@ -88,9 +88,9 @@ public class AssetFilesVersionHandle : MonoBehaviour
 
     void Start()
     {         
-#if !UNITY_EDITOR
+//#if !UNITY_EDITOR
         StartCoroutine(StartCheckeRemoteAssets());
-#endif
+//#endif
     }
 
     IEnumerator StartCheckeRemoteAssets()
@@ -159,7 +159,7 @@ public class AssetFilesVersionHandle : MonoBehaviour
         if (!File.Exists(m_LocalConfigFileSavePath))
             return 0;
         else
-            return 1;
+            return 2;
     }
 
     //本地保存位置版本
