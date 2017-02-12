@@ -1,3 +1,3 @@
 altas1,f82526ab0df117de63f89b01a23f6123
-assets/justtest/assetbundle/resource/materials/mat1.mat.unity3d,a95d3575ed18c774a6a00da9
-assets/justtest/assetbundle/resource/materials/mat2.mat.unity3d,dcb88da68cb10
+assets/justtest/assetbundle/resource/materials/mat1.mat.unity3d,a95d3575ed18c774a6a00da90bf8c3f0
+assets/justtest/assetbundle/resource/materials/mat2.mat.unity3d,dcb88da68cb10ed

@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/JustTest/WWWTest/www/LoaingScene.unity
   - enabled: 1
     path: Assets/JustTest/WWWTest/www/WwwTest.unity
+  - enabled: 1
+    path: Assets/JustTest/CameraTest/SwapCamera.unity

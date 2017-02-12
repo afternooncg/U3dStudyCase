@@ -34,5 +34,7 @@ MonoBehaviour:
     SubMenuItem:
     - ButtnText: LoadingDemo
       SceneName: LoadResTest
-  - TypeName: Thread
-    SubMenuItem: []
+  - TypeName: Camera
+    SubMenuItem:
+    - ButtnText: SwapCamera
+      SceneName: SwapCamera
