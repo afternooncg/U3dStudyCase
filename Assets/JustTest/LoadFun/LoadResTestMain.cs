@@ -33,9 +33,17 @@ public class LoadResTestMain : MonoBehaviour {
     float m_currLoadProgress = 0f;
 	// Use this for initialization
 	void Start () {
-        m_listLoaders = new List<LoaderCallBack>();
 
-        Moudule1 m1 = new Moudule1();        
+        m_listLoaders = new List<LoaderCallBack>();
+	}
+
+
+    public void BeginLoad()
+    {
+
+        
+
+        Moudule1 m1 = new Moudule1();
 
         register_load(E_LoadSetup.LoadMoudle_1, m1.Loading, m1.total);
 
@@ -51,7 +59,7 @@ public class LoadResTestMain : MonoBehaviour {
 
         GameObject.Find("Slider").GetComponent<Slider>().value = m_currLoadProgress = 0f;
         Debug.Log("test");
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -136,7 +144,7 @@ public class LoadResTestMain : MonoBehaviour {
 }
 
 
-class BaseMoudle
+public class BaseMoudle
 {
     public int total = 0;    
     protected string moduleName = "";
@@ -159,17 +167,18 @@ class BaseMoudle
 }
 
 
-class Moudule1 : BaseMoudle
+public  class Moudule1 : BaseMoudle
 {
     public Moudule1()
     {
         total = 113;
         moduleName = "Moudule1";
     }
+       
 }
 
 
-class Moudule2 : BaseMoudle
+public  class Moudule2 : BaseMoudle
 {
     public Moudule2()
     {
@@ -178,7 +187,7 @@ class Moudule2 : BaseMoudle
     }
 }
 
-class Moudule3 : BaseMoudle
+public  class Moudule3 : BaseMoudle
 {
     public Moudule3()
     {
