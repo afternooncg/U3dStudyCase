@@ -11,11 +11,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d41887b1546f5c44ab54e7e65aad3bc, type: 3}
   m_Name: Combine0
   m_EditorClassIdentifier: 
-  combinedMaterialInfo: []
-  materials: []
-  prefabUVRects: []
-  materialsAndUVRects: []
-  resultMaterial: {fileID: 0}
+  combinedMaterialInfo:
+  - atlases:
+    - {fileID: 0}
+    texPropertyNames:
+    - _MainTex
+  materials:
+  - {fileID: 2100000, guid: 043e8c34fd358f143b136ba28a8b3ab0, type: 2}
+  - {fileID: 2100000, guid: 7beb1a5dd9a2b8149b9a6a920b73b90e, type: 2}
+  prefabUVRects:
+  - serializedVersion: 2
+    x: 0.00390625
+    y: 0.0078125
+    width: 0.34765625
+    height: 0.765625
+  - serializedVersion: 2
+    x: 0.359375
+    y: 0.0078125
+    width: 0.34375
+    height: 0.7265625
+  materialsAndUVRects:
+  - material: {fileID: 2100000, guid: 043e8c34fd358f143b136ba28a8b3ab0, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.00390625
+      y: 0.0078125
+      width: 0.34765625
+      height: 0.765625
+    atlasSubrectMaterialOnly:
+      serializedVersion: 2
+      x: -0
+      y: -0
+      width: 1
+      height: 1
+  - material: {fileID: 2100000, guid: 7beb1a5dd9a2b8149b9a6a920b73b90e, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.359375
+      y: 0.0078125
+      width: 0.34375
+      height: 0.7265625
+    atlasSubrectMaterialOnly:
+      serializedVersion: 2
+      x: 0.00092205545
+      y: -0.01839682
+      width: 1.0007455
+      height: 1.0435556
+  resultMaterial: {fileID: 2100000, guid: 0f7929f20ca1459498c26e00ef745990, type: 2}
   resultMaterials: []
   doMultiMaterial: 0
-  fixOutOfBoundsUVs: 0
+  fixOutOfBoundsUVs: 1

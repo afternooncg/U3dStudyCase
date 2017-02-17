@@ -27,6 +27,9 @@ public class IoTestMain : MonoBehaviour {
         
         m_input = GameObject.Find("Text").GetComponent<UIInput>();
 
+        int[,] a = new int[2, 0];
+
+        Debug.Log(a.GetLength(0) + " " + a.GetLength(1));
         
 	}
 	
