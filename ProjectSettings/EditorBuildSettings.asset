@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
   - enabled: 1
     path: Assets/JustTest/IOTest/IoTest.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/JustTest/Assetbundle/TestAssetbundle.unity
   - enabled: 1
     path: Assets/JustTest/LoadFun/LoadResTest.unity

@@ -6,7 +6,7 @@ using UnityEditor;
 public class JustTestEditor   {
 
 	// Use this for initialization
-    [MenuItem("JustTest/CreateMenu")]
+    [MenuItem("JustTest/创建项目菜单")]
     static void JustTestCreateMenu()
     {
         Object obj = AssetDatabase.LoadAssetAtPath<MenuConfig>("Assets/Resources/MenuConfig.asset");

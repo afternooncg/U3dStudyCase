@@ -13,5 +13,25 @@ public class PubConfig {
 
     public static int NGUILayer = LayerMask.NameToLayer("NGUI");
     public static int NGUIHIDDENLayer = LayerMask.NameToLayer("NGUIHIDDEN");
-    
+
+
+    public static VersionInfo VERSION_INFO = new VersionInfo("com.river.u3dstuycase","u3dStudy","1.0",1);
+}
+
+
+
+public struct VersionInfo
+{
+    public string BundleIdentifier;
+    public string ProductName;
+    public string VersionBigCode;
+    public int VersionCode;
+
+    public VersionInfo(string bundleIdentifier, string productName, string versionBigCode, int versionCode)
+    {
+        BundleIdentifier = bundleIdentifier;
+        ProductName = productName;
+        VersionBigCode = versionBigCode;
+        VersionCode = versionCode;
+    }
 }
