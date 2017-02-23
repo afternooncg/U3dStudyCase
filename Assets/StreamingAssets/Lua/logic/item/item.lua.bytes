@@ -1,0 +1,129 @@
+
+
+CItem = {}
+CItem.__index = CItem
+
+--"1":{"id":1,"type":1001,"amount":1},
+function CItem.new(data)
+	local self = data or {}
+	if not ItemTemplate[data.type] then
+		logerror('ItemTemplate have no this itemtype='..data.type)
+	end
+	self.template = ItemTemplate[data.type]
+	setmetatable(self, CItem)
+	return self
+end
+
+function CItem:GetType()
+	return self.type
+end
+
+
+function CItem:GetAmount()
+	return self.amount
+end
+
+function CItem:IsItem()
+	return true
+end
+
+function CItem:GetWay()
+	return self.template.getway
+end
+
+CItem.GetIcon = function (item)
+	return TextureEx (item.template.icon);
+end
+
+CItem.GetItemCount = function(entry)
+	
+	if entry == 1 then
+		return g_Hero.gold
+	end
+	if entry == 2 then
+		return g_Hero.diamond
+	end
+	--配件
+	if entry >= 93000 and entry <= 93999 then
+		return g_HolyBag:GetholyItemCount(entry)
+	end
+	--装备
+	if entry >= 95000 and entry <= 95999 then
+		return g_TeamEquipBag:GetEquipItemCount(entry)
+	end
+	--芯片
+	if entry >= 87000 and entry <= 87999 then
+		return g_TeamGemBag:GetItemCount(entry)
+	end
+
+	return g_bagMgr:GetItemCount(entry)
+end
+
+CItem.GetName = function (item)
+	return item.template.name
+end
+
+CItem.GetQuality = function (item)
+	return item.template.quality
+end
+
+CItem.GetID = function (item)
+	return item.type --and item.id or 0
+end
+
+CItem.GetQualitySpriteName = function (item)
+	return CItem.GetItemQualitySpriteName(item.template)
+end
+
+CItem.GetQualitySpriteNameByEntry = function(entry)
+	local tpl = Template.GetItemTemplate(entry)
+	return CItem.GetItemQualitySpriteName(tpl)
+end
+
+CItem.GetColor = function (item)
+	return UIHelper.GetQualityColorEx(item.template.quality)
+end
+CItem.GetColorName = function (item)
+	return string.format('%s%s[-]',item:GetColor(),item:GetName())
+end
+
+CItem.GetNameDesc = function (item)
+	return item:GetName()
+end
+
+CItem.GetDesc = function (item)
+	return item.template.desc
+end
+
+--构造简易物品/装备
+GLCreateSimpleItem = function (entry,id,count)
+	if entry > 90000 and entry < 100000 then
+		return CEquip.New{id=id,type=entry}
+	else
+		return CItem.new{id,type=entry,amount=count}
+	end
+end
+
+CItem.GetColorNameDesc = function (id)
+	local tpl = Template.GetItemTemplate(id)
+	if not tpl then logerror('物品不存在:'..id) return end
+	local isEquip = id > 90000 and id < 100000
+	return string.format('%s%s[-]',isEquip and UIHelper.GetEquipColor(tpl.quality) or UIHelper.GetQualityColorEx(tpl.quality),tpl.name)		
+end
+
+CItem.GetItemQualitySpriteName = function (template)
+	if template.entry > 90000 and template.entry < 100000 then
+		return UIHelper.GetEquipQualitySpriteName(template.quality)
+	else
+		if template.mainType == 7 then
+			return UIHelper.GetSoulQualitySpriteName (template.quality);
+		elseif template.mainType == ItemMainTypes.EquipmentMaterial and template.subType == ItemSubTypes.EquipmentMaterialFragment then
+			return UIHelper.GetFragmentQualitySpriteName (template.quality);
+		else
+			return UIHelper.GetQualitySpriteName (template.quality);
+		end
+	end
+end
+
+require "logic.item.equip"
+require "logic.item.holyequip"

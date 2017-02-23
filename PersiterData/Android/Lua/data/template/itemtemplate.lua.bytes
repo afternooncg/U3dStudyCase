@@ -1,0 +1,24 @@
+ItemTemplate = {
+	[1]={1,"金币","testName","Assets/GameData/Ui/Resource/Textures/MoneyIcon/gold.png",0,10,2,0,1,0,1,"无","金币","副本掉落、任务奖励",100,0,nil,nil,},
+	[2]={2,"钻石","Assets/GameData/Ui/Resource/Textures/slider_loading2.png",0,10,1,0,11,0,1,"无","钻石","任务奖励",100,0,nil,nil,},
+	[3]={3,"体力","testName","Assets/GameData/Ui/Resource/Textures/MoneyIcon/stamina.png",0,11,0,0,3,0,1,"无","体力","任务奖励",100,0,nil,nil,},
+	[4]={4,"战队经验","testName","Assets/GameData/Ui/Resource/Textures/MoneyIcon/exp.png",0,12,0,0,1,0,1,"无","战队经验","日常任务、副本战斗、离线打工",100,0,nil,nil,},
+	[7]={7,"绑定钻石","testName","Assets/GameData/Ui/Resource/Textures/MoneyIcon/diamond.png",0,10,255,0,9,0,1,"无","钻石","任务奖励",100,0,nil,nil,},
+	[8]={8,"雷云币","testName","Assets/GameData/Ui/Resource/NewTexture/Main/icon_what.png",0,10,4,0,6,0,1,"无","雷云币","雷云之海获得",100,0,nil,nil,},
+	[9]={9,"英雄令","testName","Assets/GameData/Ui/Resource/NewTexture/Main/icon_what.png",0,10,3,0,6,0,1,"无","天墉币","天墉试炼获得",100,0,nil,nil,},
+	[10]={10,"荣誉币","testName","Assets/GameData/Ui/Resource/Textures/MoneyIcon/PVPMoney.png",0,10,3,0,9,0,1,"无","荣誉币","任务奖励",100,0,nil,nil,},
+	[11]={11,"威望","testName","Assets/GameData/Ui/Resource/NewTexture/Item/icon_yuanzheng.png",0,10,1,0,9,0,1,"无","街头争霸威望","任务奖励",100,0,nil,nil,},
+	[12]={12,"声望","testName","Assets/GameData/Ui/Resource/NewTexture/Item/icon_pkmoney.png",0,10,17,0,9,0,1,"无","PK赛声望","PK赛",100,0,nil,nil,},
+	[13]={13,"test1","exchange_foods0","Assets/GameData/Ui/Resource/NewTexture/Item/icon_pkmoney.png",0,10,17,0,9,0,1,"无","PK赛声望","PK赛",100,0,nil,nil,},
+	[14]={14,"test2","exchange_foods1","Assets/GameData/Ui/Resource/NewTexture/Item/icon_pkmoney.png",0,10,17,0,9,0,1,"无","PK赛声望","PK赛",100,0,nil,nil,},
+	[15]={15,"test3","exchange_foods2","Assets/GameData/Ui/Resource/NewTexture/Item/icon_pkmoney.png",0,10,17,0,9,0,1,"无","PK赛声望","PK赛",100,0,nil,nil,},
+	[16]={16,"test4","exchange_foods3","Assets/GameData/Ui/Resource/NewTexture/Item/icon_pkmoney.png",0,10,17,0,9,0,1,"无","PK赛声望","PK赛",100,0,nil,nil,},
+	[17]={17,"test5","hero_ava","Assets/GameData/Ui/Resource/NewTexture/Item/icon_pkmoney.png",0,10,17,0,9,0,1,"无","PK赛声望","PK赛",100,0,nil,nil,},
+};
+local temp_column={'entry','name','iconName','icon','bagType','mainType','subType','effect','quality','property','hyperlink','hdesc','desc','getway','price','useType','useCost','useReward',}
+for _,v in pairs(ItemTemplate) do
+	setmetatable(v, { __index=function(_, key)
+	for i, column in ipairs(temp_column) do
+		if key == column then return v[i] end
+	end end})
+end

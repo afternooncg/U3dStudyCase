@@ -1,0 +1,256 @@
+require 'datadef'
+require 'ui.utility.itemcarditem'
+require 'ui.utility.uihelper'
+
+function GetMsgTable()
+	if Message == nil then
+		require ("data.message")
+	end
+	return Message
+end
+
+function AttachTo(childt,parentt)
+	childt.parent = parentt
+	childt.localPosition = Vector3.zero
+	childt.localRotation = Quaternion.identity
+	childt.localScale = Vector3.one
+end
+
+
+function Split(strSource, szSeparator)
+	if not strSource then return {} end
+	local nFindStartIndex = 1
+	local nSplitIndex = 1
+	local arraySplit = {}
+	while true do
+		local nFindLastIndex = string.find(strSource, szSeparator, nFindStartIndex)
+		if not nFindLastIndex then
+			arraySplit[nSplitIndex] = string.sub(strSource, nFindStartIndex, string.len(strSource))
+			break
+		end
+		if nFindStartIndex ~= nFindLastIndex then
+			arraySplit[nSplitIndex] = string.sub(strSource, nFindStartIndex, nFindLastIndex - 1)
+			nSplitIndex = nSplitIndex + 1
+		end
+		nFindStartIndex = nFindLastIndex + string.len(szSeparator)		
+	end
+	return arraySplit
+end
+
+function IsTableEmpty(data)
+	if data == nil or next(data) == nil then
+		return true
+	else
+		return false
+	end
+end
+
+--unity 对象判断为空, 如果你有些对象是在c#删掉了，lua 不知道
+--判断这种对象为空时可以用下面这个函数。
+function IsNil(uobj)
+	return uobj == nil or uobj:Equals(nil)
+end
+
+function LuaGC()
+  collectgarbage("collect")
+end
+--获取字符串的字符数
+function Getutfstrlen(str)
+	local len = #str
+	local left = len
+	local cnt = 0
+	local arr={0,0xc0,0xe0,0xf0,0xf8,0xfc}
+	while left ~= 0 do
+		local tmp=string.byte(str,-left)
+		local i=#arr
+		while arr[i] do
+			if tmp>=arr[i] then
+				left=left-i
+				break
+			end
+		i=i-1
+		end
+		cnt=cnt+1
+	end
+	return cnt
+end
+
+function string:split(sep)
+	local sep, fields = sep or ",", {}
+	local pattern = string.format("([^%s]+)", sep)
+	self:gsub(pattern, function(c) table.insert(fields, c) end)
+	return fields
+end
+
+function table.contains(table, element)
+  if table == nil then
+        return false
+  end
+
+  for _, value in pairs(table) do
+    if value == element then
+      return true
+    end
+  end
+  return false
+end
+
+function table.getKey(table, element)
+  if table == nil then
+        return
+  end
+
+  for k, value in pairs(table) do
+    if value == element then
+      return k
+    end
+  end
+end
+
+--根据子项指定字段获得key
+function table.getKeyBySub(tbl,subvname,obj)
+	if tbl == nil then
+		return
+	end	
+	for k,v in ipairs(tbl) do
+		if obj == v[subvname] then return k end	
+	end
+end
+
+function table.getCount(self)
+	local count = 0
+	
+	for k, v in pairs(self) do
+		count = count + 1	
+	end
+	
+	return count
+end
+
+function table.deepcopy(object)
+    local lookup_table = {}
+    local function _copy(object)
+        if type(object) ~= "table" then
+            return object
+        elseif lookup_table[object] then
+            return lookup_table[object]
+        end
+        local new_table = {}
+        lookup_table[object] = new_table
+        for index, value in pairs(object) do
+            new_table[_copy(index)] = _copy(value)
+        end
+        return setmetatable(new_table, getmetatable(object))
+    end
+    return _copy(object)
+end
+---------------------------
+--csharp调用lua函数
+
+function OnApplicationFocus(minutes)
+	--is login
+	if not GetLoginFlag() then return end
+	
+	if Scene.entry ~= Scene.LOGIN_ID then
+		GetMsgClass(MSGTYPE.LOGIN):SyncServer()
+    	SendMsg()
+	end	
+end
+
+function OnLogout()
+	GetGuideHelper().Close()	
+end
+
+
+GLGetTemplate = function (name)
+	return Template.GetTemplate(name)
+end
+
+
+local tblSceneLoadedCallBack={}
+local sceneCheckFunc = {}
+function AddSceneLoadedCallBack(func,checkFunc)
+	table.insert(tblSceneLoadedCallBack,func)
+	if checkFunc then
+		table.insert(sceneCheckFunc,checkFunc)
+	end
+end
+function OnSceneLoaded(idScene)			
+	for _,v in pairs(tblSceneLoadedCallBack) do
+		v(idScene)
+	end
+	tblSceneLoadedCallBack = {}	
+end
+
+function OnSceneLoadedCheck()	
+	for _,v in pairs(sceneCheckFunc) do
+		if not v() then return false end
+	end
+	sceneCheckFunc = {}
+	return true
+end
+
+
+function clone(t, nometa)
+  local u = {}
+  if not nometa then
+    setmetatable (u, getmetatable (t))
+  end
+  for i, v in pairs (t) do
+    u[i] = v
+  end
+  return u
+end
+
+
+cclog = function( ... )  
+    local tv = "\n"  
+    local xn = 0  
+    local function tvlinet(xn)  
+        -- body  
+        for i=1,xn do  
+            tv = tv.."\t"  
+        end  
+    end  
+  
+    local function printTab(i,v)  
+        -- body  
+        if type(v) == "table" then  
+            tvlinet(xn)  
+            xn = xn + 1  
+            tv = tv..""..i..":Table{\n"  
+            table.foreach(v,printTab)  
+            tvlinet(xn)  
+            tv = tv.."}\n"  
+            xn = xn - 1  
+        elseif type(v) == nil then  
+            tvlinet(xn)  
+            tv = tv..i..":nil\n"  
+        else  
+            tvlinet(xn)  
+            tv = tv..i..":"..tostring(v).."\n"   
+        end  
+    end  
+    local function dumpParam(tab)  
+        for i=1, #tab do    
+            if tab[i] == nil then   
+                tv = tv.."nil\t"  
+            elseif type(tab[i]) == "table" then   
+                xn = xn + 1  
+                tv = tv.."\ntable{\n"  
+                table.foreach(tab[i],printTab)  
+                tv = tv.."\t}\n"  
+            else  
+                tv = tv..tostring(tab[i]).."\t"  
+            end  
+        end  
+    end  
+    local x = ...  
+    if type(x) == "table" then  
+        table.foreach(x,printTab)  
+    else  
+        dumpParam({...})  
+        -- table.foreach({...},printTab)  
+    end  
+    logerror(tv)  
+end

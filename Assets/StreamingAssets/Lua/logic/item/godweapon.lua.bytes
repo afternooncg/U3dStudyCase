@@ -1,0 +1,165 @@
+
+
+----------------------------------------------------------------------
+--神兵相关
+----------------------------------------------------------------------
+--{"id":2,"warriorID":111012,"type":1,"enhanceExp":100,"enhanceLevel":1,"refineExp":0,"refineLevel":1,"baseAttr":[[1,100],[2,200]],"refineAttr":[[1],[2]]}
+CGodWeapon = {}
+CGodWeapon.__index = CGodWeapon
+setmetatable(CGodWeapon,CEquip)
+CGodWeapon.New = function (t)
+	local temp = t or {}
+	setmetatable(temp, CGodWeapon)	
+	temp.template = EquipTemplate[t.type]
+	if temp.template == nil then 
+		logerror('装备类型不存在，id:'..t.type)
+		return
+	end
+	temp.baseProperty = Property(temp.baseAttr,Property.NewType.Server)
+	--temp.refineAttr = temp.refineAttr --Property(temp.refineAttr,Property.NewType.Server)
+	return temp
+end
+
+function CGodWeapon:GetPower()
+	local property = self:GetProperty()
+	local owner = g_Hero:GetWarrior(self.template.owner)
+	if owner then
+		local base = owner:GetWarriorStarProperty() 
+		property = property + base:GetIncProperty(property)
+	end
+	return property:GetPower(owner and owner:GetLevel() or 0)
+end
+
+function CGodWeapon:GetProperty()
+	local owner = g_Hero:GetWarrior(self.template.owner)
+	local lv = owner and owner:GetLevel() or 0
+	if self.refineAttr then
+		for i,v in ipairs(self.refineAttr) do
+			self.refineAttr[i][2] = GodWeaponRefineAttrGrow[v[1]].base + self.refineLevel * GodWeaponRefineAttrGrow[v[1]].step
+		end
+		local refineProperty = Property(self.refineAttr,Property.NewType.Server)	
+		return self.baseProperty* (1+self.enhanceLevel*0.05)+refineProperty
+	else
+		return self.baseProperty* (1+self.enhanceLevel*0.05)
+	end
+end
+
+function CGodWeapon:GetOwner()
+	return g_Hero:GetWarrior(self.template.owner)
+end
+
+function CGodWeapon:GetOwnerName()
+	local tpl = WarriorCardTemplate[self.template.owner]
+	if not tpl then
+		logerror(string.format('不存在id为%d的卡牌配置！',self.template.owner))
+		return ''
+	end
+	return tpl.name
+end
+
+function CGodWeapon:GetTipsNameDesc()
+	return string.format(GameMessage.GodWeapon_TipsName, self:GetEquipColor(),self:GetName())
+end
+
+function CGodWeapon:GetFirstDesc()
+	if self:IsIdentify() then
+		return string.format(GameMessage.GodWeapon_TipsFirst,self:GetQualityDesc(),self:GetPower())
+	else
+		return GameMessage.GodWeapon_TipsFirstNotIdentify
+	end
+end
+
+function CGodWeapon:GetAttrQuality(key,value)
+	local tbl = GodWeaponAttrTemplate[key]
+	if not tbl then 
+		logerror('GodWeaponAttrTemplate Error:'.. key) 
+		return EquipQuality.Normal 
+	end		
+	for i=EquipQuality.Normal,EquipQuality.Legend do
+		if tbl['max'..i] > value then
+			return i
+		end
+	end
+	return EquipQuality.Legend
+end
+
+function CGodWeapon:CanEnhance()
+	return self.enhanceLevel < g_Hero:GetLevel()
+end
+
+function CGodWeapon:GetAppendAttrDesc()
+	local desc
+	if self:IsIdentify() then
+		desc = string.format(GameMessage.GodWeapon_TipsBaseAttr,self.enhanceLevel,g_Hero:GetLevel())
+		for i,v in ipairs(self.baseAttr) do	
+			local attr = CEquip.GetAttrDesc(UIHelper.GetEquipColor(self:GetAttrQuality(v[1],v[2])),v[1],v[2])
+			local append = Property.GetTypeIndexTextMethod(v[1],v[2]*self.enhanceLevel*0.05)
+			desc = string.format('%s\n%s [00ff00]+%s[-]',desc,string.gsub(attr,"+",''),append)
+		end		
+
+		local tempAttr = self.refineAttr
+		if tempAttr then
+			desc = desc .. '\n' .. string.format(GameMessage.GodWeapon_TipsRefineAttr,self.refineLevel,GodWeaponRefineNum[self:GetQuality()])
+			for i,v in ipairs(tempAttr) do
+				local value = GodWeaponRefineAttrGrow[v[1]].base
+				local attr = CEquip.GetAttrDesc('[ffffff]',v[1],value)
+				local append = Property.GetTypeIndexTextMethod(v[1],self.refineLevel * GodWeaponRefineAttrGrow[v[1]].step)
+				desc = string.format('%s\n%s [00ff00]+%s[-]',desc,string.gsub(attr,"+",''),append)								
+			end
+		else
+			if self:GetQuality() < EquipQuality.Epic then
+				desc = string.format('%s\n%s',desc,GameMessage.GodWeapon_RefineCondition)
+			end
+		end							
+	else
+		desc = string.format(GameMessage.GodWeapon_TipsBaseAttr,0,g_Hero:GetLevel())
+		for i=1,3 do
+			desc = string.format('[ffffff]%s\n%s',desc,GameMessage.PropertyRandom)
+		end
+		desc = desc .. '\n' .. string.format(GameMessage.GodWeapon_TipsRefineAttr,0,GodWeaponRefineNum[self:GetQuality()])
+		if self:GetQuality() < EquipQuality.Epic then
+			desc = string.format('%s\n%s',desc,GameMessage.GodWeapon_RefineCondition)
+		else	
+			local num = self:GetQuality() == EquipQuality.Epic and 2 or 3
+			for i=1,num do
+				desc = string.format('%s\n%s',desc,GameMessage.PropertyRandom)
+			end			
+		end
+	end
+	return desc.."\n\n"..(string.format(GameMessage.GodWeapon_TipsName1,self:GetOwnerName()))
+end
+
+function CGodWeapon:GetDecomposeItems()
+	local items = {}
+	local baseExp = GodWeaponBaseExp[self:GetQuality()]
+	if not baseExp then
+		logerror('神器基础经验表没配置：' .. self:GetQuality())
+		return
+	end
+	local exp = self.enhanceExp + baseExp[1]
+	for i=#GodWeaponEnhanceItemExp,1,-1 do
+		local count = math.floor(exp / GodWeaponEnhanceItemExp[i][2])
+		if count > 0 then	
+			table.insert(items,CItem.new{type=GodWeaponEnhanceItemExp[i][1],amount=count})
+			exp = exp - count * GodWeaponEnhanceItemExp[i][2]
+		end
+	end
+
+	exp = self.refineExp + baseExp[2]
+	for i=#GodWeaponRefineItemExp,1,-1 do
+		local count = math.floor(exp / GodWeaponRefineItemExp[i][2])
+		if count > 0 then	
+			table.insert(items,CItem.new{type=GodWeaponRefineItemExp[i][1],amount=count})
+			exp = exp - count * GodWeaponRefineItemExp[i][2]
+		end
+	end	
+	return items
+end
+
+function CGodWeapon:GetEnhanceExp()
+	return self.enhanceExp + GodWeaponBaseExp[self:GetQuality()][1]
+end
+
+function CGodWeapon:GetRefineExp()
+	return self.refineExp + GodWeaponBaseExp[self:GetQuality()][2]
+end

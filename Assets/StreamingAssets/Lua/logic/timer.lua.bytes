@@ -1,0 +1,49 @@
+
+g_Timer = 
+{
+    fStartTime = 0,
+    fInterval  = 0,
+    callfunc   = nil,
+}
+
+g_Timer.Init = function(self,time,func)
+   self.fInterval = time
+   callfunc  = func
+end
+
+g_Timer.Update = function(self)
+    self.fStartTime = UnityEngine.Time.realtimeSinceStartup
+end
+
+g_Timer.GetLeftSecond = function(self)
+   return self.fStartTime + self.fInterval - UnityEngine.Time.realtimeSinceStartup
+end
+
+g_Timer.IsActive = function(self)
+   return self.fInterval > 0
+end
+
+g_Timer.IsTimeOut = function(self)
+    if UnityEngine.Time.realtimeSinceStartup > self.fStartTime + self.fInterval then
+        if callfunc then 
+           callfunc()
+        end 
+        self:Clear()
+        return true
+    end 
+    return false
+end
+
+g_Timer.ToNextTime = function(self)
+   if self:IsTimeOut() then
+      self:Update()
+      return true
+   end
+
+   return false;
+end
+
+g_Timer.Clear = function(self)
+    self.fInterval  = 0
+    self.fStartTime = 0
+end

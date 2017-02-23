@@ -1,0 +1,561 @@
+CMsg={}
+
+
+local module0 = 0
+local module1 = 500
+local module2 = 600
+local module3 = 1000
+local module4 = 1100
+local module5 = 1200
+local module6 = 1300
+local module7 = 1340
+local module8 = 1343
+local module9 = 1350
+local module10 = 1400
+local module11 = 1500
+local module12 = 1600
+local module13 = 1700
+local module14 = 1800
+local module15 = 1900
+local module16 = 2000
+local module17 = 2200
+local module18 = 2300
+
+MSGTYPE = 
+{
+
+	LOGIN = 1; --fortest
+
+	_MSG_INVALID                                     =	module0,		--
+
+
+	_MSG_SERVER_REGISTER                             =	module1,		--   //服务器内部通讯使用
+
+
+	_MSG_GAMESERVER_CONNECTINFO                      =	module1 + 1, 
+	_MSG_CLIENT_LOGINTOL                             =	module1 + 2, 
+	_MSG_CLIENT_LOGINTOG                             =	module1 + 3, 
+	_MSG_LOGINSERVER_VALIDATE                        =	module1 + 4, 
+	_MSG_GAMESERVER_LOGINRESP                        =	module1 + 5, 
+	_MSG_GAMESERVER_USERCLOSE                        =	module1 + 6, 
+	_MSG_DBSERVER_ROLEINFO                           =	module1 + 7, 
+	_MSG_GAMESERVER_ROLEINFO                         =	module1 + 8, 
+	_MSG_USERSERVER_ROLEINFORESP                     =	module1 + 9, 
+	_MSG_USERSERVER_UPDATEFRIENDSTATUS               =	module1 + 10, 
+	_MSG_CHARGESERVER_PAYMENT                        =	module1 + 11, 
+	_MSG_CHARGESERVER_PAYMENTRESP                    =	module1 + 12, 
+	_MSG_GAMESERVER_SENDGIFT                         =	module1 + 13, 
+	_MSG_GAMESERVER_USERLEVEL                        =	module1 + 14, 
+	_MSG_GAMESERVER_USERLEVELRESP                    =	module1 + 15, 
+	_MSG_GAMESERVER_REGISTERTOCS                     =	module1 + 16, 
+	_MSG_SERVER_KEEPACTIVE                           =	module1 + 17, 
+	_MSG_CENTERSERVER_REGISTERGS                     =	module1 + 18, 
+	_MSG_CENTERSERVER_REGISTERGSRESP                 =	module1 + 19, 
+	_MSG_CHARGESERVER_GAMESERVERLIST                 =	module1 + 20, 
+	_MSG_GAMESERVER_GAMESERVERLIST                   =	module1 + 21, 
+	_MSG_GAMESERVER_LOGINLOG                         =	module1 + 22, 
+	_MSG_CLIENT_GAMESERVERLIST                       =	module1 + 23, 
+	_MSG_USERSERVER_DBSERVERID                       =	module1 + 24, 
+	_MSG_GAMESERVER_USERSTATUS                       =	module1 + 25, 
+	_MSG_USERSERVER_USERSTATUS                       =	module1 + 26, 
+	_MSG_USERSERVER_UPDATELEVEL                      =	module1 + 27, 
+	_MSG_CENTERSERVER_GETREFRESHMATCHNUM             =	module1 + 28, 
+	_MSG_GAMESERVER_CLOSE                            =	module1 + 29, 
+	_MSG_GAMESERVER_GETUSERDATA                      =	module1 + 30, 
+	_MSG_USERSERVER_GETDBSERVERID                    =	module1 + 31, 
+	_MSG_USERSERVER_GETDBSERVERIDRESP                =	module1 + 32, 
+	_MSG_CLIENT_LOGINTOLRESP                         =	module1 + 33, 
+	_MSG_CHARGESERVER_BUYGOODSLOG                    =	module1 + 34, 
+	_MSG_GAMESERVER_CONNECTINFO2                     =	module1 + 35, 
+	_MSG_GAMESERVER_CLEARDAYDOLLARCREDIT             =	module1 + 36, 
+	_MSG_SNSSERVER_FRIENDINFO                        =	module1 + 37, 
+	_MSG_USERSERVERBAK_FRIENDINFO                    =	module1 + 38, 
+	_MSG_CLIENT_LOGIN_TENCENT                        =	module1 + 39, 
+	_MSG_GAMESERVER_FRIENDLIST                       =	module1 + 40, 
+	_MSG_SNSSERVER_FRIENDLIST                        =	module1 + 41, 
+	_MSG_GAMESERVER_REPORTONLINECOUNT                =	module1 + 42, 
+	_MSG_GAMESERVER_REFRESHBATTLEPOWER               =	module1 + 43, 
+	_MSG_MONITORSERVER_GETGAMESERVERINFO             =	module1 + 44, 
+	_MSG_CENTERSERVER_OPENCONSORTIABOSS              =	module1 + 45, 
+	_MSG_CENTERSERVER_ATTACKBOSSHP                   =	module1 + 46, 
+	_MSG_MONITORSERVER_GETDBSERVERINFO               =	module1 + 47, 
+	_MSG_MONITORSERVER_OPENSERVER                    =	module1 + 48, 
+	_MSG_MONITORSERVER_CLOSESERVER                   =	module1 + 49, 
+	_MSG_MONITORSERVER_GETSERVERINFO                 =	module1 + 50, 
+	_MSG_REQUEST_WEAKNETLOGIN                        =	module1 + 51, 
+	_MSG_RESP_WEAKNETLOGIN                           =	module1 + 52, 
+	_MSG_CLIENT_LOGINTOG_TENCENT                     =	module1 + 53, 
+	_MSG_REQUEST_SETBATTLEMODE                       =	module1 + 54, 
+	_MSG_RESP_SETBATTLEMODE                          =	module1 + 55, 
+	_MSG_CHARGESERVER_GMBULLETIN                     =	module2,		--//GM工具接口
+
+
+	_MSG_CHARGESERVER_SENDGIFT                       =	module2 + 1, 
+	_MSG_CHARGESERVER_GMBAN                          =	module2 + 2, 
+	_MSG_CHARGESERVER_DISCONNECTPLAYER               =	module2 + 3, 
+	_MSG_CHARGESERVER_GMSTOPCHAT                     =	module2 + 4, 
+	_MSG_CHARGESERVER_USERSTATUS                     =	module2 + 5, 
+	_MSG_CHARGESERVER_USERSTATUSRESP                 =	module2 + 6, 
+	_MSG_CHARGESERVER_AMAZON                         =	module2 + 7, 
+	_MSG_REQUEST_CREATEROLE                          =	module3,		--//角色管理
+
+
+	_MSG_RESP_CREATEROLE                             =	module3 + 1, 
+	_MSG_RESP_ERROR_RETURN                           =	module3 + 2, 
+	_MSG_REQUEST_ACTIVE                              =	module3 + 3, 
+	_MSG_RESP_ACTIVE                                 =	module3 + 4, 
+	_MSG_REQUEST_PLAYERINFO                          =	module3 + 5, 
+	_MSG_RESP_UPDATE_MONEY                           =	module3 + 6, 
+	_MSG_RESP_CHARGESUCCEEDTOPLAYER                  =	module3 + 7, 
+	_MSG_RESP_UPDATECREDIT                           =	module3 + 8, 
+	_MSG_RESP_UPDATERANK                             =	module3 + 9, 
+	_MSG_REQUEST_RANKINFO                            =	module3 + 10, 
+	_MSG_RESP_RANKINFO                               =	module3 + 11, 
+	_MSG_REQUEST_CHAT                                =	module3 + 12, 
+	_MSG_REQUEST_GETWORLDCHAT                        =	module3 + 13, 
+	_MSG_RESP_GETWORLDCHAT                           =	module3 + 14, 
+	_MSG_REQUEST_CHOOSEPLAYER                        =	module3 + 15, 
+	_MSG_REQUEST_CLIENTINITOVER                      =	module3 + 16, 
+	_MSG_REQUEST_BATTLEPLAYER                        =	module3 + 17, 
+	_MSG_RESP_BATTLEPLAYER                           =	module3 + 18, 
+	_MSG_REQUEST_FINISHBATTLE                        =	module3 + 19, 
+	_MSG_REQUEST_UPDATEGUIDE                         =	module3 + 20, 
+	_MSG_REQUEST_CENTERSERVER                        =	module3 + 21, 
+	_MSG_RESP_UPDATECHOOSEPLAYERSOLDIER              =	module3 + 22, 
+	_MSG_RESP_UPDATECHOOSEPLAYERRES                  =	module3 + 23, 
+	_MSG_REQUEST_UPDATEGUIDESUB                      =	module3 + 24, 
+	_MSG_REQUEST_GAINNOBILITYAWARD                   =	module3 + 25, 
+	_MSG_RESP_GAINNOBILITYAWARD                      =	module3 + 26, 
+	_MSG_REQUEST_SETGAMESERVERCOMMAND                =	module3 + 27, 
+	_MSG_RESP_SETGAMESERVERCOMMAND                   =	module3 + 28, 
+	_MSG_RESP_INITDAILYDATA                          =	module3 + 29, 
+	_MSG_REQUEST_VOICECHAT                           =	module3 + 30, 
+	_MSG_CHAT_MESSAGE                                =	module4,		--//聊天、邮件、
+
+
+	_MSG_REQUEST_SENDEMAIL                           =	module4 + 1, 
+	_MSG_REQUEST_EMAILINFO                           =	module4 + 2, 
+	_MSG_RESP_EMAILINFO                              =	module4 + 3, 
+	_MSG_REQUEST_DELETEEMAIL                         =	module4 + 4, 
+	_MSG_REQUEST_READEMAIL                           =	module4 + 5, 
+	_MSG_RESP_READEMAIL                              =	module4 + 6, 
+	_MSG_REQUEST_EMAILGOODS                          =	module4 + 7, 
+	_MSG_RESP_EMAILGOODS                             =	module4 + 8, 
+	_MSG_RESP_UPDATEEMAILDB                          =	module4 + 9, 
+	_MSG_RESP_SENDEMAIL                              =	module4 + 10, 
+	_MSG_RESP_EMAILINFODB                            =	module4 + 11, 
+	_MSG_RESP_NEWEMAILNOTICE                         =	module4 + 12, 
+	_MSG_REQUEST_APKAUTH2                            =	module4 + 13, 
+	_MSG_RESP_BATTLEEMAILNOTICE                      =	module4 + 14, 
+	_MSG_REQUEST_OPINION                             =	module4 + 15, 
+	_MSG_RESP_NOTICEEMAIL                            =	module4 + 16, 
+	_MSG_REQUEST_GOODSEMAILINFO                      =	module4 + 17, 
+	_MSG_RESP_GOODSEMAILINFO                         =	module4 + 18, 
+	_MSG_REQUEST_ADDFRIEND                           =	module5,		--//好友管理
+
+
+	_MSG_RESP_ADDFRIEND                              =	module5 + 1, 
+	_MSG_REQUEST_DELFRIEND                           =	module5 + 2, 
+	_MSG_RESP_DELFRIEND                              =	module5 + 3, 
+	_MSG_REQUEST_FRIENDLIST                          =	module5 + 4, 
+	_MSG_RESP_FRIENDLIST                             =	module5 + 5, 
+	_MSG_RESP_FRIENDINFO                             =	module5 + 6, 
+	_MSG_RESP_ADDFRIENDAUTH                          =	module5 + 7, 
+	_MSG_REQUEST_FRIENDSTATUS                        =	module5 + 8, 
+	_MSG_RESP_FRIENDSTATUS                           =	module5 + 9, 
+	_MSG_RESP_FRIENDDB                               =	module5 + 10, 
+	_MSG_USERSERVER_DELFRIEND                        =	module5 + 11, 
+	_MSG_REQUEST_ADDFRIENDPRAISE                     =	module5 + 12, 
+	_MSG_RESP_ADDFRIENDPRAISE                        =	module5 + 13, 
+	_MSG_REQUEST_APKAUTH3                            =	module5 + 14, 
+	_MSG_REQUEST_TENCENTFRIENDINFO                   =	module5 + 15, 
+	_MSG_RESP_TENCENTFRIENDINFO                      =	module5 + 16, 
+	_MSG_REQUEST_ADDFRIENDEX                         =	module5 + 17, 
+	_MSG_RESP_ADDFRIENDEX                            =	module5 + 18, 
+	_MSG_REQUEST_DEALADDFRIENDEXAUTH                 =	module5 + 19, 
+	_MSG_RESP_DEALADDFRIENDEXAUTH                    =	module5 + 20, 
+	_MSG_REQUEST_GETAPPLYFRDLIST                     =	module5 + 21, 
+	_MSG_RESP_GETAPPLYFRDLIST                        =	module5 + 22, 
+	_MSG_REQUEST_CREATEBUILD                         =	module6,		--//建筑物管理
+
+
+	_MSG_RESP_CREATEBUILD                            =	module6 + 1, 
+	_MSG_REQUEST_BUILDINFO                           =	module6 + 2, 
+	_MSG_RESP_BUILDINFO                              =	module6 + 3, 
+	_MSG_RESP_BUILDCOMPLETE                          =	module6 + 4, 
+	_MSG_REQUEST_CANCELBUILD                         =	module6 + 5, 
+	_MSG_RESP_CANCELBUILD                            =	module6 + 6, 
+	_MSG_REQUEST_DELETEBUILD                         =	module6 + 7, 
+	_MSG_RESP_DELETEBUILD                            =	module6 + 8, 
+	_MSG_REQUEST_BUILDCREATING                       =	module6 + 9, 
+	_MSG_RESP_BUILDCREATING                          =	module6 + 10, 
+	_MSG_REQUEST_SPEEDBUILDING                       =	module6 + 11, 
+	_MSG_RESP_SPEEDBUILDING                          =	module6 + 12, 
+	_MSG_REQUEST_MOVEBUILD                           =	module6 + 13, 
+	_MSG_RESP_MOVEBUILD                              =	module6 + 14, 
+	_MSG_RESP_BUILDINGDEATHCOMPLETE                  =	module6 + 15, 
+	_MSG_RESP_CREATEBUILDINFO                        =	module6 + 16, 
+	_MSG_RESP_BUILDINFOFRIEND                        =	module6 + 17, 
+	_MSG_RESP_BUILDINFODB                            =	module6 + 18, 
+	_MSG_REQUEST_GAINRESBUILDING                     =	module6 + 19, 
+	_MSG_RESP_GAINRESBUILDING                        =	module6 + 20, 
+	_MSG_REQUEST_CHANGEBUILDING                      =	module6 + 21, 
+	_MSG_RESP_CHANGEBUILDING                         =	module6 + 22, 
+	_MSG_REQUEST_FILLSTORAGECREDIT                   =	module6 + 23, 
+	_MSG_RESP_FILLSTORAGECREDIT                      =	module6 + 24, 
+	_MSG_REQUEST_DELETEBUILDING                      =	module6 + 25, 
+	_MSG_RESP_DELETEBUILDING                         =	module6 + 26, 
+	_MSG_RESP_DELBUILDCOMPLETE                       =	module6 + 27, 
+	_MSG_REQUEST_ADDBUILDINGQUEUE                    =	module6 + 28, 
+	_MSG_RESP_ADDBUILDINGQUEUE                       =	module6 + 29, 
+	_MSG_RESP_REPAIRBUILDCOMPLETE                    =	module6 + 30, 
+	_MSG_REQUEST_BUILDINGSHOPING                     =	module6 + 31, 
+	_MSG_RESP_BUILDINGSHOPING                        =	module6 + 32, 
+	_MSG_REQUEST_UPGRADEWALL                         =	module6 + 33, 
+	_MSG_RESP_UPGRADEWALL                            =	module6 + 34, 
+	_MSG_REQUEST_BUILDINGBINDHERO                    =	module6 + 35, 
+	_MSG_RESP_BUILDINGBINDHERO                       =	module6 + 36, 
+	_MSG_REQUEST_APKAUTH4                            =	module6 + 37, 
+	_MSG_REQUEST_CHANGEBUILDINGPOS                   =	module6 + 38, 
+	_MSG_RESP_CHANGEBUILDINGPOS                      =	module6 + 39, 
+	_MSG_RESP_BUILDING_RESOURCE                      =	module7,		--
+
+
+	_MSG_RESP_BUILDING_RESOURCE_UPDATE               =	module7 + 1, 
+	_MSG_RESP_WORKERINFO                             =	module8,		--
+
+
+	_MSG_RESP_WORKER_ACTION                          =	module8 + 1, 
+	_MSG_RESP_BUILDING_STORAGE_UPDATE                =	module8 + 2, 
+	_MSG_REQUEST_CLIENT_WORKER_STATUS_COMPLETE       =	module8 + 3, 
+	_MSG_REQUEST_SET_WORKER_PRODUCE_ID               =	module8 + 4, 
+	_MSG_RESP_SET_WORKER_PRODUCE_ID                  =	module8 + 5, 
+	_MSG_RESP_ROAD_INFO                              =	module9,		--
+
+
+	_MSG_REQUEST_CREATE_ROAD                         =	module9 + 1, 
+	_MSG_RESP_CREATE_ROAD                            =	module9 + 2, 
+	_MSG_REQUEST_MOVE_ROAD                           =	module9 + 3, 
+	_MSG_RESP_MOVE_ROAD                              =	module9 + 4, 
+	_MSG_REQUEST_SOLDIERINFO                         =	module10,		-- //兵营管理
+
+
+	_MSG_RESP_SOLDIERINFO                            =	module10 + 1, 
+	_MSG_RESP_SOLDIERINFODB                          =	module10 + 2, 
+	_MSG_REQUEST_CREATESOLDIER                       =	module10 + 3, 
+	_MSG_RESP_CREATESOLDIER                          =	module10 + 4, 
+	_MSG_REQUEST_CANCELSOLDIER                       =	module10 + 5, 
+	_MSG_RESP_CANCELSOLDIER                          =	module10 + 6, 
+	_MSG_RESP_SOLDIERCOMPLETE                        =	module10 + 7, 
+	_MSG_REQUEST_BUILDSOLDIERINFO                    =	module10 + 8, 
+	_MSG_RESP_BUILDSOLDIERINFO                       =	module10 + 9, 
+	_MSG_RESP_SOLDIERLEVEL                           =	module10 + 10, 
+	_MSG_REQUEST_UPGRADESOLDIER                      =	module10 + 11, 
+	_MSG_RESP_UPGRADESOLDIER                         =	module10 + 12, 
+	_MSG_RESP_UPGRADESOLDIERCOMPLETE                 =	module10 + 13, 
+	_MSG_REQUEST_SPEEDSOLDIER                        =	module10 + 14, 
+	_MSG_REQUEST_SPEEDUPGRADESOLDIER                 =	module10 + 15, 
+	_MSG_REQUEST_DELETESOLDIER                       =	module10 + 16, 
+	_MSG_RESP_DELETESOLDIER                          =	module10 + 17, 
+	_MSG_REQUEST_APKAUTH5                            =	module10 + 18, 
+	_MSG_RESP_BATTLESOLDIERINFO                      =	module10 + 19, 
+	_MSG_REQUEST_RESEARCH_ACTION                     =	module10 + 20, 
+	_MSG_RESP_RESEARCH_ACTION                        =	module10 + 21, 
+	_MSG_RESP_RESEARCH_INFO                          =	module10 + 22, 
+	_MSG_RESP_UPGRADE_RESEARCH_COMPLETE              =	module10 + 23, 
+	_MSG_REQUEST_HERO                                =	module11,		-- //英雄管理
+
+
+	_MSG_RESP_HERO                                   =	module11 + 1, 
+	_MSG_REQUEST_HERO_RECRUIT                        =	module11 + 2, 
+	_MSG_RESP_HERO_RECRUIT                           =	module11 + 3, 
+	_MSG_REQUEST_HERO_BUY                            =	module11 + 4, 
+	_MSG_RESP_HERO_BUY                               =	module11 + 5, 
+	_MSG_REQUEST_HERO_UPGRADE_STAR                   =	module11 + 6, 
+	_MSG_RESP_HERO_UPGRADE_STAR                      =	module11 + 7, 
+	_MSG_REQUEST_HERO_GARRISON                       =	module11 + 8, 
+	_MSG_RESP_HERO_GARRISON                          =	module11 + 9, 
+	_MSG_REQUEST_RELIVEHERO                          =	module11 + 10, 
+	_MSG_RESP_RELIVEHERO                             =	module11 + 11, 
+	_MSG_REQUEST_SETHEROLINEUP                       =	module11 + 12, 
+	_MSG_RESP_SETHEROLINEUP                          =	module11 + 13, 
+	_MSG_REQUEST_INLAYHEROPOSY                       =	module11 + 14, 
+	_MSG_RESP_INLAYHEROPOSY                          =	module11 + 15, 
+	_MSG_REQUEST_COMPOSEHEROPOSY                     =	module11 + 16, 
+	_MSG_RESP_COMPOSEHEROPOSY                        =	module11 + 17, 
+	_MSG_REQUEST_UPGRADEPOSYLEVEL                    =	module11 + 18, 
+	_MSG_RESP_UPGRADEPOSYLEVEL                       =	module11 + 19, 
+	_MSG_RESP_EXTENDHEROINFOENEMY                    =	module11 + 20, 
+	_MSG_REQUEST_SMELTHEROPOSY                       =	module11 + 21, 
+	_MSG_RESP_SMELTHEROPOSY                          =	module11 + 22, 
+	_MSG_REQUEST_UPGRADEMAGIC                        =	module12,		-- //魔法管理
+
+
+	_MSG_RESP_UPGRADEMAGIC                           =	module12 + 1, 
+	_MSG_RESP_UPGRADEMAGICCOMPLETE                   =	module12 + 2, 
+	_MSG_REQUEST_MAGICINFO                           =	module12 + 3, 
+	_MSG_RESP_MAGICINFO                              =	module12 + 4, 
+	_MSG_REQUEST_BUYMAGICPROPS                       =	module12 + 5, 
+	_MSG_RESP_BUYMAGICPROPS                          =	module12 + 6, 
+	_MSG_REQUEST_SPEEDUPGRADEMAGIC                   =	module12 + 7, 
+	_MSG_REQUEST_SOLDMAGICPROPS                      =	module12 + 8, 
+	_MSG_RESP_SOLDMAGICPROPS                         =	module12 + 9, 
+	_MSG_REQUEST_DBSERVERMAPINFO                     =	module13,		-- //地图管理
+
+
+	_MSG_RESP_DBSERVERMAPINFO                        =	module13 + 1, 
+	_MSG_RESP_DBSERVERMAPCOMPLETE                    =	module13 + 2, 
+	_MSG_REQUEST_MAPAREA                             =	module13 + 3, 
+	_MSG_RESP_MAPAREA                                =	module13 + 4, 
+	_MSG_REQUEST_MOVECASTLE                          =	module13 + 5, 
+	_MSG_RESP_MOVECASTLE                             =	module13 + 6, 
+	_MSG_REQUEST_DUNGEON_AREA                        =	module14,		--//副本
+
+
+	_MSG_RESP_DUNGEON_AREA                           =	module14 + 1, 
+	_MSG_REQUEST_DUNGEON_AREA_EXPLORE                =	module14 + 2, 
+	_MSG_RESP_DUNGEON_AREA_EXPLORE                   =	module14 + 3, 
+	_MSG_REQUEST_DUNGEON                             =	module14 + 4, 
+	_MSG_RESP_DUNGEON                                =	module14 + 5, 
+	_MSG_REQUEST_ACHIEVEMENTINFO                     =	module15,		-- //成就管理
+
+
+	_MSG_RESP_ACHIEVEMENTINFO                        =	module15 + 1, 
+	_MSG_REQUEST_GAINACHIEVEMENTAWARD                =	module15 + 2, 
+	_MSG_RESP_GAINACHIEVEMENTAWARD                   =	module15 + 3, 
+	_MSG_RESP_UPDATEACHIEVEMENT                      =	module15 + 4, 
+	_MSG_REQUEST_GAINCASHAWARD                       =	module15 + 5, 
+	_MSG_RESP_GAINCASHAWARD                          =	module15 + 6, 
+	_MSG_RESP_ACTIVETASKINFO                         =	module15 + 7, 
+	_MSG_REQUEST_GAINACTIVETASKAWARD                 =	module15 + 8, 
+	_MSG_RESP_UPDATEACTIVETASK                       =	module15 + 9, 
+	_MSG_RESP_ACTIVETASKCOMMENT                      =	module15 + 10, 
+	_MSG_REQUEST_COMPLETEACTIVETASK                  =	module15 + 11, 
+	_MSG_REQUEST_GAINDAILYAWARD                      =	module15 + 12, 
+	_MSG_RESP_GAINDAILYAWARD                         =	module15 + 13, 
+	_MSG_RESP_EXTBATTLETASKINFO                      =	module15 + 14, 
+	_MSG_REQUEST_GETBATTLETASK                       =	module15 + 15, 
+	_MSG_RESP_UPDATEBATTLETASK                       =	module15 + 16, 
+	_MSG_REQUEST_GAINBATTLETASKAWARD                 =	module15 + 17, 
+	_MSG_REQUEST_GAINONLINEAWARD                     =	module15 + 18, 
+	_MSG_RESP_GAINONLINEAWARD                        =	module15 + 19, 
+	_MSG_REQUEST_SPEEDBATTLETASK                     =	module15 + 20, 
+	_MSG_REQUEST_REFRESHBATTLETASK                   =	module15 + 21, 
+	_MSG_RESP_REMAINTIMETASKAWARD                    =	module15 + 22, 
+	_MSG_REQUEST_DONATERESOURCETASK                  =	module15 + 23, 
+	_MSG_REQUEST_DONATESOLDIERTASK                   =	module15 + 24, 
+	_MSG_RESP_DONATESOLDIERTASK                      =	module15 + 25, 
+	_MSG_REQUEST_BATTLETASKGUIDE                     =	module15 + 26, 
+	_MSG_REQUEST_GETBATTLETASKEX                     =	module15 + 27, 
+	_MSG_RESP_BATTLELOSINGSOLDIER                    =	module16,		-- //战斗管理
+
+
+	_MSG_RESP_BATTLELOSINGBUILDING                   =	module16 + 1, 
+	_MSG_CENTERSERVER_ENDBATTLE                      =	module16 + 2, 
+	_MSG_RESP_COMBAT_INIT                            =	module16 + 3, 
+	_MSG_RESP_COMBAT_DATA                            =	module16 + 4, 
+	_MSG_REQUEST_CONSORTIAINFO                       =	module17,		--//军团管理
+
+
+	_MSG_RESP_CONSORTIAINFO                          =	module17 + 1, 
+	_MSG_REQUEST_CONSORTIAPROCLAIM                   =	module17 + 2, 
+	_MSG_RESP_CONSORTIAPROCLAIM                      =	module17 + 3, 
+	_MSG_REQUEST_CREATECONSORTIA                     =	module17 + 4, 
+	_MSG_RESP_CREATECONSORTIA                        =	module17 + 5, 
+	_MSG_REQUEST_CONSORTIAMYSELF                     =	module17 + 6, 
+	_MSG_RESP_CONSORTIAMYSELF                        =	module17 + 7, 
+	_MSG_REQUEST_CONSORTIAMEMBER                     =	module17 + 8, 
+	_MSG_RESP_CONSORTIAMEMBER                        =	module17 + 9, 
+	_MSG_REQUEST_EDITCONSORTIA                       =	module17 + 10, 
+	_MSG_RESP_EDITCONSORTIA                          =	module17 + 11, 
+	_MSG_REQUEST_CONSORTIAPRESENT                    =	module17 + 12, 
+	_MSG_RESP_CONSORTIAPRESENT                       =	module17 + 13, 
+	_MSG_REQUEST_CONSORTIADELMEMBER                  =	module17 + 14, 
+	_MSG_RESP_CONSORTIADELMEMBER                     =	module17 + 15, 
+	_MSG_REQUEST_JOINCONSORTIA                       =	module17 + 16, 
+	_MSG_RESP_JOINCONSORTIA                          =	module17 + 17, 
+	_MSG_RESP_CONSORTIADELMEMBERBRO                  =	module17 + 18, 
+	_MSG_REQUEST_CONSORTIASETJOB                     =	module17 + 19, 
+	_MSG_RESP_CONSORTIASETJOB                        =	module17 + 20, 
+	_MSG_REQUEST_CONSORTIAGIVEN                      =	module17 + 21, 
+	_MSG_RESP_CONSORTIAGIVEN                         =	module17 + 22, 
+	_MSG_REQUEST_CONSORTIABUYBUFFERINFO              =	module17 + 23, 
+	_MSG_RESP_CONSORTIABUYBUFFERINFO                 =	module17 + 24, 
+	_MSG_REQUEST_CONSORTIABUYBUFFER                  =	module17 + 25, 
+	_MSG_RESP_CONSORTIABUYBUFFER                     =	module17 + 26, 
+	_MSG_REQUEST_CONSORTIAUPDATEJOBNAME              =	module17 + 27, 
+	_MSG_REQUEST_JOINCONSORTIA2                      =	module17 + 28, 
+	_MSG_RESP_JOINCONSORTIA2                         =	module17 + 29, 
+	_MSG_REQUEST_CONSORTIAUPGRADE                    =	module17 + 30, 
+	_MSG_RESP_CONSORTIAUPGRADE                       =	module17 + 31, 
+	_MSG_REQUEST_SEARCHCONSORTIA                     =	module17 + 32, 
+	_MSG_REQUEST_CONSORTIABRO                        =	module17 + 33, 
+	_MSG_RESP_CONSORTIABRO                           =	module17 + 34, 
+	_MSG_REQUEST_GETCONSORTIAAWARD                   =	module17 + 35, 
+	_MSG_RESP_GETCONSORTIAAWARD                      =	module17 + 36, 
+	_MSG_REQUEST_RESEARCHCONSORTIATALENT             =	module17 + 37, 
+	_MSG_RESP_RESEARCHCONSORTIATALENT                =	module17 + 38, 
+	_MSG_REQUEST_CONSORTIASHOPINFO                   =	module17 + 39, 
+	_MSG_RESP_CONSORTIASHOPINFO                      =	module17 + 40, 
+	_MSG_REQUEST_RANKCONSORTIA                       =	module17 + 41, 
+	_MSG_RESP_RANKCONSORTIA                          =	module17 + 42, 
+	_MSG_REQUEST_CONSORTIAINVITE                     =	module17 + 43, 
+	_MSG_RESP_CONSORTIAINVITE                        =	module17 + 44, 
+	_MSG_REQUEST_CONSORTIAINVITEOK                   =	module17 + 45, 
+	_MSG_RESP_CONSORTIAINVITEOK                      =	module17 + 46, 
+	_MSG_REQUEST_SETCONSORTIAIINVITELEVEL            =	module17 + 47, 
+	_MSG_RESP_SETCONSORTIAIINVITELEVEL               =	module17 + 48, 
+	_MSG_REQUEST_CONSORTIALOTTERY                    =	module17 + 49, 
+	_MSG_RESP_CONSORTIALOTTERY                       =	module17 + 50, 
+	_MSG_REQUEST_CONSORTIAAWARDINFO                  =	module17 + 51, 
+	_MSG_RESP_CONSORTIAAWARDINFO                     =	module17 + 52, 
+	_MSG_REQUEST_CONSORTIAUPDATEVALUE                =	module17 + 53, 
+	_MSG_REQUEST_CONSORTIAINVITEPLAYER               =	module17 + 54, 
+	_MSG_RESP_CONSORTIAINVITEPLAYER                  =	module17 + 55, 
+	_MSG_REQUEST_ACCEPTCONSORTIAINVITE               =	module17 + 56, 
+	_MSG_RESP_CONSORTIACHATBRO                       =	module17 + 57, 
+	_MSG_RESP_CONSORTIAHOURNOTIFY                    =	module17 + 58, 
+	_MSG_REQUEST_CONSORTIAUPGRADECRYSTAL             =	module17 + 59, 
+	_MSG_REQUEST_CONSORTIAADDMONEY                   =	module17 + 60, 
+	_MSG_RESP_CONSORTIAADDMONEY                      =	module17 + 61, 
+	_MSG_REQUEST_CONSORTIABATTLEAWARD                =	module17 + 62, 
+	_MSG_RESP_CONSORTIABATTLEAWARD                   =	module17 + 63, 
+	_MSG_REQUEST_CONSORTIAUPDATESTORAGE              =	module17 + 64, 
+	_MSG_REQUEST_CONSORTIAUNIONINFO                  =	module17 + 65, 
+	_MSG_RESP_CONSORTIAUNIONINFO                     =	module17 + 66, 
+	_MSG_REQUEST_CONSORTIAUNION                      =	module17 + 67, 
+	_MSG_RESP_CONSORTIAUNION                         =	module17 + 68, 
+	_MSG_REQUEST_CONSORTIAHIREINFO                   =	module17 + 69, 
+	_MSG_RESP_CONSORTIAHIREINFO                      =	module17 + 70, 
+	_MSG_REQUEST_CONSORTIAHIRE                       =	module17 + 71, 
+	_MSG_RESP_CONSORTIAHIRE                          =	module17 + 72, 
+	_MSG_REQUEST_CONSORTIAUNIONHOUR                  =	module17 + 73, 
+	_MSG_RESP_CONSORTIAUNIONHOUR                     =	module17 + 74, 
+	_MSG_REQUEST_CONSORTIAVOTEINFO                   =	module17 + 75, 
+	_MSG_RESP_CONSORTIAVOTEINFO                      =	module17 + 76, 
+	_MSG_REQUEST_CONSORTIAVOTE                       =	module17 + 77, 
+	_MSG_RESP_CONSORTIAVOTE                          =	module17 + 78, 
+	_MSG_REQUEST_BUYCONSORTIASHOP                    =	module17 + 79, 
+	_MSG_RESP_BUYCONSORTIASHOP                       =	module17 + 80, 
+	_MSG_RESP_CONSORTIASHOPRECORD                    =	module17 + 81, 
+	_MSG_REQUEST_CONSORTIAAUTHUSER                   =	module17 + 82, 
+	_MSG_RESP_CONSORTIAAUTHUSER                      =	module17 + 83, 
+	_MSG_REQUEST_DEALCONSORTIAAUTHUSER               =	module17 + 84, 
+	_MSG_RESP_DEALCONSORTIAAUTHUSER                  =	module17 + 85, 
+	_MSG_RESP_CONSORTISERVERERROR                    =	module17 + 86, 
+-- //物品
+
+	_MSG_REQUEST_ITEM                                =	module18,		--               //请求物品信息
+
+
+	_MSG_RESP_ITEM                                   =	module18 + 1, 
+	_MSG_REQUEST_USE_CONSUME_ITEM                    =	module18 + 2, 
+	_MSG_RESP_UPGRADE_HEROEXP                        =	module18 + 3, 
+	_MSG_REQUEST_USE_ITEM                            =	module18 + 4, 
+	_MSG_REQUEST_SELL_ITEM                           =	module18 + 5, 
+	_MSG_RESP_GETITEM_GIFT                           =	module18 + 6, 
+	_MSG_RESP_UPGRADE_HEROSKILLEXP                   =	module18 + 7, 
+	_MSG_REQUEST_ITEMLOTTERY                         =	module18 + 8, 
+	_MSG_RESP_ITEMLOTTERY                            =	module18 + 9, 
+	_MSG_REQUEST_ITEMLOTTERYTIME                     =	module18 + 10, 
+	_MSG_RESP_ITEMLOTTERYTIME                        =	module18 + 11, 
+	_MSG_REQUEST_REFRESHSHOPITEM                     =	module18 + 12, 
+	_MSG_RESP_SHOPITEMINFO                           =	module18 + 13, 
+	_MSG_REQUEST_BUYSHOPITEM                         =	module18 + 14, 
+	_MSG_RESP_SPECIALITEMLOTTERY                     =	module18 + 15, 
+	_MSG_REQUEST_SPECIALITEMINFO                     =	module18 + 16, 
+	_MSG_RESP_SPECIALITEMINFO                        =	module18 + 17, 
+	_MSG_REQUEST_ADDITEMGRID                         =	module18 + 18, 
+	_MSG_RESP_ADDITEMGRID                            =	module18 + 19, 
+	_MSG_RESP_USE_ITEM_INFO                          =	module18 + 20, 
+	_MSG_REQUEST_BUY_SHOP_ITEM_MULTITYPE             =	module18 + 21, 
+}
+
+
+
+
+-- 为减少lua文件量 合并同一模块的消息包解压缩动作为1个文件块
+moduleFileDB = 
+{
+
+	["testlogin"] = {isload=false,file='network.msglogin' , req=''},
+	["player"] =  {isload=false,file='network.module_player', req=''},    --用户
+	["builder"] =  {isload=false,file='network.module_builder', req=''},    --用户
+	["email"] =  {isload=false,file='network.module_email', req=''},    --用户
+	["friend"] =  {isload=false,file='network.module_friend', req=''},    --用户
+	-- 更多模块..
+
+}
+
+
+
+
+local typeMsg = MSGTYPE
+local msgTypeFile =
+{
+	[typeMsg.LOGIN] = moduleFileDB.testlogin,  --测试
+
+	[typeMsg._MSG_DBSERVER_ROLEINFO] = moduleFileDB.player, 
+
+	
+ 
+}
+
+
+local function CheckLoadMsgFile(MsgType)
+
+	if msgTypeFile[MsgType] ==nil then return end
+	local fileDB = msgTypeFile[MsgType]
+	
+	if fileDB.isload then 
+
+		CMsg[MsgType] = fileDB.req			
+
+	else
+
+		fileDB.req = require (fileDB.file)
+
+		CMsg[MsgType] = fileDB.req
+
+		fileDB.isload = true
+		
+	end
+	
+end
+
+--CheckLoadMsgFile(MSGTYPE.GENE)
+
+-- 根据服务器发来的数据创建消息
+local function createMsg(msgType)
+
+	if  not CMsg[msgType]  then				
+
+		CheckLoadMsgFile(msgType)
+
+		if CMsg[msgType] == nil then			
+			return		
+		end
+	end
+	
+	return CMsg[msgType];
+end
+
+function GetMsgClass(MsgType)
+	if not CMsg[MsgType] then
+		CheckLoadMsgFile(MsgType)
+		if not CMsg[MsgType] then
+			return nil
+		end
+	end
+
+	return CMsg[MsgType]
+end
+
+
+function ProcessMsg(idMsgType)	
+
+	local msg = createMsg(idMsgType)
+	if msg then	
+		msg:Process(idMsgType)		
+	end
+end

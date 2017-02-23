@@ -1,0 +1,228 @@
+
+local TipsType = { ITEM=1,HOLY=2,}
+
+
+function GetSoulItemTbl(obj)
+	local manager = obj:GetComponent('PanelCtrlMgr')
+end
+
+local function InitItemMiniTbl(temp)
+	temp.UIUpdateItem = function(self,item,count)		
+		if self.lblCountItem then
+			--self.lblCountItem.text =CItem.GetItemCount(item.entry)..'/'..count
+			self.lblCountItem.text ='100 /'..count
+			self.lblCountItem.gameObject:SetActive(true)
+		end			
+
+		if self.texIconItem then
+			self.texIconItem.MainTexture = TextureEx(item.icon);
+		end
+		
+		if self.sprQualityBorderItem then 
+			--if item.mainType == ItemMainTypes.EquipmentMaterial and item.subType == ItemSubTypes.EquipmentMaterialFragment then
+			---	self.sprQualityBorderItem.spriteName = UIHelper.GetFragmentQualitySpriteName(item.quality);	
+			--else
+				self.sprQualityBorderItem.spriteName = UIHelper.GetQualitySpriteName(item.quality);	
+			--end
+		end
+	end
+	temp.OnTooltip = function(self,show)
+		if not self.isShowTips then 
+			return 
+		end 
+		if not show then
+			GetUIClass('TipsPanel').HideTips();
+			return;
+		end		
+		if self.tipsType == TipsType.HOLY then			
+			local item = g_HolyBag:GetEquipItem(self.equipPos)
+			if not item then return end
+			local param = {}
+			param.name = "EquipTipsPanel"
+			param.objs = {item ,false, ['IsHoly'] = true}	
+			GetUIClass('TipsPanel').ShowTips({param,})
+		else			
+			if not self.itemTpl then return; end
+			if self.itemTpl.entry > 90000 and self.itemTpl.entry < 100000 then
+				local param = {}
+				param.name = "EquipTipsPanel"
+				param.objs = {CEquip.New{type=self.itemTpl.entry,} ,false,}			
+				GetUIClass('TipsPanel').ShowTips({param,})
+			else
+				GetUIClass('TipsPanel').ShowTips({ {name="TipsItemMiniPanel",objs={self.itemTpl.entry,}}, })--new object[]{self.itemTpl.entry});
+			end
+		end
+	end
+	------------------------------
+		--interface
+	------------------------------
+	temp.SetData = function (self,itemEntry,itemCount,bEquipable, isShowTips)	
+		if type(itemEntry) == "string" then
+			itemEntry = tonumber(itemEntry)
+		end 
+
+		if type(itemCount) == "string" then
+			itemCount = tonumber(itemCount)
+		end 		
+
+		if isShowTips == nil or isShowTips == true then 
+			self.isShowTips = true
+		else 
+			self.isShowTips = false
+		end		
+		if itemEntry > 90000 and itemEntry < 100000 then
+			self:SetEquipData(itemEntry,itemCount,bEquipable)
+			return
+		end
+		self.itemTpl = Template.GetItemTemplate(itemEntry);		
+		if not self.itemTpl then 
+			logerror('物品不存在!id:'..itemEntry) 
+			return 
+		end
+		self.tipsType =TipsType.ITEM			
+		
+		if self.goItem then
+			self.goItem:SetActive(true);
+		end
+		
+		self:UIUpdateItem(self.itemTpl, itemCount)		
+		
+		self.obj:SetActive(true)
+	end
+
+	temp.SetEquipData = function (self,entry,count,bEquipable)
+		self.itemTpl = EquipTemplate[entry]	
+		if not self.itemTpl then return end
+		if self.goItem then
+			self.goItem:SetActive(true)
+		end			
+		
+		if self.lblCountItem then
+			if count and count > 1 then
+				self.lblCountItem.text = count
+				self.lblCountItem.gameObject:SetActive(true);
+			else
+				self.lblCountItem.gameObject:SetActive(false);
+			end
+		end
+				
+		if self.texIconItem then
+			self.texIconItem.MainTexture = TextureEx(self.itemTpl.icon);
+		end		
+		if self.sprQualityBorderItem then 
+			self.sprQualityBorderItem.spriteName = UIHelper.GetEquipQualitySpriteName(self.itemTpl.quality);	
+		end	
+		self.obj:SetActive(true)
+	end		
+end
+
+function GetItemMiniTbl(obj, noTips)
+	local manager = obj:GetComponent('PanelCtrlMgr')
+	local temp = {}
+	local ctrls = manager.vecCtrl
+	local vecLbls = manager.vecLbls
+	local vecSprites = manager.vecSprites
+
+	temp.obj = obj
+	temp.texIconItem = ctrls[0]:GetComponent('UITexture')
+	temp.lblCountItem  = vecLbls[0]
+	temp.sprQualityBorderItem = vecSprites[0]
+
+	InitItemMiniTbl(temp)
+	if not noTips then
+		manager:SetCallBackTipInfo(temp.OnTooltip, temp)
+	end
+
+	temp.isShowTips = true
+
+	return temp
+end
+
+
+
+function  GetItemEqupTbl(obj, noTips)
+	
+	local  manager = obj:GetComponent('PanelCtrlMgr')
+	local  temp = {}
+	local vecCtrl = manager.vecCtrl
+	local vecLbls = manager.vecLbls
+	
+
+	temp.obj = obj
+	temp.txtName = vecLbls[0]
+	temp.icon = vecCtrl[0]:GetComponent('UITexture')
+
+	InitItemEqupTbl(temp)
+
+	if not noTips then		
+		manager:SetCallBackTipInfo(temp.OnTooltip, temp)
+	end 	
+
+	temp.isShowTips = true
+
+	return temp
+
+end
+
+
+function  InitItemEqupTbl(temp)
+	
+	temp.UIUpdateItem = function(self,item)		
+		if self.txtName then
+			--self.lblCountItem.text =CItem.GetItemCount(item.entry)..'/'..count
+			self.txtName.text = item.name
+			self.txtName.gameObject:SetActive(true)
+		end			
+
+		if self.icon then
+			self.icon.MainTexture = TextureEx(item.icon);
+		end		
+		
+	end
+
+	temp.OnTooltip = function(self,show)
+		
+		if not self.isShowTips then 
+			return 
+		end 
+		if not show then
+			GetUIClass('TipsPanel').HideTips();
+			return;
+		end		
+		
+			local param = {}
+			param.name = "EquipTipsPanel"
+			param.objs = {self.itemTpl.entry,}
+			GetUIClass('TipsPanel').ShowTips({param,})--new object[]{self.itemTpl.entry});
+			--GetUIClass('TipsPanel').ShowFixedTips({param,},UnityEngine.Rect(0,0,20,20))
+
+	end
+
+
+	temp.SetData = function (self,itemEntry,isShowTips)	
+		if type(itemEntry) == "string" then
+			itemEntry = tonumber(itemEntry)
+		end 
+
+		
+		if isShowTips == nil or isShowTips == true then 
+			self.isShowTips = true
+		else 
+			self.isShowTips = false
+		end		
+		
+		self.itemTpl = Template.GetItemTemplate(itemEntry);		
+		if not self.itemTpl then 
+			logerror('物品不存在!id:'..itemEntry) 
+			return 
+		end
+
+
+		self.tipsType =TipsType.ITEM							
+		
+		self:UIUpdateItem(self.itemTpl)		
+		
+		self.obj:SetActive(true)
+	end
+
+end

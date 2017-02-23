@@ -175,12 +175,15 @@ public class IoTestMain : MonoBehaviour {
 
         m_input.value = begin.ToString() +　"\n";
 
-        string newPath = Path.Combine(PubConfig.PersiterPath, "streamingAssets");
+        string newPath = Path.Combine(PubConfig.PersiterPath, "Android/Lua");
         if (!Directory.Exists(newPath))
             Directory.CreateDirectory(newPath);
 
-        FileHelper.CopyDirectory(Path.Combine(Application.streamingAssetsPath,"Test") , newPath);
-
+#if UNITY_EDITOR
+        FileHelper.CopyDirectory(Application.streamingAssetsPath , newPath);
+#elif UNITY_ANDROID
+        FileHelper.CopyDirectory(Application.dataPath + “!/assets/Lua" , newPath);        
+#endif
         m_input.value += ((Time.realtimeSinceStartup - begin)).ToString() ;
 
     }

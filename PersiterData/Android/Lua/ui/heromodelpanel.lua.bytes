@@ -1,0 +1,159 @@
+--require "usedebug"  
+CHeroModelPanel ={}
+CHeroModelPanel.wndname = 'CHeroModelPanel'
+
+local m_pAllControl
+
+local m_pHeroListPerfabs
+local m_pHeroListScrollView
+
+local m_bIsOpenHeroSkillc = false
+
+local m_pVecLabels
+local m_pVecButtons
+local m_pVecCtrls
+local m_pVecSprite
+function CHeroModelPanel:OnOpen (objScript)
+	self.m_wnd = objScript.gameObject
+	self.momoScript = objScript
+
+	m_pVecLabels = objScript.vecLbls
+    m_pVecButtons = objScript.vecBtns
+    m_pVecCtrls = objScript.vecCtrl
+    m_pVecSprite = objScript.vecSprites
+
+    local titleLabel = m_pVecLabels[0]
+    titleLabel.text = 'Test Hero'
+
+	self:OnOpenInternal ();
+end
+
+function CHeroModelPanel:OnOpenInternal ()
+	local nextBtn = m_pVecButtons[1]
+
+    UIEventLuaTrigger.Get(nextBtn.gameObject).onClick = "CHeroModelPanel:onButtonClick()"
+--    local cmpEventLua = nextBtn.gameObject:AddComponent("UIEventLuaTrigger")
+--    cmpEventLua.onClick = "CHeroModelPanel:onButtonClick()"
+
+    local pHeroModelPanel = m_pVecCtrls[1]
+    m_pHeroListScrollView = pHeroModelPanel.transform:FindChild('HeroListScrollView').gameObject
+    local pGridList = m_pHeroListScrollView.transform:FindChild('Grid').gameObject
+--    local pGridList = m_pVecCtrls[3];
+    local pWrapContent = pGridList:GetComponent('UIWrapContent')
+
+    m_pHeroListPerfabs = m_pVecCtrls[2]
+
+    for i=0, 8, 1 do
+        local go = LuaHelp.AddChild(pGridList, m_pHeroListPerfabs)
+		go.name = "HeroList_"..i
+		UIEventLuaTrigger.Get(go).onClick = string.format("CHeroModelPanel:onHeroListClick(%d)",i)
+		--GameObject.Destroy(go)
+    end
+	
+	local tt = {[1] = "test3", [4] = "test4", [5] = "test5"}
+	for _,v in pairs(tt) do
+		log(_)
+	end
+	
+	
+--	log('55555555555555555555' ..nextBtn.gameObject:GetComponent('TAG').Tag)
+	
+--	LuaHelp.PushPanel(self.momoScript, PanelStackOp.Close_Prev)
+end
+	
+function CHeroModelPanel:OnClose ()
+	--LuaHelp.PopPanel(self.monoScript, PanelStackOp.Open_Prev);
+end
+
+function CHeroModelPanel:onHeroListClick(index)
+	log('HeroListClick..........'..index)
+end
+
+function CHeroModelPanel:onButtonClick()
+	--log(gameobject.name)
+    log('button click.........')
+end
+
+function CHeroModelPanel:UpdateItemData(Index, realIndex)
+    --log(gameobj.name .. 'index' ..Index..'realIxdex' ..realIndex)
+    LuaHelp.FindChild(LuaHelp.LastCtrl, 'HeroName'):GetComponent('UILabel').text = realIndex;
+end
+
+function CHeroModelPanel:OnSwitchHeroModel()
+    log('CHeroModelPanel:OnSwitchHeroModel')
+    local pNextBtn = m_pVecButtons[1]
+
+    local pContentWidget = m_pVecCtrls[0]
+    local tp = pContentWidget:GetComponent("TweenPosition")
+
+    if m_bIsOpenHeroSkillc then
+        m_bIsOpenHeroSkillc = false
+        pNextBtn.transform.localRotation = Vector3(0, 180, 0)
+
+        tp:PlayReverse()
+    else
+        m_bIsOpenHeroSkillc = true
+        pNextBtn.transform.localRotation = Vector3.zero
+
+        tp:PlayForward()
+    end
+    
+
+end
+
+function CHeroModelPanel:OnReviseUITexture()
+    local m_pUITextureBtn = m_pVecButtons[3]
+    m_pUITextureBtn.isEnabled = false
+
+    local pHeroModelPanel = m_pVecCtrls[1]
+    local pBgTexture = pHeroModelPanel.transform:FindChild('BgWidget'):FindChild('BgTexture').gameObject
+    local pBgTexture2 = pBgTexture:GetComponent('UITexture')
+    pBgTexture2.MainTexture = TextureEx.New('Assets/GameData/Ui/Resource/Atlases/Common/CommonAtlas.png')
+--    pBgTexture2.MainTexture = TextureEx.New('Assets/GameData/Ui/Resource/Textures/map_bg.png')
+end
+
+function CHeroModelPanel:OnReviseUISprite()
+    local m_pUISpriteBtn = m_pVecButtons[2]
+    m_pUISpriteBtn.isEnabled = false
+
+    local pHeroIcon = m_pVecSprite[0]
+    pHeroIcon.spriteName = 'hero_ava'
+end
+
+function CHeroModelPanel:OnJumpBagPanel()
+--[[	local m_pGrid = m_pVecCtrls[3]
+	local pWrapContent = m_pGrid:GetComponent('UIWrapContent')
+	pWrapContent.minIndex = -2
+	pWrapContent.maxIndex = 7
+	pWrapContent.enabled = true--]]
+	
+	UIUtility.ShowPanel("BagModelPanel")
+	--[[LuaHelp.PushPanel(self.momoScript, PanelStackOp.Close_Prev)--]]
+end
+
+function CHeroModelPanel:Update(time)
+
+end
+
+--[[function CHeroModelPanel:OnColorBtnClick()
+	logwarning('CHeroModelPanel:OnColorBtnClick()')
+end
+
+function CHeroModelPanel:OnSimpleBtnClick()
+	logwarning('CHeroModelPanel:OnSimpleBtnClick()')
+end
+
+function CHeroModelPanel:OnCheckBoxClick()
+	logwarning('CHeroModelPanel:OnChecked()')
+end
+--]]
+
+--function CHeroModelPanel:OnClickClose()
+--	logwarning('Hello,world')
+
+--end
+function CHeroModelPanel_HeroListCacheCall(gameobj, Index, realIndex)
+    CHeroModelPanel:UpdateItemData(gameobj, Index, realIndex)
+end
+
+return CHeroModelPanel

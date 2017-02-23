@@ -125,6 +125,7 @@ public class FileHelper
     {
         if (Directory.Exists(source))
         {
+
             if (Directory.Exists(destination) == false)
             {
                 Directory.CreateDirectory(destination);//创建目录
@@ -134,6 +135,7 @@ public class FileHelper
             {
                 //复制文件
                 File.Copy(files[i], destination + files[i].Substring(files[i].LastIndexOf('\\')), true);
+                Debug.Log(destination + files[i].Substring(files[i].LastIndexOf('\\')));    
             }
             string[] directories = Directory.GetDirectories(source);//获取所有子目录
             for (int i = 0; i < directories.Length; i++)
