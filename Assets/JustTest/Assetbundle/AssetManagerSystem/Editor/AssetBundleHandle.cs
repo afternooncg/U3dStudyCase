@@ -231,7 +231,7 @@ static public void SetShareAssetAbName<T>(List<T> coll)
             //Debug.Log(import.assetBundleName + "_" + abname);
 
             //已设置过的不处理
-            if (string.Compare(import.assetBundleName, abname.ToLower()) == 0)
+            if (!string.IsNullOrEmpty(abname) && string.Compare(import.assetBundleName, abname.ToLower()) == 0)
                 return;
 
             if (string.IsNullOrEmpty(abname))

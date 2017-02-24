@@ -1,7 +1,0 @@
-
---常量配置表
-
-ConstantTemplate= 
-{
-	IAMTEST = "iam test constant string",
-}
