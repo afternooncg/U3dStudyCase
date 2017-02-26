@@ -1,1 +1,0 @@
-{"name":["0"],"dbServerID":199,"headIcon":1,"headFrame":1,"exp":0,"realMoney":0,"food":1000000,"wood":1000000,"stone":1000000,"iron":1000000,"gold":1000000,"saveFood":0,"saveWood":0,"saveStone":0,"saveIron":0,"saveGold":0,"vipPoint":0,"lastUpdateRssTime":0,"guildID":0,"isSilent":0}
