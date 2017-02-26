@@ -79,6 +79,31 @@ public class FileHelper
     }
     #endregion
 
+    #region 创建二进制文件 Bundle 据说在移动平台上更靠谱
+    public static void CreateBundleFile(string path, byte[] info)
+    {
+        try
+        {
+            //文件流信息  
+            //StreamWriter sw;  
+            Stream sw;
+            FileInfo t = new FileInfo(path);
+            if (t.Exists)
+                File.Delete(path);
+
+            string folderPath = Path.GetDirectoryName(path);
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            File.WriteAllBytes(path, info);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("写二进制Bundle文件失败" + e.Message);
+        }
+    }
+    #endregion
+
     #region 删除文件
     public static void DeleteFile(string path)
     {
@@ -125,6 +150,7 @@ public class FileHelper
     {
         if (Directory.Exists(source))
         {
+
             if (Directory.Exists(destination) == false)
             {
                 Directory.CreateDirectory(destination);//创建目录
@@ -134,6 +160,7 @@ public class FileHelper
             {
                 //复制文件
                 File.Copy(files[i], destination + files[i].Substring(files[i].LastIndexOf('\\')), true);
+                Debug.Log(destination + files[i].Substring(files[i].LastIndexOf('\\')));    
             }
             string[] directories = Directory.GetDirectories(source);//获取所有子目录
             for (int i = 0; i < directories.Length; i++)
