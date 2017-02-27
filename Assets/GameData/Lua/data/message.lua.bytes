@@ -1,0 +1,52 @@
+--[[
+	GameMessage
+--]]
+
+GameMessage= 
+{
+	error_fatal = '服务器异常，请返回登录',
+	error_1 = '服务器内部错误',
+	error_2 = '语法错误',
+	error_3 = '未捕获的异常',
+	error_4 = '网络不给力呀...请重试',
+	error_101 = '服务暂停',
+	error_102 = '任务过多，系统繁忙',
+	error_104 = 'IP没有权限',
+	error_105 = '未经授权的访问',
+	error_106 = '请求超时',
+	error_107 = '超过流量访问限制',
+	error_108 = '接口不存在',
+	error_109 = '非法名称，有效的字符仅限在英文字母、数字以及下划线',
+	error_110 = '签名参数sig校验失败',
+	error_200 = '缺失必选参数 (%s)',
+	error_201 = '请求参数非法，需要 (%s)，实际为 (%s)',
+	error_202 = '无效的JSON对象',
+	error_203 = '请求内容太长，限定在(%s)之内',
+	error_206 = '您的账号在其他设备登录，请重新登录游戏',
+	error_1000 = '对象不存',
+	error_1001 = 'Id无法创建',
+	error_1002 = 'redis key不合法',
+	error_1003 = '属性递减到负数',
+	error_10000 = '账号名不存在',
+	error_10001 = '账号与密码不匹配，请重新输入',
+	error_10002 = '账号不存在',
+	error_10003 = '账号名已存在',
+	error_11000 = '金币不足',
+	error_11001 = '钻石不足',
+	error_11004 = '昵称已存在',
+	error_11005 = '昵称过长，最多六个字',
+
+
+	errorAgreeCheck   = '请先确认同意用户协议',
+}
+--local temp_column={'key','zh_CN',}
+
+setmetatable(GameMessage, { __index=function(_, key)
+	local var = rawget(GameMessage, key)
+	if not var then
+		logerror(string.format('GameMessage[%s]不存在',key))
+		var = key --rawget(GameMessage, 'NotExsit')
+	end
+	return var
+end})
+

@@ -1,0 +1,179 @@
+require "logic.gameplayer"
+
+ModulePlayer = {}
+
+--方法配置
+
+local  processFunction = {
+	
+
+	[MSGTYPE._MSG_DBSERVER_ROLEINFO] = "ModulePlayer:MSG_DBSERVER_ROLEINFO_RESP()",
+
+}
+
+function ModulePlayer:MSG_DBSERVER_ROLEINFO_RESP()
+
+
+	GamePlayer.ReadPackNum = MsgBuffer.ParseInt()
+
+	logwarning("GamePlayer:" .. GamePlayer.ReadPackNum)
+
+	GamePlayer.UserId = MsgBuffer.ParseInt64()
+	GamePlayer.ObjUserId = MsgBuffer.ParseInt64()
+	GamePlayer.Name = MsgBuffer.ParseString(32)
+	GamePlayer.Popularity = MsgBuffer.ParseInt()
+	GamePlayer.Credit = MsgBuffer.ParseInt()
+	GamePlayer.Money = MsgBuffer.ParseInt()
+	GamePlayer.HonorPoint = MsgBuffer.ParseInt()
+	GamePlayer.Crystal = MsgBuffer.ParseInt()
+	GamePlayer.Exp = MsgBuffer.ParseInt()
+	GamePlayer.Mutetime = MsgBuffer.ParseInt()
+	GamePlayer.LogoutTime = MsgBuffer.ParseInt()
+	GamePlayer.LevelTime = MsgBuffer.ParseInt()
+	GamePlayer.BattleResPer = MsgBuffer.ParseShort()
+	GamePlayer.Reserve = MsgBuffer.ParseInt()
+	GamePlayer.RefuseGift = MsgBuffer.ParseByte()
+	GamePlayer.Level = MsgBuffer.ParseByte()
+	GamePlayer.BanFlag = MsgBuffer.ParseByte()
+	GamePlayer.SpDay = MsgBuffer.ParseByte()
+	GamePlayer.BattlePower = MsgBuffer.ParseInt()
+	GamePlayer.ShopStauts = MsgBuffer.ParseByte()
+	GamePlayer.BuildingQueue = MsgBuffer.ParseByte()
+	GamePlayer.ChargeHeroNum = MsgBuffer.ParseByte()
+	GamePlayer.RacingNum = MsgBuffer.ParseByte()
+	GamePlayer.RacingRewardTime = MsgBuffer.ParseInt()
+	GamePlayer.HeroChip = MsgBuffer.ParseInt()
+	GamePlayer.ProtectEndTime = MsgBuffer.ParseInt()
+	GamePlayer.DeathSoldierCount = MsgBuffer.ParseShort()
+	GamePlayer.EctypeNum = MsgBuffer.ParseByte()
+	GamePlayer.FreeHeroNum = MsgBuffer.ParseByte()
+	GamePlayer.EctypeRefreshTime = MsgBuffer.ParseInt()
+	GamePlayer.HonorHeroNum = MsgBuffer.ParseInt()
+	GamePlayer.RacingRefreshTime = MsgBuffer.ParseInt()
+	GamePlayer.Guide = MsgBuffer.ParseInt()
+	GamePlayer.u8FriendFlag = MsgBuffer.ParseByte()
+	GamePlayer.VipLevel = MsgBuffer.ParseByte()
+	GamePlayer.VipGainAward = MsgBuffer.ParseByte()
+	GamePlayer.FreeRefreshRacing = MsgBuffer.ParseByte()
+	GamePlayer.i64ServerTimeLong = MsgBuffer.ParseInt64()
+	GamePlayer.CashRewardInfo = MsgBuffer.ParseInt()
+	GamePlayer.Dollar = MsgBuffer.ParseFloat()
+	GamePlayer.DollarCredit = MsgBuffer.ParseInt()
+	GamePlayer.HeroExpTime = MsgBuffer.ParseInt()
+	GamePlayer.ConsortiaWealth = MsgBuffer.ParseInt()
+	GamePlayer.ConsortiaBufId = MsgBuffer.ParseString(4)
+	GamePlayer.ConsortiaBufNum = MsgBuffer.ParseString(32)
+	GamePlayer.StopChatEndTime = MsgBuffer.ParseInt()
+	GamePlayer.MapId = MsgBuffer.ParseInt()
+	GamePlayer.MapX = MsgBuffer.ParseShort()
+	GamePlayer.MapY = MsgBuffer.ParseShort()
+	GamePlayer.Reseve2 = MsgBuffer.ParseByte()
+	GamePlayer.u8VIP = MsgBuffer.ParseByte()
+	GamePlayer.DayDollarCredit = MsgBuffer.ParseInt()
+	GamePlayer.UseCredit = MsgBuffer.ParseInt()
+	GamePlayer.EctypeStar = MsgBuffer.ParseShort()
+	GamePlayer.QQRacingNum = MsgBuffer.ParseByte()
+	GamePlayer.HeroTalentId = MsgBuffer.ParseByte()
+	GamePlayer.AuthCode = MsgBuffer.ParseInt()
+	GamePlayer.GuideSub = MsgBuffer.ParseInt()
+	GamePlayer.BanTime = MsgBuffer.ParseInt()
+	GamePlayer.NobilityGainAward = MsgBuffer.ParseByte()
+	GamePlayer.LoginDay = MsgBuffer.ParseByte()
+	GamePlayer.PresentationType = MsgBuffer.ParseByte()
+	GamePlayer.WeakNetSwitch = MsgBuffer.ParseByte()
+	GamePlayer.RegisterTime = MsgBuffer.ParseInt()
+	GamePlayer.PresentationNum = MsgBuffer.ParseInt()
+	GamePlayer.PvpWinNum = MsgBuffer.ParseInt()
+	GamePlayer.WeekId = MsgBuffer.ParseByte()
+	GamePlayer.ContinueLoginDay = MsgBuffer.ParseByte()
+	GamePlayer.LoginGainAward = MsgBuffer.ParseByte()
+	GamePlayer.GoodsEmailCount = MsgBuffer.ParseByte()
+	GamePlayer.BanPvpTime = MsgBuffer.ParseInt()
+	GamePlayer.BanActiveTime = MsgBuffer.ParseInt()
+	GamePlayer.BanRankWorldTime = MsgBuffer.ParseInt()
+	GamePlayer.BanRankFriendTime = MsgBuffer.ParseInt()
+	GamePlayer.BattleTaskPower = MsgBuffer.ParseInt()
+	GamePlayer.BattleTaskEndTime = MsgBuffer.ParseInt()
+	GamePlayer.BattleTaskCreditNum = MsgBuffer.ParseByte()
+	GamePlayer.BattleTaskType = MsgBuffer.ParseByte()
+	GamePlayer.OnlineAwardLevel = MsgBuffer.ParseByte()
+	GamePlayer.OnlineAwardFlag = MsgBuffer.ParseByte()
+	GamePlayer.OnlineAwardTime = MsgBuffer.ParseInt()
+	GamePlayer.BattleTaskCDCreditNum = MsgBuffer.ParseByte()
+	GamePlayer.TotalRacingFailNum = MsgBuffer.ParseByte()
+	GamePlayer.TotalRacingWinNum = MsgBuffer.ParseByte()
+	GamePlayer.TotalFriendPvpFailNum = MsgBuffer.ParseByte()
+	GamePlayer.TotalPvpFailNum = MsgBuffer.ParseShort()
+	GamePlayer.TotalPvpWinNum = MsgBuffer.ParseShort()
+	GamePlayer.TotalFriendPvpWinNum = MsgBuffer.ParseByte()
+	GamePlayer.HeroInvadeNumber = MsgBuffer.ParseByte()
+	GamePlayer.NewContinueLoginDay = MsgBuffer.ParseShort()
+	GamePlayer.PassMainMission = MsgBuffer.ParseShort()
+	GamePlayer.u8QQVIPNewReward = MsgBuffer.ParseByte()
+	GamePlayer.u8QQVIPContinueReward = MsgBuffer.ParseByte()
+	GamePlayer.HeroInvadeRefreshTime = MsgBuffer.ParseInt()
+	GamePlayer.BattleTaskConsortiaBoss = MsgBuffer.ParseByte()
+	GamePlayer.ItemUseLimit = MsgBuffer.ParseByte()
+	GamePlayer.LeagueNum = MsgBuffer.ParseByte()
+	GamePlayer.FreeRefreshLeague = MsgBuffer.ParseByte()
+	GamePlayer.LeagueSearchRankId = MsgBuffer.ParseInt()
+	GamePlayer.LeagueScoreRank = MsgBuffer.ParseInt()
+	GamePlayer.ItemLotteryRefreshTime = MsgBuffer.ParseInt()
+	GamePlayer.ItemShopRefreshTime = MsgBuffer.ParseInt()
+	GamePlayer.Merit = MsgBuffer.ParseInt()
+	GamePlayer.ItemShopRefreshCreditNum = MsgBuffer.ParseByte()
+	GamePlayer.LotteryNum = MsgBuffer.ParseByte()
+	GamePlayer.LotteryGetSpecialItem = MsgBuffer.ParseByte()
+	GamePlayer.ItemUseRefreshTaskCount = MsgBuffer.ParseByte()
+	GamePlayer.LotteryCountDaily = MsgBuffer.ParseShort()
+	GamePlayer.ChargeItemGrid = MsgBuffer.ParseByte()
+	GamePlayer.Reserve3 = MsgBuffer.ParseByte()
+	GamePlayer.LotteryCreditCountDaily = MsgBuffer.ParseInt()
+	GamePlayer.ucTeamDungeonNumber = MsgBuffer.ParseByte()
+	GamePlayer.unTeamDungeonRefreshTime = MsgBuffer.ParseInt()
+	GamePlayer.i64ServerTimeShort = MsgBuffer.ParseInt64()
+	GamePlayer.nConsumptiveScore = MsgBuffer.ParseInt()
+
+	UIUtility.HidePanel( UIUtility.RESIDENT_SCREEN, "LoadingPanel");
+
+	UIUtility.ShowPanel(UIUtility.RESIDENT_SCREEN, "MainPanel");
+
+
+	LuaHelp.GameLogicInit();  --游戏就绪
+
+	--logwarning("get db roloinfo");
+
+
+	self.Request_MSG_REQUEST_CLIENTINITOVER();
+
+end	
+
+
+function ModulePlayer:Request_MSG_REQUEST_CLIENTINITOVER()
+		
+		MsgBuffer.AppendShort(MSGTYPE["_MSG_REQUEST_CLIENTINITOVER"]) --msgtype        
+        MsgBuffer.AppendSeqID();
+        LuaHelp.SendLuaMsg()
+
+end	
+
+
+
+
+
+
+
+
+function ModulePlayer:Process(idMsgType)
+
+	if processFunction[idMsgType] == nil then
+		logwarning("回调定义丢失" .. idMsgType);
+		return 	
+	end	
+
+
+	loadstring(processFunction[idMsgType])();
+	
+end
+
+return ModulePlayer

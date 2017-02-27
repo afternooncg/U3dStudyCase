@@ -24,6 +24,8 @@ public class IoTestMain : MonoBehaviour {
         UIEventListener.Get(GameObject.Find("BtnDelFile")).onClick = onDeleteFile;
         UIEventListener.Get(GameObject.Find("BtnShowAppPath")).onClick = onShowAppPath;
         UIEventListener.Get(GameObject.Find("BtnTestCopyFolder")).onClick = OnTestCopyPerfore;
+        UIEventListener.Get(GameObject.Find("BatCopyStreamAsset")).onClick = OnTestStreamAssetWwwSpeed1;
+        
         
         m_input = GameObject.Find("Text").GetComponent<UIInput>();
 
@@ -154,7 +156,7 @@ public class IoTestMain : MonoBehaviour {
     }
 
 
-    void OnLoadTestCountTxtFinished(DownloadHandler handle, string path)
+    void OnLoadTestCountTxtFinished(DownloadHandler handle, RemoteFileLoader.LoadInfo li)
     {
 
         string file = Path.Combine(Path.Combine(PubConfig.PersiterPath, "streamingAssets"), AssetFilesVersionHandle.ConfigFileName);
@@ -168,7 +170,7 @@ public class IoTestMain : MonoBehaviour {
 
 
 
-    #region 测试大量文件复制效率
+    #region 测试大量文件复制效率 ,android 的 www
   void OnTestCopyPerfore(GameObject go)
     {
         float begin = Time.realtimeSinceStartup;
@@ -179,10 +181,190 @@ public class IoTestMain : MonoBehaviour {
         if (!Directory.Exists(newPath))
             Directory.CreateDirectory(newPath);
 
-        FileHelper.CopyDirectory(Path.Combine(Application.streamingAssetsPath,"Test") , newPath);
+        //FileHelper.CopyDirectory(Path.Combine(Application.streamingAssetsPath,"Test") , newPath);
+
+       
+
+
 
         m_input.value += ((Time.realtimeSinceStartup - begin)).ToString() ;
 
     }
-  #endregion
+     #endregion
+
+
+  private int m_max = 0;
+  private int m_count = 0;
+  private float m_begin = 0;
+
+
+  void OnTestStreamAssetWwwSpeed(GameObject go)
+  {
+      StartCoroutine(loadWithWWW());
+
+
+  }
+
+
+  IEnumerator loadWithWWW() 
+  {
+      string newPath = Path.Combine(PubConfig.PersiterPath, "streamingAssets");
+      if (!Directory.Exists(newPath))
+          Directory.CreateDirectory(newPath);
+
+
+      FileListData data = Resources.Load<FileListData>("ScriptObjs/FileListData");
+      m_max = data.Files.Count;
+      m_count = 0;
+
+      m_begin = Time.realtimeSinceStartup;
+
+#if UNITY_EDITOR
+      string remoteUrl = "file://" + Application.streamingAssetsPath + "/";
+#else
+      string    remoteUrl = Application.streamingAssetsPath + "/";
+#endif
+
+      string savepath = "";
+      string assetName = "";
+
+      for (int i = 0; i < m_max; i++)
+      {
+          assetName =data.Files[i].ToLower() + ".unity3d";
+          string loadurl = remoteUrl + assetName ;
+          
+          WWW www = new WWW(loadurl);
+          while (!www.isDone)
+          {
+
+              yield return null;
+          }
+
+
+          m_count++;
+
+
+          savepath = Path.Combine(PubConfig.PersiterPath, "streamingAssets") + "/" + data.Files[i].ToLower() + ".unity3d";
+
+          FileHelper.CreateBundleFile(savepath, www.bytes);
+
+          www.Dispose();
+      }
+
+      m_input.value += "loading... complete \n";
+      m_input.value += "count:" + m_count + "\n";
+
+      m_input.value += ((Time.realtimeSinceStartup - m_begin)).ToString() + "\n";
+
+
+      AssetBundle ab = AssetBundle.LoadFromFile(savepath);
+      if (ab != null)
+      {
+          Debug.Log(savepath);
+          TextAsset txt = ab.LoadAsset<TextAsset>(assetName.Replace(".unity3d", ""));
+          if (txt != null)
+              m_input.value +=(txt.ToString());
+          else
+              Debug.Log("asset path is null " + assetName.Replace(".unity3d", ""));
+
+          ab.Unload(true);
+      }
+
+   
+  }
+
+
+  void OnTestStreamAssetWwwSpeed1(GameObject go)
+  {
+
+      string newPath = Path.Combine(PubConfig.PersiterPath, "streamingAssets");
+      if (!Directory.Exists(newPath))
+          Directory.CreateDirectory(newPath);
+
+
+      FileListData data = Resources.Load<FileListData>("ScriptObjs/FileListData");
+      m_max = data.Files.Count;
+      m_count = 0;
+
+      m_begin = Time.realtimeSinceStartup;
+
+      for (int i = 0; i < m_max; i++)
+      {
+          RemoteFileLoader item = new GameObject("_RemoteFileLoader").AddComponent<RemoteFileLoader>();  //{ hideFlags = HideFlags.HideAndDontSave }
+
+           RemoteFileLoader.LoadInfo li = new RemoteFileLoader.LoadInfo()
+          {
+              assetName = (data.Files[i].ToLower() + ".unity3d"),
+              loadFinished = loadAssetAndSaveLocal,
+              loadProgress = null,
+#if UNITY_EDITOR
+              remoteUrl = "file://" + Application.streamingAssetsPath + "/",
+#else
+              remoteUrl = Application.streamingAssetsPath + "/",
+#endif
+         //     assetType = RemoteFileLoader.LoadInfo.AssetType.ASSETBANDLE,
+              autoDestroy = true,
+          };        
+
+          item.BeginLoad(li);         
+         
+      }  
+  }
+
+
+
+  void loadAssetAndSaveLocal(DownloadHandler handle, RemoteFileLoader.LoadInfo li)
+  {
+      //Debug.Log("loaded :" + path);
+      string path = li.assetName;
+      string savepath = Path.Combine(PubConfig.PersiterPath, "streamingAssets") + "/" + path;
+
+
+
+      byte[] data = handle.data;
+      
+      if (data.Length <= 0)
+          Debug.Log("File .data Is Null");
+
+      
+#if UNITY_ANDROID
+      string tmp = Path.GetDirectoryName(savepath);
+      Debug.Log("savepaht:" + tmp);
+      if (!Directory.Exists(tmp))
+      {
+          Directory.CreateDirectory(tmp);
+      }
+
+#endif
+
+      //FileHelper.CreateBinFile(savepath, data, data.Length);
+      FileHelper.CreateBundleFile(savepath, data);
+
+      m_count++;
+
+      if (m_count >= m_max)
+      {
+          m_input.value += "loading... complete \n";
+          m_input.value += "count:" + m_count + "\n";
+
+          m_input.value += ((Time.realtimeSinceStartup - m_begin)).ToString() + "\n";
+
+
+          AssetBundle ab = AssetBundle.LoadFromFile(savepath);
+          if (ab != null)
+          {
+             Debug.Log(path);
+            TextAsset txt = ab.LoadAsset<TextAsset>(path.Replace(".unity3d",""));
+            if (txt != null)
+                m_input.value += txt.ToString();
+            else
+                Debug.Log("asset path is null " + path.Replace(".unity3d", ""));
+          }
+              
+          ab.Unload(true);
+
+      }
+      
+  }
+ 
 }

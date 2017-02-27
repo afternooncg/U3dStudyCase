@@ -71,8 +71,9 @@ public class RemoteAssetBundleManager : MonoBehaviour
         
     }
 
-    void loadAssetAndSaveLocal(DownloadHandler handler, string path)
+    void loadAssetAndSaveLocal(DownloadHandler handler, RemoteFileLoader.LoadInfo li)
     {
+        string path = li.assetName;
         Debug.Log("save path " + path);
         FileHelper.CreateBinFile(Path.Combine(AssetFilesVersionHandle.PersiterAssetSavePathRoot, path), handler.data, handler.data.Length);
     }

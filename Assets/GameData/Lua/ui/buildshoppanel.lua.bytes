@@ -1,0 +1,68 @@
+require 'data.template.buildtemplate'
+CBuildShopPanel ={}
+CBuildShopPanel.wndname = 'CBuildShopPanel'
+
+local m_pVecLabels
+local m_pVecButtons
+local m_pVecCtrls
+local m_pVecSprite
+
+
+function CBuildShopPanel:OnOpen (objScript)
+	self.m_wnd = objScript.gameObject
+
+	m_pVecLabels = objScript.vecLbls
+    m_pVecButtons = objScript.vecBtns
+    m_pVecCtrls = objScript.vecCtrl
+    m_pVecSprite = objScript.vecSprites
+	
+	self:Init();
+    --local titleLabel = m_pVecLabels[0]
+    --titleLabel.text = 'BuildShop'
+
+	--self:OnOpenInternal ();
+end
+
+
+function CBuildShopPanel:Init()
+	local obj = m_pVecCtrls[0]
+	local o = m_pVecCtrls[1]
+	--local i = 0
+	--[[
+	for _,v in pairs(BuildTemplate) do
+		--log(v.BuildName)
+		local go = LuaHelp.AddChild(obj, o);        
+		--LuaHelp.SetPos(go,i * 290, -235, 0);
+		LuaHelp.FindChild(go, 'BuildName_Lab'):GetComponent('UILabel').text = v.Name
+--		LuaHelp.FindChild(go, 'Create_btn'):GetComponent('TAG').Tag = v.BuildId
+		local btn = LuaHelp.FindChild(go, 'Create_btn').gameObject 
+		UIEventLuaTrigger.Get(btn).onClick = string.format("CBuildShopPanel:onButtonClick(%d)",v.Id)		
+		i=i+1
+	end		 
+	]]--
+	for i in pairs(BuildTemplate) do
+		local go = LuaHelp.AddChild(obj, o);       
+		LuaHelp.FindChild(go, 'BuildName_Lab'):GetComponent('UILabel').text = BuildTemplate[i].Name
+		local btn = LuaHelp.FindChild(go, 'Create_btn').gameObject 
+		UIEventLuaTrigger.Get(btn).onClick = string.format("CBuildShopPanel:onButtonClick(%d)",BuildTemplate[i].Id)
+	end
+	
+	 --GameObject.Destroy(go)    ·
+end
+
+function CBuildShopPanel:onButtonClick(intex)
+	local btn = LuaHelp.LastCtrl
+--	GameObject.Destroy(btn)
+
+	local tag = intex--btn:GetComponent('TAG').Tag
+    log('button click.........'.. tag)
+	BuildShopPanel.CreateBuild(intex)
+end
+
+
+function CBuildShopPanel:OnClose ()
+	--LuaHelp.PopPanel(self.monoScript, PanelStackOp.Open_Prev);
+end
+
+
+return CBuildShopPanel

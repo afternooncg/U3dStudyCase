@@ -3,7 +3,7 @@ CRC: 432161149
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b6bce9dbca84089259d7c5918199a7a6
+    Hash: ea241c6116612915980021809168a5c1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8e0998b1d1e6ed388ac3e4e1abbff422
@@ -28,4 +28,4 @@ ClassTypes:
 Assets:
 - Assets/JustTest/Assetbundle/BundleTest/Sphere.prefab
 Dependencies:
-- E:/AppsProject/unity/unity5/U3dStudyCase/U3dStudyCase/PersiterData/AssetBundles/mymat
+- H:/StudyCode/unity5/U3dStudyCase/PersiterData/AssetBundles/mymat

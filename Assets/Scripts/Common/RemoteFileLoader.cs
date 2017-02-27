@@ -60,8 +60,8 @@ public class RemoteFileLoader : MonoBehaviour {
                 yield return null;
             }
                         
-
             string localUrl = li.remoteUrl + "/" + li.assetName;
+
             Debug.Log("loadformurl: " + localUrl);
 
             UnityWebRequest req = null;
@@ -70,7 +70,29 @@ public class RemoteFileLoader : MonoBehaviour {
 
             if (!wwwMap.TryGetValue(localUrl, out iteratorVariable3))
             {
-                req = UnityWebRequest.Get(localUrl);
+                switch (li.assetType)
+                {                    
+
+                    case LoadInfo.AssetType.AUDIO:
+                            req = UnityWebRequest.GetAudioClip(localUrl, AudioType.WAV);
+                            break;
+
+                    case LoadInfo.AssetType.TEXTURE:
+                            req = UnityWebRequest.GetTexture(localUrl);
+                            break;
+
+                    case LoadInfo.AssetType.ASSETBANDLE:
+                            req = UnityWebRequest.GetAssetBundle(localUrl);
+                            break;
+
+                    case LoadInfo.AssetType.Data:
+                    default:
+                            req = UnityWebRequest.Get(localUrl);
+                            break;        
+
+                }
+                               
+
                 iteratorVariable3 = new WebRequestRef(req, 1);
                 wwwMap[localUrl] = iteratorVariable3;
                 req.Send();
@@ -106,7 +128,7 @@ public class RemoteFileLoader : MonoBehaviour {
             yield return null;
 
             if (li.loadFinished != null)
-                li.loadFinished(req.downloadHandler, li.assetName);
+                li.loadFinished(req.downloadHandler, li);
 
             if (iteratorVariable3 != null)
             {
@@ -186,8 +208,20 @@ public class RemoteFileLoader : MonoBehaviour {
         /// 加载器辅助类
         /// </summary>
 
+            
+
         public class LoadInfo
         {
+
+            public enum AssetType
+            { 
+                Data,
+                AUDIO,
+                ASSETBANDLE,
+                TEXTURE,
+            }
+
+
             // Fields
             public string assetName;
 
@@ -199,9 +233,12 @@ public class RemoteFileLoader : MonoBehaviour {
             public RemoteFileLoader.OnLoadProgress loadProgress;
 
             public bool autoDestroy = false;
+
+            public AssetType assetType = AssetType.Data;
+                
         }
 
-        public delegate void OnLoadFinished(DownloadHandler  handObj, string path);
+        public delegate void OnLoadFinished(DownloadHandler  handObj, LoadInfo li = null);
 
         public delegate void OnLoadProgress(int step, float progress);
  #endregion

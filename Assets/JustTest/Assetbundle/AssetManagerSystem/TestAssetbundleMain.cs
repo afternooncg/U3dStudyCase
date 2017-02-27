@@ -111,8 +111,11 @@ public class TestAssetbundleMain : MonoBehaviour
 
     }
 
-    void loadAssetAndSaveLocal(DownloadHandler handle, string path)
+    void loadAssetAndSaveLocal(DownloadHandler handle, RemoteFileLoader.LoadInfo li)
     {
+
+        string path = li.assetName;
+
         string savepath = PubConfig.PersiterPath + "/IoTest/game_load.unity3d";
 
         byte[] data = handle.data;
@@ -121,7 +124,7 @@ public class TestAssetbundleMain : MonoBehaviour
         GameObject.Find("Text").GetComponent<Text>().text += "loading... complete" ;
     }
 
-    void loadAssetAndSaveLocal1(DownloadHandler handle, string path)
+    void loadAssetAndSaveLocal1(DownloadHandler handle, RemoteFileLoader.LoadInfo li)
     {    
         GameObject.Find("Text").GetComponent<Text>().text += "loading...the same complete";
     }

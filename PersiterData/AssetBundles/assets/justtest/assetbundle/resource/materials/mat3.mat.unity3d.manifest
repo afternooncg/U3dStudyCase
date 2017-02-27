@@ -3,7 +3,7 @@ CRC: 91125733
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e10281c062590fad85edaddc300077df
+    Hash: 79f1888153351631a4bca440b7f64a59
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0b04a37228feb7b9c312fb0cfbaa19c4
@@ -18,4 +18,4 @@ ClassTypes:
 Assets:
 - Assets/JustTest/Assetbundle/AssetManagerSystem/Resource/Materials/mat3.mat
 Dependencies:
-- E:/AppsProject/unity/unity5/U3dStudyCase/U3dStudyCase/PersiterData/AssetBundles/assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
+- H:/StudyCode/unity5/U3dStudyCase/PersiterData/AssetBundles/assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d

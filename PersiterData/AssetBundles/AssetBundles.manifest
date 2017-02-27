@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3754792017
+CRC: 1317284770
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -9,13 +9,14 @@ AssetBundleManifest:
       Name: bagicon
       Dependencies: {}
     Info_2:
-      Name: assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
-      Dependencies: {}
-    Info_3:
       Name: altas1
       Dependencies: {}
-    Info_4:
+    Info_3:
       Name: assets/justtest/assetbundle/resource/materials/mat1.mat.unity3d
+      Dependencies:
+        Dependency_0: assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
+    Info_4:
+      Name: assets/justtest/assetbundle/resource/materials/mat2.mat.unity3d
       Dependencies:
         Dependency_0: assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
     Info_5:
@@ -23,9 +24,8 @@ AssetBundleManifest:
       Dependencies:
         Dependency_0: assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
     Info_6:
-      Name: assets/justtest/assetbundle/resource/materials/mat2.mat.unity3d
-      Dependencies:
-        Dependency_0: assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
+      Name: assets/justtest/assetbundle/resource/shader/mobile_diffuse.shader.unity3d
+      Dependencies: {}
     Info_7:
       Name: mymat
       Dependencies: {}
@@ -38,4 +38,214 @@ AssetBundleManifest:
       Dependencies: {}
     Info_10:
       Name: assets/gamedata/lua/event.lua.bytes.unity3d
+      Dependencies: {}
+    Info_11:
+      Name: assets/gamedata/lua/datadef.lua.bytes.unity3d
+      Dependencies: {}
+    Info_12:
+      Name: assets/gamedata/lua/global.lua.bytes.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: assets/gamedata/lua/list.lua.bytes.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: assets/gamedata/lua/main.lua.bytes.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: assets/gamedata/lua/prehead.lua.bytes.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: assets/gamedata/lua/socket.lua.bytes.unity3d
+      Dependencies: {}
+    Info_17:
+      Name: assets/gamedata/lua/typeof.lua.bytes.unity3d
+      Dependencies: {}
+    Info_18:
+      Name: assets/gamedata/lua/cjson/util.lua.bytes.unity3d
+      Dependencies: {}
+    Info_19:
+      Name: assets/gamedata/lua/data/message.lua.bytes.unity3d
+      Dependencies: {}
+    Info_20:
+      Name: assets/gamedata/lua/data/template.lua.bytes.unity3d
+      Dependencies: {}
+    Info_21:
+      Name: assets/gamedata/lua/data/templateexport.lua.bytes.unity3d
+      Dependencies: {}
+    Info_22:
+      Name: assets/gamedata/lua/data/template/buildtemplate.lua.bytes.unity3d
+      Dependencies: {}
+    Info_23:
+      Name: assets/gamedata/lua/data/template/campaigntemplate.lua.bytes.unity3d
+      Dependencies: {}
+    Info_24:
+      Name: assets/gamedata/lua/data/template/constanttemplate.lua.bytes.unity3d
+      Dependencies: {}
+    Info_25:
+      Name: assets/gamedata/lua/data/template/itemtemplate.lua.bytes.unity3d
+      Dependencies: {}
+    Info_26:
+      Name: assets/gamedata/lua/data/template/loadingtemplate.lua.bytes.unity3d
+      Dependencies: {}
+    Info_27:
+      Name: assets/gamedata/lua/data/template/uipaneltemplate.lua.bytes.unity3d
+      Dependencies: {}
+    Info_28:
+      Name: assets/gamedata/lua/logic/bag.lua.bytes.unity3d
+      Dependencies: {}
+    Info_29:
+      Name: assets/gamedata/lua/logic/datapool.lua.bytes.unity3d
+      Dependencies: {}
+    Info_30:
+      Name: assets/gamedata/lua/logic/gameplayer.lua.bytes.unity3d
+      Dependencies: {}
+    Info_31:
+      Name: assets/gamedata/lua/logic/hero.lua.bytes.unity3d
+      Dependencies: {}
+    Info_32:
+      Name: assets/gamedata/lua/logic/timer.lua.bytes.unity3d
+      Dependencies: {}
+    Info_33:
+      Name: assets/gamedata/lua/logic/item/equip.lua.bytes.unity3d
+      Dependencies: {}
+    Info_34:
+      Name: assets/gamedata/lua/logic/item/godweapon.lua.bytes.unity3d
+      Dependencies: {}
+    Info_35:
+      Name: assets/gamedata/lua/logic/item/holyequip.lua.bytes.unity3d
+      Dependencies: {}
+    Info_36:
+      Name: assets/gamedata/lua/logic/item/item.lua.bytes.unity3d
+      Dependencies: {}
+    Info_37:
+      Name: assets/gamedata/lua/misc/functions.lua.bytes.unity3d
+      Dependencies: {}
+    Info_38:
+      Name: assets/gamedata/lua/misc/misc.lua.bytes.unity3d
+      Dependencies: {}
+    Info_39:
+      Name: assets/gamedata/lua/misc/strict.lua.bytes.unity3d
+      Dependencies: {}
+    Info_40:
+      Name: assets/gamedata/lua/misc/utf8.lua.bytes.unity3d
+      Dependencies: {}
+    Info_41:
+      Name: assets/gamedata/lua/network/module_player.lua.bytes.unity3d
+      Dependencies: {}
+    Info_42:
+      Name: assets/gamedata/lua/network/msg.lua.bytes.unity3d
+      Dependencies: {}
+    Info_43:
+      Name: assets/gamedata/lua/network/msglogin.lua.bytes.unity3d
+      Dependencies: {}
+    Info_44:
+      Name: assets/gamedata/lua/socket/ftp.lua.bytes.unity3d
+      Dependencies: {}
+    Info_45:
+      Name: assets/gamedata/lua/socket/headers.lua.bytes.unity3d
+      Dependencies: {}
+    Info_46:
+      Name: assets/gamedata/lua/socket/http.lua.bytes.unity3d
+      Dependencies: {}
+    Info_47:
+      Name: assets/gamedata/lua/socket/mbox.lua.bytes.unity3d
+      Dependencies: {}
+    Info_48:
+      Name: assets/gamedata/lua/socket/smtp.lua.bytes.unity3d
+      Dependencies: {}
+    Info_49:
+      Name: assets/gamedata/lua/socket/tp.lua.bytes.unity3d
+      Dependencies: {}
+    Info_50:
+      Name: assets/gamedata/lua/socket/url.lua.bytes.unity3d
+      Dependencies: {}
+    Info_51:
+      Name: assets/gamedata/lua/system/coroutine.lua.bytes.unity3d
+      Dependencies: {}
+    Info_52:
+      Name: assets/gamedata/lua/system/timer.lua.bytes.unity3d
+      Dependencies: {}
+    Info_53:
+      Name: assets/gamedata/lua/system/valuetype.lua.bytes.unity3d
+      Dependencies: {}
+    Info_54:
+      Name: assets/gamedata/lua/system/reflection/bindingflags.lua.bytes.unity3d
+      Dependencies: {}
+    Info_55:
+      Name: assets/gamedata/lua/ui/bagmodelpanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_56:
+      Name: assets/gamedata/lua/ui/buildshoppanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_57:
+      Name: assets/gamedata/lua/ui/heromodelpanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_58:
+      Name: assets/gamedata/lua/ui/loginpanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_59:
+      Name: assets/gamedata/lua/ui/mainpanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_60:
+      Name: assets/gamedata/lua/ui/rankingpanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_61:
+      Name: assets/gamedata/lua/ui/toolbarpanel.lua.bytes.unity3d
+      Dependencies: {}
+    Info_62:
+      Name: assets/gamedata/lua/ui/tips/paneltips.lua.bytes.unity3d
+      Dependencies: {}
+    Info_63:
+      Name: assets/gamedata/lua/ui/tips/tipsbase.lua.bytes.unity3d
+      Dependencies: {}
+    Info_64:
+      Name: assets/gamedata/lua/ui/utility/itemcarditem.lua.bytes.unity3d
+      Dependencies: {}
+    Info_65:
+      Name: assets/gamedata/lua/ui/utility/ui.lua.bytes.unity3d
+      Dependencies: {}
+    Info_66:
+      Name: assets/gamedata/lua/ui/utility/uihelper.lua.bytes.unity3d
+      Dependencies: {}
+    Info_67:
+      Name: assets/gamedata/lua/ui/utility/uimanager.lua.bytes.unity3d
+      Dependencies: {}
+    Info_68:
+      Name: assets/gamedata/lua/unityengine/bounds.lua.bytes.unity3d
+      Dependencies: {}
+    Info_69:
+      Name: assets/gamedata/lua/unityengine/color.lua.bytes.unity3d
+      Dependencies: {}
+    Info_70:
+      Name: assets/gamedata/lua/unityengine/layermask.lua.bytes.unity3d
+      Dependencies: {}
+    Info_71:
+      Name: assets/gamedata/lua/unityengine/mathf.lua.bytes.unity3d
+      Dependencies: {}
+    Info_72:
+      Name: assets/gamedata/lua/unityengine/plane.lua.bytes.unity3d
+      Dependencies: {}
+    Info_73:
+      Name: assets/gamedata/lua/unityengine/quaternion.lua.bytes.unity3d
+      Dependencies: {}
+    Info_74:
+      Name: assets/gamedata/lua/unityengine/ray.lua.bytes.unity3d
+      Dependencies: {}
+    Info_75:
+      Name: assets/gamedata/lua/unityengine/raycasthit.lua.bytes.unity3d
+      Dependencies: {}
+    Info_76:
+      Name: assets/gamedata/lua/unityengine/time.lua.bytes.unity3d
+      Dependencies: {}
+    Info_77:
+      Name: assets/gamedata/lua/unityengine/touch.lua.bytes.unity3d
+      Dependencies: {}
+    Info_78:
+      Name: assets/gamedata/lua/unityengine/vector2.lua.bytes.unity3d
+      Dependencies: {}
+    Info_79:
+      Name: assets/gamedata/lua/unityengine/vector3.lua.bytes.unity3d
+      Dependencies: {}
+    Info_80:
+      Name: assets/gamedata/lua/unityengine/vector4.lua.bytes.unity3d
       Dependencies: {}

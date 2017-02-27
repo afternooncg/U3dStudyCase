@@ -1,0 +1,83 @@
+ItemMainTypes = 
+{
+	Null = 0,
+	ExpDan = 1,
+	XingPo = 2,
+	ZhuHunShi = 3,
+	EquipmentMaterial = 4,
+	MountDan = 5,
+	Wing = 6,
+	Soul = 7,
+	Warrior = 8,
+	Point = 10,
+	Stamina = 11,
+	PlayerExp = 12,
+	WarriorsExp = 13,
+	Money = 14,
+	Skill = 15,
+	Other = 16,
+}
+PointTypes=
+{
+	Diamond = 1,
+	Gold = 2,
+}
+
+AssetLoadPriority = 
+{
+    High = 2,
+    Immediate = 1,
+    Low = 4,
+    Middle = 3
+}
+
+MessageBoxResultTypes =
+{
+	None=0,
+	OK=1,
+	Cancel=2,
+	Abort=3,
+	Retry=4,
+	Ignore=5,
+	Yes=6,
+	No=7,
+	Custom1=8,
+	Custom2=9,
+	Custom3=10,	
+	Pay=11,
+	Join=12,
+	Open=13,
+}
+
+MessageBoxButtonTypes =
+{
+	OK=0,
+	OKCancel=1,
+	AbortRetryIgnore=2,
+	YesNoCancel=3,
+	YesNo=4,
+	RetryCancel=5,
+	Retry=6,
+	OKPay=7,
+	JoinCancel=8,
+	CancelOpen=9,
+}
+
+LeaveTypes = 
+{
+	Retry = 0,
+	Leave = 1,
+	Next  = 2,
+}
+
+
+
+TeamWndType = { Normal=1,Arena=2, ArenaAtk=3, Activity=4,PK=5,}
+
+--商店类型
+ShopType = { Normal=1,}
+ShopPageType = { Normal=1,Athletic=2,Expedition=3,WorldStage=4,Club=5,PK=6,WB=7,}
+ShopPageName={[ShopType.Normal]={'商店','竞技场','街头争霸','极限训练','社团','跨服竞技','世界战场'},}
+--货币类型
+ShopMoneyType = { Gold=1,Diamond =2,Honor=10}
+PanelStackOp = {None = 0,Close_Prev = 1,Hide_Prev = 2, Open_Prev = 3,Show_Prev = 4,}

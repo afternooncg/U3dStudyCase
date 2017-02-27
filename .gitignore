@@ -49,6 +49,8 @@ Temporary Items
 #忽略目录
 Temp/
 Library/
+PersiterData/
+StreamingAssets/
 *.csproj
 *.suo
 *.sln

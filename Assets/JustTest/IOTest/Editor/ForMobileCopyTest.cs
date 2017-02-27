@@ -28,6 +28,7 @@ public class ForMobileCopyTest
             AssetBundleHandle.SetAssetBundleName(data.Files[i], data.Files[i]+".unity3d");
         }
 
+        UnityEditor.EditorUtility.SetDirty(data);
         AssetDatabase.Refresh();
         AssetDatabase.SaveAssets();
         /*
@@ -67,12 +68,14 @@ public class ForMobileCopyTest
         foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
         {
             //UnityEditor.FileUtil.DeleteFileOrDirectory(file);
-            string tmp = Path.GetExtension(file).ToLower();
+            string filelower = file.ToLower();
+            string tmp = Path.GetExtension(filelower).ToLower();
             //Debug.Log(file + " " + tmp);
+            
             if (extensions.Contains(tmp))
             {
-                Debug.Log(file);
-                data.Files.Add(file.Replace(replaceStr, ""));
+                Debug.Log(filelower);
+                data.Files.Add(file.Replace(replaceStr, "").Replace("\\","/").ToLower());
             }
 
         }
