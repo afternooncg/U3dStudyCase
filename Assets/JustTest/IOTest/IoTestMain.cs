@@ -176,6 +176,9 @@ public class IoTestMain : MonoBehaviour {
     #region 测试大量文件复制效率 ,android 的 www
   void OnTestCopyPerfore(GameObject go)
     {
+
+        OnTestStreamAssetWwwSpeed1(go);
+        return;
         float begin = Time.realtimeSinceStartup;
 
         m_input.value = begin.ToString() +　"\n";
@@ -184,7 +187,7 @@ public class IoTestMain : MonoBehaviour {
         if (!Directory.Exists(newPath))
             Directory.CreateDirectory(newPath);
 
-        //FileHelper.CopyDirectory(Path.Combine(Application.streamingAssetsPath,"Test") , newPath);
+        FileHelper.CopyDirectory(Path.Combine(Application.streamingAssetsPath,"Test") , newPath);
 
        
 
@@ -322,9 +325,9 @@ public class IoTestMain : MonoBehaviour {
               loadFinished = loadAssetAndSaveLocal,
               loadProgress = null,
 #if UNITY_EDITOR
-              remoteUrl = "file://" + Application.streamingAssetsPath + "/",
+              remoteUrl = "file://" + Application.streamingAssetsPath ,
 #else
-              remoteUrl = Application.streamingAssetsPath + "/",
+              remoteUrl = Application.streamingAssetsPath ,
 #endif
               assetType = RemoteFileLoader.LoadInfo.AssetType.BIN,
               autoDestroy = true,

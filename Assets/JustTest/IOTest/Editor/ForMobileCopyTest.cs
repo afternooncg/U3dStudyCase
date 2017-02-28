@@ -75,7 +75,7 @@ public class ForMobileCopyTest
             if (extensions.Contains(tmp))
             {
                 Debug.Log(filelower);
-                data.Files.Add(file.Replace(replaceStr, "").Replace("\\","/").ToLower());
+                data.Files.Add(file.Replace(replaceStr, "").Replace("\\","/"));
             }
 
         }
