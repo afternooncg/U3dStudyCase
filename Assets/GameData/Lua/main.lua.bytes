@@ -1,7 +1,0 @@
-
-require "ui.utility.uimanager"
-require 'global'
-require "data.template"
-require "network.msg"
-
-

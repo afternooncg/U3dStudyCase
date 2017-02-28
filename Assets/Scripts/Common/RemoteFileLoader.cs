@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 
 /// <summary>
 /// 单个文件资源加载器
+/// 
+/// 测试发现 StreamingAssets 无法加载 不支持 jar 协议
 /// </summary>
 public class RemoteFileLoader : MonoBehaviour {
 
@@ -83,11 +85,16 @@ public class RemoteFileLoader : MonoBehaviour {
 
                     case LoadInfo.AssetType.ASSETBANDLE:
                             req = UnityWebRequest.GetAssetBundle(localUrl);
+                            break;                   
+
+                    case LoadInfo.AssetType.Data:                    
+                            req = UnityWebRequest.Get(localUrl);
                             break;
 
-                    case LoadInfo.AssetType.Data:
+                    case LoadInfo.AssetType.BIN:
                     default:
-                            req = UnityWebRequest.Get(localUrl);
+                            req = new UnityWebRequest(localUrl);
+                            req.downloadHandler = new DownloadHandlerBuffer();
                             break;        
 
                 }
@@ -219,6 +226,7 @@ public class RemoteFileLoader : MonoBehaviour {
                 AUDIO,
                 ASSETBANDLE,
                 TEXTURE,
+                BIN,
             }
 
 

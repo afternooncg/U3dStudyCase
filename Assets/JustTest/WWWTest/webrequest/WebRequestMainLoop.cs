@@ -85,6 +85,7 @@ public class WebRequestMainLoop : MonoBehaviour
     {
         StartCoroutine(TestGetTexture());
     }
+ 
 
     private IEnumerator TestGetTexture()
     {
@@ -191,6 +192,47 @@ public class WebRequestMainLoop : MonoBehaviour
         else
 
            m_Output.text = ureq.downloadHandler.text;
+        yield return 0;
+    }
+
+
+
+    public void handleBtnGetRarClick()
+    {
+        StartCoroutine(TestGetWarAndSave());
+    }
+ 
+    private IEnumerator TestGetWarAndSave()
+    {
+        m_Output.text = "Wait for begin load rar...";
+
+        yield return new WaitForSeconds(1);
+
+        UnityWebRequest ureq = new UnityWebRequest(PubConfig.RemoteWWWRoot + "/TestPost.unity3d");
+        ureq.downloadHandler = new DownloadHandlerBuffer();
+        //UnityWebRequest ureq = UnityWebRequest.GetTexture(PubConfig.RemoteWWWRoot  +"/test1.jpg");  //错误的url也无法触发isError属性
+
+        ureq.Send();
+
+        while (!ureq.isDone)
+        {
+            m_Output.text = ureq.downloadProgress.ToString();
+            yield return 0;
+        }
+
+        if (ureq.isError || ureq.responseCode != 200)
+        {
+
+            m_Output.text = "Error img url";
+        }
+        else
+        {
+            FileHelper.CreateBinFile(PubConfig.PersiterPath + "/streamingAssets/TestPost.unity3d", ureq.downloadHandler.data, ureq.downloadHandler.data.Length);
+            FileHelper.CreateBundleFile(PubConfig.PersiterPath + "/streamingAssets/TestPost1.unity3d", ureq.downloadHandler.data);
+        }
+
+
+
         yield return 0;
     }
 

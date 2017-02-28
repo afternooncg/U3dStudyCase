@@ -83,3 +83,4 @@ MonoBehaviour:
   - assets/gamedata/lua/unityengine/vector2.lua.bytes
   - assets/gamedata/lua/unityengine/vector3.lua.bytes
   - assets/gamedata/lua/unityengine/vector4.lua.bytes
+  - assets/a.sql

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -24,7 +25,8 @@ public class IoTestMain : MonoBehaviour {
         UIEventListener.Get(GameObject.Find("BtnDelFile")).onClick = onDeleteFile;
         UIEventListener.Get(GameObject.Find("BtnShowAppPath")).onClick = onShowAppPath;
         UIEventListener.Get(GameObject.Find("BtnTestCopyFolder")).onClick = OnTestCopyPerfore;
-        UIEventListener.Get(GameObject.Find("BatCopyStreamAsset")).onClick = OnTestStreamAssetWwwSpeed1;
+        UIEventListener.Get(GameObject.Find("BatCopyStreamAsset")).onClick = OnTestCopyStreamingAssetsByWww;
+        UIEventListener.Get(GameObject.Find("BatCopyStreamAssetWWW")).onClick = OnTestStreamAssetWwwSpeed;
         
         
         m_input = GameObject.Find("Text").GetComponent<UIInput>();
@@ -38,7 +40,8 @@ public class IoTestMain : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+        DownloadHandlerBuffer d = new DownloadHandlerBuffer();
+        
 	}
 
 
@@ -198,13 +201,33 @@ public class IoTestMain : MonoBehaviour {
   private float m_begin = 0;
 
 
-  void OnTestStreamAssetWwwSpeed(GameObject go)
+
+
+  void OnTestCopyStreamingAssetsByWww(GameObject go)
   {
-      StartCoroutine(loadWithWWW());
+      m_begin = Time.realtimeSinceStartup;      
+      StreamingAssetsPersisted sp = new GameObject().AddComponent<StreamingAssetsPersisted>();
+      sp.OnCopyFilesComplete += new Action( onCopyFilesCompleteExecute);
 
-
+      sp.OnCopyOneFileComplete = new Action<string>(onCopyOneFileCompleteExecute);
   }
 
+  void onCopyFilesCompleteExecute()
+  {
+      Debug.Log("end");
+      m_input.value += ((Time.realtimeSinceStartup - m_begin)).ToString() + "\n";
+  }
+
+  void onCopyOneFileCompleteExecute(string str)
+  {      
+      m_input.value += str + "\n";
+  }
+
+  #region 原始的WWW下载
+ void OnTestStreamAssetWwwSpeed(GameObject go)
+  {
+      StartCoroutine(loadWithWWW());
+  }
 
   IEnumerator loadWithWWW() 
   {
@@ -272,6 +295,7 @@ public class IoTestMain : MonoBehaviour {
 
    
   }
+ #endregion
 
 
   void OnTestStreamAssetWwwSpeed1(GameObject go)
@@ -302,7 +326,7 @@ public class IoTestMain : MonoBehaviour {
 #else
               remoteUrl = Application.streamingAssetsPath + "/",
 #endif
-         //     assetType = RemoteFileLoader.LoadInfo.AssetType.ASSETBANDLE,
+              assetType = RemoteFileLoader.LoadInfo.AssetType.BIN,
               autoDestroy = true,
           };        
 
@@ -320,8 +344,9 @@ public class IoTestMain : MonoBehaviour {
       string savepath = Path.Combine(PubConfig.PersiterPath, "streamingAssets") + "/" + path;
 
 
+      DownloadHandlerBuffer h = handle as DownloadHandlerBuffer;
 
-      byte[] data = handle.data;
+      byte[] data = h.data;
       
       if (data.Length <= 0)
           Debug.Log("File .data Is Null");
@@ -349,7 +374,7 @@ public class IoTestMain : MonoBehaviour {
 
           m_input.value += ((Time.realtimeSinceStartup - m_begin)).ToString() + "\n";
 
-
+          /*
           AssetBundle ab = AssetBundle.LoadFromFile(savepath);
           if (ab != null)
           {
@@ -362,6 +387,7 @@ public class IoTestMain : MonoBehaviour {
           }
               
           ab.Unload(true);
+           * */
 
       }
       

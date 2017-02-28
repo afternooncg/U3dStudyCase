@@ -109,7 +109,11 @@ public class AssetFilesVersionHandle : MonoBehaviour
 
             SaveToPersistentPath(str);
 
+#if UNITY_EDITOR
             FileHelper.CopyDirectory(m_LocalAssetSavePathRoot, m_PersiterAssetSavePathRoot);
+#else
+            //用www copy
+#endif
             
 
         }
