@@ -70,7 +70,7 @@ public class UnityWwwLoader : MonoBehaviour
             yield return null;
         }
 
-        string localUrl = li.remoteUrl + "/" + li.assetName;
+        string localUrl = li.remoteUrl + li.assetName;
 
        // Debug.Log("loadformurl: " + localUrl);
 

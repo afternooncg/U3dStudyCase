@@ -71,11 +71,11 @@ public class StreamingAssetsPersisted : MonoBehaviour
     }
 
     #region 加载资源文件
-    private void LoadAsset(string assetName, UnityWwwLoader.OnLoadFinished loadFinished = null, UnityWwwLoader.OnLoadProgress loadProgress = null)
+    private void LoadAsset(string assetName1, UnityWwwLoader.OnLoadFinished loadFinished = null, UnityWwwLoader.OnLoadProgress loadProgress = null)
     {
         UnityWwwLoader.LoadInfo li = new UnityWwwLoader.LoadInfo()
         {
-            assetName = assetName,
+            assetName = assetName1,
             loadFinished = loadFinished,
             loadProgress = loadProgress,
 
