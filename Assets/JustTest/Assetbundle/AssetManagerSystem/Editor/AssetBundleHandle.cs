@@ -38,6 +38,31 @@ public class AbToolMenu
     }
 
 
+    [MenuItem("JustTest/AssetBundle/批量设置指定目录下全部abName")]
+    ///注意 貌似没法获得目录，只能通过选定的资源来获得
+    public static void SetAbnameWithDirectory()
+    {        
+        Object[] arr=Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.TopLevel);
+        if(arr == null || arr.Length !=1)
+        {
+            Debug.LogError("先选中1个目录下的资源文件");
+            return;
+        }
+        
+        string path = Path.GetDirectoryName(AssetDatabase.GetAssetPath(arr[0]));
+
+        if(AssetDatabase.IsValidFolder(path))       
+        {
+            AssetBundleHandle.SetAbnameWithDirectory(path);
+        }
+        else
+             Debug.LogWarning("先选中1个目录");
+
+        
+    }
+
+    
+
     #endregion
 
 
@@ -277,7 +302,30 @@ static public void SetShareAssetAbName<T>(List<T> coll)
     }
 
 
+    #region 用路径 (Assets开头)设置AssetBundleName
+    public static void SetAbnameWithDirectory(string path)
+    {
+        string[] guids = AssetDatabase.FindAssets("", new string[] { path });
 
+        for (int j = 0; j < guids.Length; j++)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guids[j]);
+
+            if (AssetDatabase.IsValidFolder(assetPath))
+                continue;
+
+            string abName = assetPath + ".unity3d";
+            //Debug.Log("abName:" + abName);
+            SetAssetBundleName(assetPath, abName);
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        
+    }
+#endregion
+  
+    
     //生成清单文件
     public static void BulidingAssetBundleListInfo()
     {
