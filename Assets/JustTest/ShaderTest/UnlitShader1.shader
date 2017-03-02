@@ -15,10 +15,16 @@
 			#pragma vertex vert
 			#pragma fragment frag
 			// make fog work
+
+
 			#pragma multi_compile_fog
 			
 			#include "UnityCG.cginc"
 
+			//在Pass块中使用该属性块中的变量必须要使用    
+    //uniform关键字重新定义该变量
+            uniform float4 _Color;
+			   //c#代码控制 _renderer.sharedMaterial.SetColor("_Color", new Color(1, 1, 0, 0.5f));
 			struct appdata
 			{
 				float4 vertex : POSITION;

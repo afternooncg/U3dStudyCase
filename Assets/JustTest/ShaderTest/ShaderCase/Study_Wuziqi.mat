@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Study_Wuziqi
+  m_Shader: {fileID: 4800000, guid: 81e2b1066228f7647ad1861b883b6456, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: []
+    m_Floats:
+    - first:
+        name: _MouseBtnPosX
+      second: -0.8
+    - first:
+        name: _MouseBtnPosY
+      second: 0
+    - first:
+        name: _MouseBtnRadius
+      second: 0.01
+    - first:
+        name: _axesXWidth
+      second: 0.006
+    - first:
+        name: _axesYWidth
+      second: 0.007
+    - first:
+        name: _gridWidth
+      second: 0.008
+    - first:
+        name: _tickWidth
+      second: 0.1
+    m_Colors:
+    - first:
+        name: _MouseDownColor
+      second: {r: 1, g: 0.329, b: 0.298, a: 1}
+    - first:
+        name: _axesColor
+      second: {r: 0, g: 0, b: 1, a: 1}
+    - first:
+        name: _backgroundColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _gridColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

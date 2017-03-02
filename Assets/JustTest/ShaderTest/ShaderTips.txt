@@ -1,0 +1,130 @@
+uniform float4 _Time, _SinTime, _CosTime; // 时间量
+uniform float4 _ProjectionParams; // x = 1 or -1 (如果投影翻转就是-1)
+// y = 近平面; z = 远平面; w = 1/远平面
+uniform float4 _ScreenParams; // x = width; y = height; z = 1 +1/width; w = 1 + 1/height
+uniform float3_WorldSpaceCameraPos;
+uniform float4x4 _Object2World; //模型矩阵
+uniform float4x4 _World2Object; // 模型矩阵的逆
+uniform float4 _LightPositionRange; // xyz = pos, w = 1/range
+uniform float4 _WorldSpaceLightPos0; // 光源的位置和方向
+uniform float4x4 UNITY_MATRIX_MVP; // 模型视图投影矩阵
+uniform float4x4 UNITY_MATRIX_MV; // 模型视图矩阵
+uniform float4x4 UNITY_MATRIX_V; // 视图矩阵
+uniform float4x4 UNITY_MATRIX_P; // 投影矩阵
+uniform float4x4 UNITY_MATRIX_VP; // 视图投影矩阵
+uniform float4x4 UNITY_MATRIX_T_MV; // 模型视图矩阵的转置矩阵
+uniform float4x4 UNITY_MATRIX_IT_MV; // 模型视图矩阵的逆矩阵的转置矩阵
+uniform float4x4 UNITY_MATRIX_TEXTURE0; // 贴图纹理矩阵
+uniform float4x4 UNITY_MATRIX_TEXTURE1; //贴图纹理矩阵
+uniform float4x4 UNITY_MATRIX_TEXTURE2; //贴图纹理矩阵
+uniform float4x4 UNITY_MATRIX_TEXTURE3; //贴图纹理矩阵
+uniform float4 UNITY_LIGHTMODEL_AMBIENT; // 环境色
+
+
+/////
+  float a=1.0;
+           half b=2.0;
+           float c=a+b;      //等价于float c=a+(float)b；
+ 
+Cg语言中可以对常量数据加上类型后缀表示该数据类型的数据，如：
+ 
+           float a=1.0h;     //1.0h为half类型常量数据
+ 
+这样的后缀类型有三种：
+ 
+f:表示float;
+h:表示half;
+x:表示fixed;
+
+
+////
+1.2.2、输入输出和语义
+
+    输入输出：在第一节中我们了解到对于程图形渲染管线，可编程控制的部分只有两个，顶点着色器和片段着色器。对于编程控制这两个部分，首要的任务就是要怎么给它们传参数。Cg语言的参数传递同样也有“值传递”和“引用传递”之分。因为GPU不支持指针，所以Cg语言采用了如下的方式来修辞参数传递：
+
+1、in:修辞一个形参只是用于输入，进入函数体时被初始化，且该形参值的改变不会影响实参值，传递方式为值传递。
+
+2、out:修辞一个形参只是用于输出，进入函数体时没有被初始化，一般为函数的返回值。
+
+3、inout:修辞一个形参即用于输入也用于输出，这是典型的引用传递。
+
+////
+语义词和语义绑定：Unity的顶点着色器（程序）中常用的语言词有如下：
+
+1、POSITION\SV_POSITION :模型坐标的位置,
+2、TANGENT:正交于表面法线的向量
+3、NORMAL:表面法线向量，需要进行归一化
+4、TEXCOORDi：第i组纹理坐标（也即UV坐标，坐标范围在0~1之间）,i是0~7中的一个数字
+5、COLOR:颜色
+6、PSIZE:点的大小
+7、BLENDINDICES：通用属性，可以用它和TANGENT来替换TEXCOORDi
+
+注：SV_POSTION和POSTION的唯一区别是用在顶点着色器中作为输出语义时，SV_POSTION表示的顶点位置会被固定，不能被改变。如果作为片段着色器的输入语义就是一样的，都可以被改变。
+
+顶点着色器的输出语义词有：
+
+1、COLOR:颜色
+2、FOG:输入雾坐标
+3、PSIZE
+4、 POSITION
+5、TEXCOORD0-TEXCOORD7
+片段着色器的输入语义即为顶点着色器的输出语义。
+片段着色器的输出语义如下：
+1、COLOR：颜色
+2、DEPTH：片段的深度
+语言绑定的三种方法：
+1、绑定语义放在函数的参数列表的参数声明后面中：
+
+[C#] 纯文本查看 复制代码
+?
+ 
+
+[const][in|out|inout|uniform]<type><identifier>[ :<binding-semantic>][=<initializer>]
+        void vert(float4 obj_position:POSITION，
+                   float4 obj_normal:NORMAL,
+                   out float4 outPos:POSITION，
+                   uniform float4 uColor:COLOR
+        {
+                ...
+        }
+
+
+其中，const作为可选项，const修饰符同C和C++语言里的一样，表示这个变量的值是不能改变的；in、out、inout作为可选项，说明数据的调用方式；
+
+uniform也是可选项，表示变量的值的初始化是来自外部应用程序；type是必选项，声明数据的类型；identifier是必选项，形参变量名:一个冒号“：”加上一个绑定语义，是可选项；最后是初始化参数，是可选项。
+
+参数1、2、5绑定到输入语义；参数3、4绑定到输出语义；尽管参数1和3的绑定语义词一样，但前者是输入语义，后者是输出语义，所以这两个参数数据所对应存储的硬件位置是不一样的。
+
+
+
+Shader "Cg Minimal shader" { // 定义Shader的名字，这个名字胡出现控制面  //板上作为材质的shader程序索引,还可以通过加“/”来将shader程序归类
+    //如：Custom/Cg Minimal shader
+   SubShader { // 一个Shader有多个SubShader，Unity会自动选择最合适的
+      Pass { // 一个SubShader有多个Pass块
+         CGPROGRAM // Unity的Cg程序预编译命令
+         #pragma vertex vert 
+            // 定义一个顶点着色器程序名字为vert
+         #pragma fragment frag
+            // 定义一个片段着色器程序名字为frag
+         float4 vert(float4 vertexPos : POSITION) : SV_POSITION 
+            // 顶点着色器程序，参数进行语义绑定 
+    //POSITION为输入绑定，SV_POSITION为输出绑定
+         {
+            return mul(UNITY_MATRIX_MVP, vertexPos);
+               // 用内置的矩阵UNITY_MATRIX_MVP转变顶点着色器程序的输入数据        //vertexPos并返回这个转变之后的数据，之后它将作为片段
+             // 着色器程序的输入参数 
+         }
+ 
+         float4 frag(void) : COLOR // 片段着色器，它的输入语义这里用了Void
+                   //表示接受所有的类型，你还可以换成和顶点、               //程序的输入一样的语义
+            //float4 vertexPos : POSITION(SV_POSITION）
+                    //用COLOR进行输出语义绑定
+         {
+            return float4(1.0, 0.0, 0.0, 1.0); 
+                     
+         }
+ 
+         ENDCG // 结束Cg程序的预编译命令
+      }
+   }
+}
