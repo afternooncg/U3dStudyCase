@@ -143,14 +143,73 @@ Shader "Study/Shader001"
 
 
 				//画圆盘
-				fixed4 frag(v2f i) : SV_Target
+				fixed4 frag6(v2f i) : SV_Target
 				{
 					fixed3 color = fixed3(1.0, 1.0, 1.0);
 					
 					color = disk(i.uv, fixed2(0.5,0.5), 0.2,  fixed3(1.0,0,0), color);
 
 					return fixed4(color,1.0f);
-				}										
+				}
+				
+				//画旋转圆盘										
+				fixed4 frag7(v2f i) : SV_Target
+				{
+					fixed3 color = fixed3(1.0, 1.0, 1.0);
+					fixed2 center = fixed2(0.5,0.5);
+					float _RotateSpeed = 1.0;
+					
+					 center = float2(    center.x*cos(_RotateSpeed * _Time.y) - center.y*sin(_RotateSpeed*_Time.y),
+                                      center.x*sin(_RotateSpeed * _Time.y) + center.y*cos(_RotateSpeed*_Time.y) );
+					
+					center *=0.5;
+					center += 0.5;
+
+					color = disk(i.uv, center, 0.1,  fixed3(1.0,0,0), color);
+					
+					return fixed4(color,1.0f);
+				}
+
+				//旋转线条
+				fixed4 frag8(v2f i) : SV_Target
+				{
+					fixed3 color = fixed3(1.0, 1.0, 1.0);
+					fixed2 center = fixed2(0.5,i.uv.y);
+					float _RotateSpeed = 1.0;
+					center = (center-0.5)*2.0;
+					center = float2(  center.x*cos(_RotateSpeed * _Time.y) - center.y*sin(_RotateSpeed*_Time.y),
+                                      center.x*sin(_RotateSpeed * _Time.y) + center.y*cos(_RotateSpeed*_Time.y) ) -0.5;	
+					
+					i.uv = (i.uv-0.5)*2.0;
+										
+					i.uv = float2(    i.uv.x*cos(_RotateSpeed * _Time.y) -  i.uv.y*sin(_RotateSpeed*_Time.y),
+                                      i.uv.x*sin(_RotateSpeed * _Time.y) +  i.uv.y*cos(_RotateSpeed*_Time.y) );					
+					
+					if(abs(i.uv.x -0) <= 0.05 )
+						color.x = 0.5f;					
+					
+					
+					return fixed4(color,1.0f);
+				}
+
+				//
+				fixed4 frag(v2f i) : SV_Target
+				{
+					fixed3 color = fixed3(1.0, 1.0, 1.0);
+					
+					float _RotateSpeed = 1.0;
+					i.uv = (i.uv-0.5)*2.0;
+				
+										
+				color.x= lerp(i.uv.y-sin(2.0*(i.uv.x+ (_RotateSpeed* _Time.y))),0.01,0.02);
+						
+					
+					
+					
+					return fixed4(color,1.0f);
+				}
+
+				
 			ENDCG
 		}
 	}
