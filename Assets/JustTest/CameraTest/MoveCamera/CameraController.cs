@@ -13,12 +13,27 @@ public class CameraController : MonoBehaviour
     #region Private Methods
     private void Rotate(float xMovement, float yMovement)
     {
+        
         _xRotation += xMovement;
         _yYRotation += yMovement;
 
-        _xRotation = Mathf.Lerp(_xRotation, 0, _lerpRate);
-        _yYRotation = Mathf.Lerp(_yYRotation, 0, _lerpRate);
-        transform.eulerAngles += new Vector3(0, _xRotation, -_yYRotation);
+        bool flag = false;
+        float temp = Mathf.Lerp(_xRotation, 0, _lerpRate);
+        if (Mathf.Abs(temp - _xRotation) > 0.02)
+        {
+            _xRotation = temp;
+            flag = true;
+        }
+        
+       temp = Mathf.Lerp(_yYRotation, 0, _lerpRate);
+       if (Mathf.Abs(temp - _yYRotation) > 0.02)
+       {
+           _yYRotation = temp;
+           flag = true;
+       }
+
+        if(flag)
+            transform.eulerAngles += new Vector3(-_yYRotation, _xRotation, 0);
     }
     #endregion
     #region Unity CallBacks
