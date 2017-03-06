@@ -120,7 +120,7 @@ Shader "Study/Shader001"
 				fixed4 frag5(v2f i) : SV_Target
 				{
 					fixed3 color = fixed3(1.0, 1.0, 1.0);
-					if(mod(i.uv.x, 0.2) < 0.02)
+					//if(mod(i.uv.x, 0.2) < 0.02)
 					//if( floor(i.uv.x/0.1) == 1)
 					if(fmod(i.uv.x,0.1) <= 0.05)
 						color.x = 0.5f;
@@ -170,7 +170,7 @@ Shader "Study/Shader001"
 					return fixed4(color,1.0f);
 				}
 
-				//旋转线条
+				//旋转线条 思路 y值相等的情况 x的范围
 				fixed4 frag8(v2f i) : SV_Target
 				{
 					fixed3 color = fixed3(1.0, 1.0, 1.0);
@@ -192,8 +192,8 @@ Shader "Study/Shader001"
 					return fixed4(color,1.0f);
 				}
 
-				//
-				fixed4 frag(v2f i) : SV_Target
+				//sin函数
+				fixed frag(v2f i) : SV_Target
 				{
 					fixed3 color = fixed3(1.0, 1.0, 1.0);
 					
@@ -208,6 +208,9 @@ Shader "Study/Shader001"
 					
 					return fixed4(color,1.0f);
 				}
+
+
+
 
 				
 			ENDCG

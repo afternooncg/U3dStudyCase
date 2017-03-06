@@ -8,6 +8,8 @@ public class VectorDotCross : MonoBehaviour {
     public Vector3 pv1;
     public Vector3 pv2;
 
+    public Vector3 lerpData;
+
 	void Start () {
 
         Dot1();
@@ -18,6 +20,8 @@ public class VectorDotCross : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+
+        Debug.Log(string.Format("Lerp({0},{1},{2}) = {3}" , lerpData.x, lerpData.y, lerpData.z , Mathf.Lerp(lerpData.x, lerpData.y, lerpData.z)));
 
         return;
 
