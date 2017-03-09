@@ -16,12 +16,14 @@ Shader "Study/Shader001"
 				{
 						float4 vertex : POSITION;
 						float2 uv : TEXCOORD0;
+						 float3 normal : NORMAL;
 				};
 
 				struct v2f
 				{
 						float2 uv : TEXCOORD0;
 						float4 vertex : SV_POSITION;
+						float3 normal:TEXCOORD1;
 				};
 
 
@@ -30,6 +32,7 @@ Shader "Study/Shader001"
 						v2f o;
 						o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 						o.uv = v.uv;
+						o.normal = v.normal;
 						return o;
 				}
 				//返回固定颜色
@@ -193,7 +196,7 @@ Shader "Study/Shader001"
 				}
 
 				//sin函数
-				fixed frag(v2f i) : SV_Target
+				fixed4 frag(v2f i) : SV_Target
 				{
 					fixed3 color = fixed3(1.0, 1.0, 1.0);
 					
@@ -210,7 +213,7 @@ Shader "Study/Shader001"
 				}
 
 
-
+				
 
 				
 			ENDCG
