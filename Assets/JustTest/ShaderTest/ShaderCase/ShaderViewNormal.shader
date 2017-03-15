@@ -51,8 +51,8 @@ Shader "Study/ShaderViewNoraml"
 
 				float3 viewNormal   =   mul((float3x3)UNITY_MATRIX_MV, v.normal); //mul(unity_ObjectToWorld, v.normal);//
 				float4 viewPos      = mul(UNITY_MATRIX_MV, v.vertex);
-				float3 viewDir      = float3(2,0,1);
-				float3 viewLightPos = float3(2,0 ,0);
+				float3 viewDir      = float3(0.0,1);
+				float3 viewLightPos = float3(0,0 ,0);
               
 				float3 dirToLight = viewPos.xyz - viewLightPos;
               

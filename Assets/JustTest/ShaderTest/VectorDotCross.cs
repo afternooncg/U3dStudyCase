@@ -17,7 +17,7 @@ public class VectorDotCross : MonoBehaviour {
         Cross1();
 	}
 	
-	// Update is called once per frame
+	// Update is called once per fr
 	void Update () 
     {
         //lerp在min-max中线性插  z 取0-1
@@ -25,13 +25,17 @@ public class VectorDotCross : MonoBehaviour {
 
         Debug.Log(string.Format("Lerp({0},{1},{2}) = {3}" , lerpData.x, lerpData.y, lerpData.z , Mathf.Lerp(lerpData.x, lerpData.y, lerpData.z)));
         Debug.Log(string.Format("Mathf.SmoothStep({0},{1},{2}) = {3}", lerpData.x, lerpData.y, lerpData.z, Mathf.SmoothStep(lerpData.x, lerpData.y, lerpData.z)));
-        
+
+
+        Debug.Log(Vector3.Distance(pv1,pv2));
         return;
 
         Debug.Log(Vector3.Angle(pv1, pv2) + "  " + Vector3.Angle(pv2, pv1) + " " + Vector3.Cross(pv1,pv2));
         GetAngle(pv1, pv2);
 
         Debug.Log(pv1.magnitude + "   " + pv1.normalized +  "   " + Vector3.Distance(Vector3.zero, pv1));
+
+        
 	}
 
 
