@@ -19,4 +19,4 @@ Material:
     m_Colors:
     - first:
         name: _Diffuse
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 1, g: 0.14705884, b: 0.14705884, a: 1}

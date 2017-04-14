@@ -15,11 +15,24 @@ public class VectorDotCross : MonoBehaviour {
         Dot1();
 
         Cross1();
+
+
+        TestMartrixTransform();
 	}
+
+    private void TestMartrixTransform()
+    {
+        Matrix4x4 m = Camera.main.cameraToWorldMatrix;
+        Vector3 p = m.MultiplyPoint(new Vector3(0, 0, 10));
+        Debug.Log(p);
+    }
 	
 	// Update is called once per fr
 	void Update () 
     {
+
+        return;
+
         //lerp在min-max中线性插  z 取0-1
         //smoothlerp在两端非线性插值。有过渡效果 z 0-1
 
@@ -28,19 +41,21 @@ public class VectorDotCross : MonoBehaviour {
 
 
         Debug.Log(Vector3.Distance(pv1,pv2));
-        return;
+        
 
         Debug.Log(Vector3.Angle(pv1, pv2) + "  " + Vector3.Angle(pv2, pv1) + " " + Vector3.Cross(pv1,pv2));
         GetAngle(pv1, pv2);
 
         Debug.Log(pv1.magnitude + "   " + pv1.normalized +  "   " + Vector3.Distance(Vector3.zero, pv1));
 
-        
+
+       
+
 	}
 
 
     void Dot1()
-    {
+    {        
 
         Vector3 v1 = new Vector3(1, 1, 1);
         Vector3 v2 = new Vector3(1, 5, 1);
