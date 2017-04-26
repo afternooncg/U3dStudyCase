@@ -239,7 +239,7 @@ public class IoTestMain : MonoBehaviour {
           Directory.CreateDirectory(newPath);
 
 
-      FileListData data = Resources.Load<FileListData>("ScriptObjs/FileListData");
+      FileListData data = Resources.Load<FileListData>("ScriptObjs/LuaFileListData");
       m_max = data.Files.Count;
       m_count = 0;
 
@@ -256,7 +256,8 @@ public class IoTestMain : MonoBehaviour {
 
       for (int i = 0; i < m_max; i++)
       {
-          assetName =data.Files[i].ToLower() + ".unity3d";
+          //assetName =data.Files[i].ToLower() + ".unity3d";
+          assetName = data.Files[i];
           string loadurl = remoteUrl + assetName ;
           
           WWW www = new WWW(loadurl);
@@ -282,7 +283,7 @@ public class IoTestMain : MonoBehaviour {
 
       m_input.value += ((Time.realtimeSinceStartup - m_begin)).ToString() + "\n";
 
-
+      /*
       AssetBundle ab = AssetBundle.LoadFromFile(savepath);
       if (ab != null)
       {
@@ -295,7 +296,7 @@ public class IoTestMain : MonoBehaviour {
 
           ab.Unload(true);
       }
-
+      */
    
   }
  #endregion
@@ -321,7 +322,7 @@ public class IoTestMain : MonoBehaviour {
 
            RemoteFileLoader.LoadInfo li = new RemoteFileLoader.LoadInfo()
           {
-              assetName = (data.Files[i].ToLower() + ".unity3d"),
+              assetName = (data.Files[i].ToLower() + ".unity3d"),              
               loadFinished = loadAssetAndSaveLocal,
               loadProgress = null,
 #if UNITY_EDITOR

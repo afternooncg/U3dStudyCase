@@ -77,5 +77,37 @@ public class IoTest  {
 
     }
 
+    [MenuItem("QuickTest/Io/复制GameData目录到StreameAssets")]
+    static void CopyGameDataToStreameAssets()
+    {
+        float time = Time.realtimeSinceStartup;
+
+        //FileUtil.CopyFileOrDirectory(Application.dataPath + "/GameData", Application.streamingAssetsPath);
+        FileUtil.CopyFileOrDirectory("Assets/GameData/UI", "Assets/StreamingAssets/Assets/GameData/UI");
+        Debug.Log("复制耗时:" + (Time.realtimeSinceStartup - time).ToString());
+
+        AssetDatabase.Refresh();
+    }
+
+    [MenuItem("QuickTest/Io/移动GameData目录到StreameAssets")]
+    static void MoveGameDataToStreameAssets()
+    {
+
+        if (!System.IO.Directory.Exists(Application.streamingAssetsPath + "/Assets"))
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/Assets/");
+
+        return;
+
+        float time = Time.realtimeSinceStartup;
+
+        //FileUtil.CopyFileOrDirectory(Application.dataPath + "/GameData", Application.streamingAssetsPath);
+        FileUtil.MoveFileOrDirectory("Assets/GameData/UI", "Assets/StreamingAssets/Assets/GameData/UI");
+
+        FileUtil.MoveFileOrDirectory("Assets/StreamingAssets/Assets/GameData/UI", "Assets/GameData/UI");
+        Debug.Log("移动耗时:" + (Time.realtimeSinceStartup - time).ToString());
+
+        AssetDatabase.Refresh();
+    }
+
 }
 

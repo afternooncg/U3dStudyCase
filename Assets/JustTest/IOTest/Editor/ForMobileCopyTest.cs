@@ -10,7 +10,8 @@ public class ForMobileCopyTest
     [MenuItem("JustTest/ForMobileCopyTest/create FileListData")]
     static void CreateScripteObject()
     {
-        ScriptableObjectUtility.CreateAsset<FileListData>("Assets/Resources/ScriptObjs/FileListData.asset");
+       // ScriptableObjectUtility.CreateAsset<FileListData>("Assets/Resources/ScriptObjs/FileListData.asset");
+        ScriptableObjectUtility.CreateAsset<FileListData>("Assets/Resources/ScriptObjs/LuaFileListData.asset");
     }
 
 
@@ -80,6 +81,8 @@ public class ForMobileCopyTest
 
         }
 
+        
+
         EditorUtility.SetDirty(data);
         AssetDatabase.Refresh();
         AssetDatabase.SaveAssets();
@@ -87,5 +90,25 @@ public class ForMobileCopyTest
     }
 
 
+    [MenuItem("JustTest/ForMobileCopyTest/遍历GameData目录并生成文件列表写到FileListData.asset")]
+    static void FillToGameDataFileListDataAsset()
+    {
+        FileListData data = AssetDatabase.LoadAssetAtPath<FileListData>("Assets/Resources/ScriptObjs/LuaFileListData.asset");
+        data.Files.Clear();
+
+        string[] assets = AssetDatabase.FindAssets("", new string[]{"Assets/GameData/Resource/Config"});
+        for (int i = 0; i < assets.Length; i++)
+        {
+            
+            string path = AssetDatabase.GUIDToAssetPath(assets[i]);
+            if(!AssetDatabase.IsValidFolder(path))
+                data.Files.Add(path);
+            Debug.Log(AssetDatabase.GUIDToAssetPath(assets[i]));
+        }
+
+        EditorUtility.SetDirty(data);
+        AssetDatabase.Refresh();
+        AssetDatabase.SaveAssets();
+    }
    
 }
