@@ -1,4 +1,6 @@
-﻿// 原文链接：http://wiki.unity3d.com/index.php?title=Silhouette-Outlined_Diffuse
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// 原文链接：http://wiki.unity3d.com/index.php?title=Silhouette-Outlined_Diffuse
 Shader "Custom/OutlineShader1" {
 	Properties {
 		_Color ("Main Color", Color) = (1,1,1,1)
@@ -27,7 +29,7 @@ uniform float4 _OutlineColor;
 v2f vert(appdata v) {
 	// just make a copy of incoming vertex data but scaled according to normal direction
 	v2f o;
-	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos(v.vertex);
  
 	float3 norm   = mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal);
 	float2 offset = TransformViewToProjection(norm.xy);

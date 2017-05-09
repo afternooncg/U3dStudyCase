@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "CC2/Paladin_Weapon_Add_Unit" {
     Properties {
         _diffuse_tex ("diffuse_tex", 2D) = "white" {}
@@ -65,7 +67,7 @@ Shader "CC2/Paladin_Weapon_Add_Unit" {
                 o.uv0 = v.texcoord;  
                 o.normalDir = UnityObjectToWorldNormal(v.normal);   //法线方向从物体坐标转换到世界坐标
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);   
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex );  // 输出顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，就是将三维坐标投影到二维窗口
+				o.vertex = UnityObjectToClipPos(v.vertex );  // 输出顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，就是将三维坐标投影到二维窗口
                 return o;   
             }//顶点着色器计算出世界空间的法线方向，顶点位置，变换后的纹理坐标，再传递给片段着色器
                 fixed4 frag(v2f i) : COLOR {  

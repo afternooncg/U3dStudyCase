@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1467574750
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6b5702a0edb8c46b13bc2d51d6c5cad9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/_Images/icons/bag/1083.png
+- Assets/_Images/icons/bag/1082.png
+- Assets/_Images/icons/bag/1102.png
+- Assets/_Images/icons/bag/1101.png
+- Assets/_Images/icons/bag/1085.png
+Dependencies: []

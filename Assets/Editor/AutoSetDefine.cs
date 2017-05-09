@@ -65,7 +65,7 @@ public class AutoSetDefine
         PlayerSettings.defaultInterfaceOrientation = UIOrientation.LandscapeLeft;
 
         // bundle ID
-        PlayerSettings.bundleIdentifier = PubConfig.VERSION_INFO.BundleIdentifier;
+        PlayerSettings.applicationIdentifier = PubConfig.VERSION_INFO.BundleIdentifier;
         //  App Name
         PlayerSettings.productName = PubConfig.VERSION_INFO.ProductName;
 

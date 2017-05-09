@@ -33,6 +33,7 @@ public class MyWindow : EditorWindow {
     [MenuItem("QuickTest/EditorWindow/OpenMyWindow")]
     public static void ShowWin()
     {
+     
         MyWindow win = EditorWindow.GetWindow<MyWindow>();
        // win.position = new Rect(100, 100, 300, 300);  // 窗口的坐标
     }

@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 202479825
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8d352adfc5818b8808c9efdd8a7ec771
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c44858838b7cbbbb01f9baebf2d0b457
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/_Images/icons/bag/1124.png
+- Assets/JustTest/Assetbundle/BundleTest/TestMat1.mat
+- Assets/_Images/icons/bag/1123.png
+- Assets/_Images/icons/bag/1122.png
+- Assets/JustTest/Assetbundle/AssetManagerSystem/Resource/Textures/1125.png
+Dependencies: []

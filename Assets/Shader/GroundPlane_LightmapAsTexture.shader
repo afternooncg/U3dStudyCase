@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
 
 // Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
@@ -85,7 +87,7 @@ Shader "Custom/GroundPlane_LightmapAsTexture"
 				fragmentInput o;
 				UNITY_INITIALIZE_OUTPUT(fragmentInput, o);
 
-				o.pos = mul( UNITY_MATRIX_MVP, i.vertex );//获取顶点位置
+				o.pos = UnityObjectToClipPos( i.vertex );//获取顶点位置
 				//o.uv = TRANSFORM_TEX(i.texcoord, _MainTex);//获取uv坐标
 				 UNITY_TRANSFER_FOG(o,o.pos);
 				#ifdef LIGHTMAP_ON

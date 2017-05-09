@@ -45,6 +45,7 @@ public class TestAnimatorMain : MonoBehaviour {
     public void HandleBtnPause()
     {
         m_animator.speed = 0f;
+        
     }
 
     public void HandleBtnResume()
@@ -54,13 +55,14 @@ public class TestAnimatorMain : MonoBehaviour {
 
     public void HandleBtnStop()
     {
-        m_animator.Stop();
+        m_animator.enabled = false;
     }
 
     public void HandleBtnPlay()
     {
+        m_animator.enabled = true;
         m_animator.Rebind();
-        m_animator.Play("Attack");
+        m_animator.Play("Attack");  //如果上次动作已经是Attack就无效了
     }
 
 

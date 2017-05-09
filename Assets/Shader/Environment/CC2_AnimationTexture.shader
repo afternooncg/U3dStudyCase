@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "CC2/FX/Anim_Texture" {
 Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
@@ -75,7 +77,7 @@ SubShader {
 		
 		tile = fmod(tile,_NumTexTiles.xyxy);
 		
-		o.pos= mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos= UnityObjectToClipPos(v.vertex);
 		o.uv	= (v.texcoord.xyxy + tile) * texTileSize.xyxy;
 		o.col	= float4(_Color.xyz * v.color.xyz,ftime);
 		

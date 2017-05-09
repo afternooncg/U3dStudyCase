@@ -1,4 +1,6 @@
-﻿Shader "CC2/CC2_Unlit Single Texture Diffuse Fixed Highlight + Lightmap + Gloss + Fresnel + Mask - Unlit Rim Color" 
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "CC2/CC2_Unlit Single Texture Diffuse Fixed Highlight + Lightmap + Gloss + Fresnel + Mask - Unlit Rim Color" 
 {
 	Properties 
 	{
@@ -91,7 +93,7 @@
 				fragmentInput o;
 				UNITY_INITIALIZE_OUTPUT(fragmentInput, o);
 			
-				o.pos = mul(UNITY_MATRIX_MVP, i.vertex);
+				o.pos = UnityObjectToClipPos(i.vertex);
 				o.uv = i.texcoord;
 
 				float3 posWorld = mul(unity_ObjectToWorld, i.vertex).xyz;

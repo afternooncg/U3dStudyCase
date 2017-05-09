@@ -1,4 +1,6 @@
-﻿Shader "Study/ShaderFunStep"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Study/ShaderFunStep"
 {
         Properties
         {
@@ -35,7 +37,7 @@
         v2f vert(appdata v)
         {
                 v2f o;
-                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
                 o.uv.y = 1 - o.uv.y;
                 return o;

@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "CC2/Environment/Lightmap + Wind" {
 Properties {
 	_MainTex ("Base (RGB) Gloss (A)", 2D) = "white" {}
@@ -94,7 +96,7 @@ inline float4 AnimateVertex2(float4 pos, float3 normal, float4 animParams,float4
 		float 		windTime 		= _Time.y * float2(_WindEdgeFlutterFreqScale,1);
 		float4	mdlPos			= AnimateVertex2(v.vertex,v.normal,windParams,wind,windTime);
 		
-		o.pos = mul(UNITY_MATRIX_MVP,mdlPos);
+		o.pos = UnityObjectToClipPos(mdlPos);
 		o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
 		
 		o.spec = v.color;

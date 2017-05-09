@@ -1,4 +1,6 @@
-﻿Shader "Study/CaseSnow" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Study/CaseSnow" {
     Properties {
                 _MainTex ("Base (RGB)", 2D) = "white" {}
     }
@@ -73,7 +75,7 @@
                                  
                                 //将其最终转换到屏幕上
                                 v2f o;
-                                o.pos = mul(UNITY_MATRIX_MVP, float4(finalposition, 1));
+                                o.pos = UnityObjectToClipPos(float4(finalposition, 1));
                                 o.uv = MultiplyUV(UNITY_MATRIX_TEXTURE0, v.texcoord);
                                 return o;
                         }

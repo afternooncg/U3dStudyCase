@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "CC2/Unlit_SingleTexture_Character" 
 {
 	Properties 
@@ -36,7 +38,7 @@ Shader "CC2/Unlit_SingleTexture_Character"
 			fragmentInput vert( vertexInput i )
 			{
 				fragmentInput o;
-				o.pos = mul( UNITY_MATRIX_MVP, i.vertex );
+				o.pos = UnityObjectToClipPos( i.vertex );
 				o.uv = TRANSFORM_TEX(i.texcoord, _MainTex);
 				return o;
 			}
