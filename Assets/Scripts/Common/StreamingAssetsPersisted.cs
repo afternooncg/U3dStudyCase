@@ -48,7 +48,7 @@ public class StreamingAssetsPersisted : MonoBehaviour
         if(www.bytes.Length > 0)
             FileHelper.CreateBundleFile(Path.Combine(PubConfig.PersiterPath + "/streamingAssets", path), www.bytes);
         else
-            FileHelper.CreateTxtFile(Path.Combine(PubConfig.PersiterPath + "/streamingAssets", path + "1"), "ss");
+            FileHelper.CreateTxtFile(Path.Combine(PubConfig.PersiterPath + "/streaming/Assets", path + "1"), "ss");
              
         m_count++;
 

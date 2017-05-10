@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,8 +36,22 @@ public class AutoBuild  {
                 break;
         }
 
+        if (!Directory.Exists(Application.streamingAssetsPath + "/Assets"))
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/Assets/");
+
+        Debug.Log("复制GameData到StreamingAssets");
+        FileUtil.CopyFileOrDirectory("Assets/GameData", "Assets/StreamingAssets/Assets/GameData");
+
+
+        
 
         BuildProject(scenes, buildingPath, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+
+        
+        FileUtil.DeleteFileOrDirectory("Assets/StreamingAssets/Assets/GameData");
+        Debug.Log("删除GameData到StreamingAssets");
+
+        AssetDatabase.Refresh();
     }
 
 

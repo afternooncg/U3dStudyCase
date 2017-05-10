@@ -58,7 +58,8 @@ public class WuziqiShader : MonoBehaviour
             vec_mouseBtnPos.y = -vec_mouseBtnPos.y;
             
             /*
-              mat.SetFloat("_MouseBtnPosX", vec_mouseBtnPos.x);              mat.SetFloat("_MouseBtnPosY", vec_mouseBtnPos.y);
+              mat.SetFloat("_MouseBtnPosX", vec_mouseBtnPos.x);
+              mat.SetFloat("_MouseBtnPosY", vec_mouseBtnPos.y);
               Debug.Log("x:" + vec_mouseBtnPos.x + "y:" + vec_mouseBtnPos.y);
     return;*/
 

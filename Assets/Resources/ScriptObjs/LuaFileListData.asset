@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001117c5b25a4a14ea01d4bae3755d1d, type: 3}
+  m_Name: LuaFileListData
+  m_EditorClassIdentifier: 
+  Files:
+  - Assets/GameData/Resource/Config/act/BufferList.xml
+  - Assets/GameData/Resource/Config/act/list.xml
+  - Assets/GameData/Resource/Config/act/NodeAction.xml
+  - Assets/GameData/Resource/Config/act/SkillList.xml
+  - Assets/GameData/Resource/Config/Building.xml
+  - Assets/GameData/Resource/Config/BuildingView.xml
+  - Assets/GameData/Resource/Config/Hero.xml
+  - Assets/GameData/Resource/Config/HeroLevels.xml
+  - Assets/GameData/Resource/Config/HeroSkin.xml
+  - Assets/GameData/Resource/Config/HeroStar.xml
+  - Assets/GameData/Resource/Config/Map/1.txt
+  - Assets/GameData/Resource/Config/Map/1.xml
+  - Assets/GameData/Resource/Config/Map/2.xml
+  - Assets/GameData/Resource/Config/Map/2.txt
+  - Assets/GameData/Resource/Config/Map/HomeRegion.xml
+  - Assets/GameData/Resource/Config/Map/Map1.xml
+  - Assets/GameData/Resource/Config/Map/MapList.xml
+  - Assets/GameData/Resource/Config/node/NodeList.xml
+  - Assets/GameData/Resource/Config/SkillData.xml
+  - Assets/GameData/Resource/Config/Soldier.xml
+  - Assets/GameData/Resource/Config/SoldierFormation.xml
+  - Assets/GameData/Resource/Config/SoliderUnitConfig.xml
