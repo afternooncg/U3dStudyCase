@@ -55,6 +55,7 @@ public class TestAnimatorMain : MonoBehaviour {
 
     public void HandleBtnStop()
     {
+//m_animator.Stop();  //5.6不再支持
         m_animator.enabled = false;
     }
 

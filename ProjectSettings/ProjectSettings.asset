@@ -137,6 +137,7 @@ PlayerSettings:
   useHDRDisplay: 0
   applicationIdentifier:
     Android: com.river.u3dstuycase
+
     Standalone: com.river.u3dstuycase
     Tizen: com.river.u3dstuycase
     iOS: com.river.u3dstuycase

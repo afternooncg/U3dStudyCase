@@ -110,8 +110,7 @@ public class IoTest  {
     }
 
 
-
-    [MenuItem("QuickTest/Io/检查大小写")]
+ [MenuItem("QuickTest/Io/检查大小写")]
     static void CheckUpLower()
     {
         string path = "Assets/_Images";
@@ -122,13 +121,10 @@ public class IoTest  {
             string tmp = Path.GetFileName(file);
             if (!tmp.Equals(tmp.ToLower()))
             {
-                Debug.Log(file);           
+              Debug.Log(file);
             }
 
         }
-
-
-    }
 
 }
 
