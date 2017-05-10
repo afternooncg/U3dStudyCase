@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 Shader "CC2/CC2_SimpleRimLight" {
 	Properties {
@@ -32,7 +34,7 @@ Shader "CC2/CC2_SimpleRimLight" {
 		    v2f vert (appdata_base v)
 		    {
 		        v2f o;
-		        o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+		        o.pos = UnityObjectToClipPos (v.vertex);
 		        o.uv = TRANSFORM_TEX (v.texcoord, _MainTex);
 		        
 		        

@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Projector' with 'unity_Projector'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Projector' with 'unity_Projector'
 // Upgrade NOTE: replaced '_ProjectorClip' with 'unity_ProjectorClip'
 
 Shader "Custom/Shadow_0" {
@@ -35,7 +37,7 @@ Shader "Custom/Shadow_0" {
 
 			v2f vert(float4 vertex:POSITION){
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, vertex);
+				o.pos = UnityObjectToClipPos(vertex);
 				o.sproj = mul(unity_Projector, vertex);
 				o.fproj = mul(unity_ProjectorClip, vertex);
 				return o;

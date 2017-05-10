@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Study/Shader001"
 {
 	SubShader        
@@ -28,7 +30,7 @@ Shader "Study/Shader001"
 				v2f vert1(appdata v)
 				{
 						v2f o;
-						o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+						o.vertex = UnityObjectToClipPos(v.vertex);
 						o.uv = v.uv;
 						return o;
 				}

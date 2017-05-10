@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Study/worldSpaceColor"
 {
@@ -36,7 +38,7 @@ Shader "Study/worldSpaceColor"
 			{
 				vertexOutput output;
  
-				output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+				output.pos = UnityObjectToClipPos(input.vertex);
  
 				//_Object2World是Unity内置的四乘四矩阵，使用了#include "UnityCG.cginc" 命令就可以直接使用，不用再使用uniform关键字进行定义
 				output.position_in_world_space =   mul(unity_ObjectToWorld, input.vertex);

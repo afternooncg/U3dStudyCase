@@ -1,4 +1,6 @@
-﻿Shader "CC2/Dissolve_Simple" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "CC2/Dissolve_Simple" {
 	Properties{
 		_BurnAmount("Burn Amount", Range(0.0, 1.0)) = 0.0
 		_EdgeWidth("Burn Edge Width", Range(0.0, 0.5)) = 0.1
@@ -50,7 +52,7 @@
 
 	v2f vert(a2v v) {
 		v2f o;
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 
 		o.uvMainTex = TRANSFORM_TEX(v.texcoord, _MainTex);
 		o.uvBurnMap = TRANSFORM_TEX(v.texcoord, _BurnMap);

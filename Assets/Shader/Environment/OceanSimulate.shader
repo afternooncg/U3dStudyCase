@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 //_WaterTexure.r is caustic pattern. _WaterTexure.g is wave motion.
 Shader "Custom/OceanSimulate" 
 {
@@ -82,7 +84,7 @@ Shader "Custom/OceanSimulate"
                // i.vertex.y =  sin(50 * (o.uv3.x + o.uv3.y + _Direction) + _Time.y * 50 * _Speed) * _WaveSize;
                 i.vertex.y =  sin(50 * (o.uv3.x + o.uv3.y ) + _Time.y * 50 * _Speed) * _WaveSize;
                
-                o.pos = mul( UNITY_MATRIX_MVP, i.vertex );
+                o.pos = UnityObjectToClipPos( i.vertex );
                 
                
 				

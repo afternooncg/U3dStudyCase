@@ -1,4 +1,6 @@
-﻿Shader "Custom/Flag" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Flag" {
 Properties {
     _MainTex ("Texture", 2D) = "white" { }
 }
@@ -28,7 +30,7 @@ CGINCLUDE
 			
 			
 		   v2f o;
-		   o.pos = mul (UNITY_MATRIX_MVP, v2);
+		   o.pos = UnityObjectToClipPos (v2);
 			
 		   o.uv = TRANSFORM_TEX (v.texcoord, _MainTex);
 		   return o;
