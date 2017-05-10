@@ -81,7 +81,7 @@ public class PrefabEditWin : EditorWindow
 
 
             //amtor.SetLayerWeight(1, 0.5f);
-            amtor.enabled
+            amtor.enabled = true;
             //amtor.Stop();
 
             amtor.Rebind();
