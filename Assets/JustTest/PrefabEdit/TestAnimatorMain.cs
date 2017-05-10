@@ -54,11 +54,13 @@ public class TestAnimatorMain : MonoBehaviour {
 
     public void HandleBtnStop()
     {
-        m_animator.Stop();
+        //m_animator.Stop();  //5.6不再支持
+        m_animator.enabled = false;
     }
 
     public void HandleBtnPlay()
     {
+        m_animator.enabled = true;
         m_animator.Rebind();
         m_animator.Play("Attack");
     }

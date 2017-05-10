@@ -81,7 +81,7 @@ public class PrefabEditWin : EditorWindow
 
 
             //amtor.SetLayerWeight(1, 0.5f);
-            amtor.Stop();
+            //amtor.Stop();
             amtor.Rebind();
             amtor.Play("Attack");
             EditorApplication.update += delegate()
@@ -90,7 +90,7 @@ public class PrefabEditWin : EditorWindow
 
                 if (count >= 400)
                 {
-                    amtor.Stop();
+                    //amtor.Stop();
                     amtor.Rebind();
                     amtor.Play("Idle");
 
