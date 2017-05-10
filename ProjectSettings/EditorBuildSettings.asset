@@ -7,17 +7,25 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Main.unity
+    guid: 0c11e953cbc214e42a3e828f3ff7abee
   - enabled: 1
     path: Assets/JustTest/IOTest/IoTest.unity
-  - enabled: 0
-    path: Assets/JustTest/Assetbundle/TestAssetbundle.unity
+    guid: 311609dd2d6eaf64f808b534c9be1240
   - enabled: 1
     path: Assets/JustTest/LoadFun/LoadResTest.unity
+    guid: d1ded376cca1cab42b4818c4859bba9d
   - enabled: 1
     path: Assets/JustTest/WWWTest/webrequest/WebRequest.unity
+    guid: 4c92b2efc134776478441fd5cf76f313
   - enabled: 1
     path: Assets/JustTest/WWWTest/www/LoaingScene.unity
+    guid: 3ea7e3250bbfc4c42a1aa35baab0a088
   - enabled: 1
     path: Assets/JustTest/WWWTest/www/WwwTest.unity
+    guid: bfddb86dc3045fd48b98c9985d6e841e
   - enabled: 1
     path: Assets/JustTest/CameraTest/SwapCamera.unity
+    guid: 2c285f63c3b1b944da9e8e7d341f5416
+  - enabled: 1
+    path: Assets/JustTest/Assetbundle/AssetManagerSystem/TestAssetbundle.unity
+    guid: 00000000000000000000000000000000
