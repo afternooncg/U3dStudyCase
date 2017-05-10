@@ -20,14 +20,25 @@ public class TestThreadMain : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+
+    int count = 0;
+    int total = 0;
 	void Update () {
+
 
         if (m_callBack != null)
             m_callBack();
 
+        count++;
+        if(count >= 50)
+        {
+           //string str = m_lockDemo.PrintThreadState();
+           total = m_lockDemo.GetTotal();
+           count = 0;
+        }
 
-        string str = m_lockDemo.PrintThreadState();
-       Debug.Log(str);
+       // Debug.Log("total:" + total);
+       
 	}
 
 

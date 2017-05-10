@@ -6,7 +6,7 @@ using UnityEngine;
 public class LockDemo1   {
 
 
-    private object lockObj;
+    public object lockObj;
 
     public List<string> ListOutPut;
 
@@ -24,7 +24,7 @@ public class LockDemo1   {
         ListOutPut = new List<string>();
 
 
-        m_thread = new Thread[20];
+        m_thread = new Thread[5];
 
 
         for (int i = 0; i < m_thread.Length; i++ )
@@ -46,6 +46,15 @@ public class LockDemo1   {
             m_thread[i].Start();
         }
     
+    }
+
+    public int GetTotal()
+    {
+        lock (lockObj)
+        {
+            Debug.Log(m_total);
+            return m_total;
+        }
     }
 
 
@@ -91,7 +100,7 @@ public class LockDemo1   {
                     str += " = " + m_total.ToString();
 
                     ListOutPut.Add(str);
-                    Thread.Sleep(10);
+                    Thread.Sleep(100);
                 }
             }
         

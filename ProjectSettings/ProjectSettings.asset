@@ -137,7 +137,8 @@ PlayerSettings:
   useHDRDisplay: 0
   applicationIdentifier:
     Android: com.river.u3dstuycase
-    Standalone: unity.DefaultCompany.u3dStudy
+
+    Standalone: com.river.u3dstuycase
     Tizen: com.river.u3dstuycase
     iOS: com.river.u3dstuycase
     tvOS: com.river.u3dstuycase
@@ -499,7 +500,7 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    1: CROSS_PLATFORM_INPUT
+    1: ANDROID_DEBUG_TW;CROSS_PLATFORM_INPUT
     4: CROSS_PLATFORM_INPUT;MOBILE_INPUT
     7: ANDROID_DEBUG_TW;DEBUG_MODE;SHOW_LOGIN_LIST
     14: MOBILE_INPUT
