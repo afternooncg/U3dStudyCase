@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 14ab621b7f81c6c42836640511101a55
-timeCreated: 1476242660
+guid: 6124f3e8ef418fe4691a6f783fe5eab3
+timeCreated: 1494474203
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -24,7 +24,7 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
@@ -76,17 +76,17 @@ TextureImporter:
     overridden: 0
   - buildTarget: Android
     maxTextureSize: 2048
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
   spritePackingTag: 
   userData: 
-  assetBundleName: 
+  assetBundleName: bgrgba32.unity3d
   assetBundleVariant: 

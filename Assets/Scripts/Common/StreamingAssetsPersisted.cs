@@ -21,6 +21,7 @@ public class StreamingAssetsPersisted : MonoBehaviour
 
 
 
+
     void Awake()
     {
         CreateLoader();

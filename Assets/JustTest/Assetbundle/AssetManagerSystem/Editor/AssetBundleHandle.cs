@@ -20,7 +20,7 @@ public class AbToolMenu
     }
 
 
-    [MenuItem("JustTest/AssetBundle/生成Ab资源")]
+    [MenuItem("JustTest/AssetBundle/生成全部Ab资源")]
     public static void BulidingAssetBundle()
     {
        if (!Directory.Exists(AssetBundleHandle.PersistentDataPath))
@@ -29,6 +29,26 @@ public class AbToolMenu
         BuildPipeline.BuildAssetBundles(AssetBundleHandle.PersistentDataPath, BuildAssetBundleOptions.None, BuildTarget.Android);
         Debug.Log("test");
     }
+
+    [MenuItem("JustTest/AssetBundle/生成指定Ab资源")]
+    public static void BulidingSpecialAssetBundle()
+    {
+        if (!Directory.Exists(AssetBundleHandle.PersistentDataPath))
+            Directory.CreateDirectory(AssetBundleHandle.PersistentDataPath);
+
+        AssetBundleBuild builds = new AssetBundleBuild();
+        builds.assetBundleName = "special.unity3d";
+        List<string> list = new List<string>();
+        list.Add("Assets/_Images/icons/bag/mana1.png"); //测试同名资源可以打包
+        list.Add("Assets/_Images/icons/bag/mana2.png");
+        list.Add("Assets/_Images/icons/mana1.png");
+        builds.assetNames = list.ToArray();
+
+        BuildPipeline.BuildAssetBundles(AssetBundleHandle.PersistentDataPath, new AssetBundleBuild[] { builds }, BuildAssetBundleOptions.None, BuildTarget.Android);
+        
+    }
+
+
 
     [MenuItem("JustTest/AssetBundle/生成Ab资源清单")]
     public static void BulidingAssetBundleListInfo()
