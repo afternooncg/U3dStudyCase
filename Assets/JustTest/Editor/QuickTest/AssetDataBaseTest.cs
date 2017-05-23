@@ -99,5 +99,16 @@ public class AssetDataBaseTest {
             SetAbNameWithFolder(info.FullName);
         }
     }
+
+
+    //FindAsset By label
+    [MenuItem("QuickTest/AssetDataBase/FindAssetByLabel")]
+    public static void FindAssetByLabel()
+    {
+        string[] guids = AssetDatabase.FindAssets("l:MyAddLabel");
+        for (int i = 0; i < guids.Length; i++)
+            Debug.Log("FindAssetByLabel " + AssetDatabase.GUIDToAssetPath(guids[i]));
+    }
+
 	
 }

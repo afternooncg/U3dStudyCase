@@ -37,9 +37,12 @@ public class UnityTips : MonoBehaviour {
     [SerializeField]//使private属性可以被序列化，在面板上显示并且可以读取保存
     private bool CloudSerializeField = true;
 
+
+    public GizmoAndDebugMain m_test ;
+
 	void Start () {
 
-
+        gameObject.AddComponent<GizmoAndDebugMain>();
 
 	}
 
