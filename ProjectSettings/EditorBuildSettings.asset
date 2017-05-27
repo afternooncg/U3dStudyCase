@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/JustTest/DOTween Examples/DoTweenEase.unity
+    guid: 2f721e8e0c9c451469c1d7da67435e72
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 0c11e953cbc214e42a3e828f3ff7abee
   - enabled: 1
@@ -28,4 +31,7 @@ EditorBuildSettings:
     guid: 2c285f63c3b1b944da9e8e7d341f5416
   - enabled: 1
     path: Assets/JustTest/Assetbundle/AssetManagerSystem/TestAssetbundle.unity
+    guid: e4bbbd3c44d85d2469fd90c2610c6f40
+  - enabled: 1
+    path: Assets/JustTest/DOTween Examples/LoadedWithTween.unity
     guid: 00000000000000000000000000000000

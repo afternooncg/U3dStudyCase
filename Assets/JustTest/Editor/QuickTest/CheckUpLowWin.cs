@@ -9,7 +9,7 @@ public class CheckUpLowWin : EditorWindow
 {
 
 
-    [MenuItem("QuickTest/IO/检查文件大小写")]
+    [MenuItem("QuickTest/Io/检查文件大小写")]
     public static void ShowWin()
     {
         Rect wr = new Rect(0, 0, 800, 500);

@@ -14,7 +14,8 @@ public class HideMouseTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+	
+	 
 	}
 
 
@@ -26,6 +27,7 @@ public class HideMouseTest : MonoBehaviour {
             float my = Input.mousePosition.y + mouseicon.height / 2;
 
             GUI.DrawTexture(new Rect(mx, Screen.height - my, mouseicon.width, mouseicon.height), mouseicon);
+            
         }
     }
 }

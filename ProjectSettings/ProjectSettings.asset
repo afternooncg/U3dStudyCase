@@ -139,6 +139,7 @@ PlayerSettings:
     Android: com.river.u3dstuycase
     Standalone: com.river.u3dstuycase
     Tizen: com.river.u3dstuycase
+    WebGL: com.river.u3dstuycase
     iOS: com.river.u3dstuycase
     tvOS: com.river.u3dstuycase
   buildNumber:

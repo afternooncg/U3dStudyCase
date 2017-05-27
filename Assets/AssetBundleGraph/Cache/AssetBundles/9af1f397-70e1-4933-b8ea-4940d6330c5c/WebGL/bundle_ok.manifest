@@ -1,0 +1,91 @@
+ManifestFileVersion: 0
+CRC: 3409151655
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0ab2e3ea174651685c61e9f9911b1128
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: dafb67cca6a2c3bf62fa900616455a9b
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/_Images/icons/bag/1083.png
+- Assets/_Images/icons/bag/Materials/1082.mat
+- Assets/_Images/icons/bag/rune.png
+- Assets/_Images/icons/bag/gold4.png
+- Assets/_Images/icons/bag/fragment.png
+- Assets/_Images/icons/bag/score.png
+- Assets/_Images/icons/bag/SP_max.png
+- Assets/_Images/icons/bag/1171.png
+- Assets/_Images/icons/bag/1103.png
+- Assets/_Images/icons/bag/1113.png
+- Assets/_Images/icons/bag/1175.png
+- Assets/_Images/icons/bag/1124.png
+- Assets/_Images/icons/bag/box1.png
+- Assets/_Images/icons/bag/1153.png
+- Assets/_Images/icons/bag/gold2.png
+- Assets/_Images/icons/bag/ore_big.png
+- Assets/_Images/icons/bag/mana4.png
+- Assets/_Images/icons/bag/honor.png
+- Assets/_Images/icons/bag/box3.png
+- Assets/_Images/icons/bag/1112.png
+- Assets/_Images/icons/bag/mana5.png
+- Assets/_Images/icons/bag/1132.png
+- Assets/_Images/icons/bag/1123.png
+- Assets/_Images/icons/bag/magic_stone.png
+- Assets/_Images/icons/bag/1082.png
+- Assets/_Images/icons/bag/mana3.png
+- Assets/_Images/icons/bag/1181.png
+- Assets/_Images/icons/bag/scroll.png
+- Assets/_Images/icons/bag/mana2.png
+- Assets/_Images/icons/bag/cash_big.png
+- Assets/_Images/icons/bag/1060.png
+- Assets/_Images/icons/bag/Materials/1060.mat
+- Assets/_Images/icons/bag/1121.png
+- Assets/_Images/icons/bag/1114.png
+- Assets/_Images/icons/bag/exp_big.png
+- Assets/_Images/icons/bag/Gold_big.png
+- Assets/_Images/icons/bag/1104.png
+- Assets/_Images/icons/bag/gold1.png
+- Assets/_Images/icons/bag/1115.png
+- Assets/_Images/icons/bag/coin_big.png
+- Assets/_Images/icons/bag/1152.png
+- Assets/_Images/icons/bag/1131.png
+- Assets/_Images/icons/bag/rune_larry.png
+- Assets/_Images/icons/bag/1135.png
+- Assets/_Images/icons/bag/1172.png
+- Assets/_Images/icons/bag/1174.png
+- Assets/_Images/icons/bag/1133.png
+- Assets/_Images/icons/bag/attack.png
+- Assets/_Images/icons/bag/mana1.png
+- Assets/_Images/icons/bag/1182.png
+- Assets/_Images/icons/bag/1154.png
+- Assets/_Images/icons/bag/1183.png
+- Assets/_Images/icons/bag/gold5.png
+- Assets/_Images/icons/bag/honor_big.png
+- Assets/_Images/icons/bag/Materials/1083.mat
+- Assets/_Images/icons/bag/exp4.png
+- Assets/_Images/icons/bag/1151.png
+- Assets/_Images/icons/bag/1102.png
+- Assets/_Images/icons/bag/1105.png
+- Assets/_Images/icons/bag/box2.png
+- Assets/_Images/icons/bag/1111.png
+- Assets/_Images/icons/bag/1184.png
+- Assets/_Images/icons/bag/1101.png
+- Assets/_Images/icons/bag/1122.png
+- Assets/_Images/icons/bag/gold3.png
+- Assets/_Images/icons/bag/1185.png
+- Assets/_Images/icons/bag/crystal_big.png
+- Assets/_Images/icons/bag/1085.png
+- Assets/_Images/icons/bag/1173.png
+- Assets/_Images/icons/bag/1134.png
+Dependencies: []

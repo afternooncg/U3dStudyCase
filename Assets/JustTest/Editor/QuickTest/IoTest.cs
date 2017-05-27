@@ -108,23 +108,6 @@ public class IoTest  {
 
         AssetDatabase.Refresh();
     }
-
-
-    [MenuItem("QuickTest/Io/检查大小写")]
-    static void CheckUpLower()
-    {
-        string path = "Assets/_Images";
-
-        foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
-        {
-            //UnityEditor.FileUtil.DeleteFileOrDirectory(file);
-            string tmp = Path.GetFileName(file);
-            if (!tmp.Equals(tmp.ToLower()))
-            {
-                Debug.Log(file);
-            }
-
-        }
-    }
+       
 }
 

@@ -126,6 +126,8 @@ public class TextureTestMain : MonoBehaviour {
         Texture tex2 = ab.LoadAsset<Texture>("city");
         Texture tex3 = ab.LoadAsset<Texture>("city.jpg");
         
+        
+
         listTexs.Add(tex);
 
         loadImg.texture = tex;
@@ -161,7 +163,8 @@ public class TextureTestMain : MonoBehaviour {
         }
         else
             Debug.Log("WWW download had an error:" + www.error);
-               
+
+                       
         yield return null;
     }
 

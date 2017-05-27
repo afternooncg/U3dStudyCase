@@ -1,0 +1,621 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67d30fa674db487abf481dcf3d9ec11, type: 3}
+  m_Name: AssetBundleGraph
+  m_EditorClassIdentifier: 
+  m_allNodes:
+  - m_name: Loader0
+    m_id: 72a94867-2319-4500-a9d4-e2356e78bb0d
+    m_kind: 0
+    m_x: 4
+    m_y: 50
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints: []
+    m_outputPoints:
+    - id: 6d2ab7b9-13c8-4c88-9304-91173d1189eb
+      label: +
+      parentId: 72a94867-2319-4500-a9d4-e2356e78bb0d
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 111
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values:
+      - targetGroup: 0
+        value: _Images/icons/bag
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: Exporter0
+    m_id: 00938e03-116b-44b5-a63e-4accdb6d7621
+    m_kind: 8
+    m_x: 577
+    m_y: 57
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: 2dc43a42-84f0-4c5e-b6b3-e8a8fca14e22
+      label: '-'
+      parentId: 00938e03-116b-44b5-a63e-4accdb6d7621
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints: []
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values:
+      - targetGroup: 0
+        value: GraphToolBuildOutput
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values:
+      - targetGroup: 0
+        value: 0
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: BundleBuilder0
+    m_id: 9af1f397-70e1-4933-b8ea-4940d6330c5c
+    m_kind: 7
+    m_x: 376
+    m_y: 57
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: 6362d9b5-0c7e-4b3c-8541-67ad6dec956d
+      label: '-'
+      parentId: 9af1f397-70e1-4933-b8ea-4940d6330c5c
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: fac27462-3960-4cca-b187-6884fc43b19d
+      label: +
+      parentId: 9af1f397-70e1-4933-b8ea-4940d6330c5c
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 129
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values:
+      - targetGroup: 0
+        value: 9
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: BundleConfig0
+    m_id: 385254ae-7445-4c4a-a435-57571cd0ab64
+    m_kind: 6
+    m_x: 187
+    m_y: 49
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: 7c401368-5407-4e3b-9a36-509f9c7e7280
+      label: '-'
+      parentId: 385254ae-7445-4c4a-a435-57571cd0ab64
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: fb758aa5-7fe4-4fcb-8400-ecaa9c51e773
+      label: +
+      parentId: 385254ae-7445-4c4a-a435-57571cd0ab64
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 126
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values:
+      - targetGroup: 0
+        value: bundle_*
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: Loader1
+    m_id: c476f897-b4c5-401d-b5db-985add2db7cb
+    m_kind: 0
+    m_x: 7
+    m_y: 180
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints: []
+    m_outputPoints:
+    - id: 2b214d13-f0d3-49b4-9b89-5888cb830f6a
+      label: +
+      parentId: c476f897-b4c5-401d-b5db-985add2db7cb
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 111
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values:
+      - targetGroup: 0
+        value: _Images/icons/formattest
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: BundleConfig1
+    m_id: 97c583b9-e1de-4dd8-927d-d2f13b9e664b
+    m_kind: 6
+    m_x: 671
+    m_y: 228
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: 6707efe5-6ddb-4021-ba58-a75cb69e1197
+      label: '-'
+      parentId: 97c583b9-e1de-4dd8-927d-d2f13b9e664b
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: 5da53d12-8f64-44fa-98b8-5dad61902751
+      label: +
+      parentId: 97c583b9-e1de-4dd8-927d-d2f13b9e664b
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 126
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values:
+      - targetGroup: 0
+        value: bundle_1
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: BundleBuilder1
+    m_id: 38abdc98-0aea-4fe5-8cf1-5c3540984ead
+    m_kind: 7
+    m_x: 737
+    m_y: 153
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: 292bac63-9736-4034-80f1-6ed43e202216
+      label: '-'
+      parentId: 38abdc98-0aea-4fe5-8cf1-5c3540984ead
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: 526e3adb-dfa2-4c59-a9e7-c53a6d8ce9f0
+      label: +
+      parentId: 38abdc98-0aea-4fe5-8cf1-5c3540984ead
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 129
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values:
+      - targetGroup: 0
+        value: 0
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: Exporter1
+    m_id: b280cba8-a56c-4209-b15f-1b7cc8379c5d
+    m_kind: 8
+    m_x: 933
+    m_y: 155
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: e1fbc6d7-1d8b-48f0-a268-a629666ac72a
+      label: '-'
+      parentId: b280cba8-a56c-4209-b15f-1b7cc8379c5d
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints: []
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values:
+      - targetGroup: 0
+        value: GraphToolBuildOutput
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values:
+      - targetGroup: 0
+        value: 0
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: Filter0
+    m_id: 4ac742e2-c616-4848-9520-35686b9a069f
+    m_kind: 1
+    m_x: 165
+    m_y: 183
+    m_scriptClassName: 
+    m_filter:
+    - m_filterKeyword: bg
+      m_filterKeytype: UnityEditor.TextureImporter
+      m_point:
+        id: 
+        label: 
+        parentId: 
+        isInput: 0
+        buttonRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+      m_pointId: a6924abf-a792-46fc-98d7-9b4c25b878f3
+    - m_filterKeyword: 
+      m_filterKeytype: UnityEditor.ModelImporter
+      m_point:
+        id: 
+        label: 
+        parentId: 
+        isInput: 0
+        buttonRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+      m_pointId: b5d290ce-5daf-45c6-bbca-d66dd7faf785
+    - m_filterKeyword: 
+      m_filterKeytype: UnityEngine.Animation
+      m_point:
+        id: 
+        label: 
+        parentId: 
+        isInput: 0
+        buttonRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+      m_pointId: dd46f964-1482-4045-b2d5-f6b99b2c5595
+    m_inputPoints:
+    - id: 73954a89-6afe-4738-8a9e-ba0e949c2a07
+      label: '-'
+      parentId: 4ac742e2-c616-4848-9520-35686b9a069f
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: a6924abf-a792-46fc-98d7-9b4c25b878f3
+      label: bg[TextureImporter]
+      parentId: 4ac742e2-c616-4848-9520-35686b9a069f
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 171
+        y: 32.5
+        width: 10
+        height: 23
+    - id: b5d290ce-5daf-45c6-bbca-d66dd7faf785
+      label: '[ModelImporter]'
+      parentId: 4ac742e2-c616-4848-9520-35686b9a069f
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 171
+        y: 64.5
+        width: 10
+        height: 23
+    - id: dd46f964-1482-4045-b2d5-f6b99b2c5595
+      label: '[Animation]'
+      parentId: 4ac742e2-c616-4848-9520-35686b9a069f
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 171
+        y: 96.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: ImportSetting0
+    m_id: 0096d1b9-2a97-40c0-8312-0bd1023448a2
+    m_kind: 2
+    m_x: 367
+    m_y: 200
+    m_scriptClassName: 
+    m_filter: []
+    m_inputPoints:
+    - id: 2e0547ca-51f7-45cb-972b-9394bfa49c43
+      label: '-'
+      parentId: 0096d1b9-2a97-40c0-8312-0bd1023448a2
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: 19e97a00-ef30-4eba-a2f9-8190f295e747
+      label: +
+      parentId: 0096d1b9-2a97-40c0-8312-0bd1023448a2
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 129
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values: []
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  - m_name: Modifier0
+    m_id: ee5da342-d908-4303-9306-a5e24631874e
+    m_kind: 3
+    m_x: 541
+    m_y: 205
+    m_scriptClassName: MyModifier0
+    m_filter: []
+    m_inputPoints:
+    - id: ecaf6881-bc6f-4779-ad77-581e726e55a3
+      label: '-'
+      parentId: ee5da342-d908-4303-9306-a5e24631874e
+      isInput: 1
+      buttonRect:
+        serializedVersion: 2
+        x: 0
+        y: 29.5
+        width: 21
+        height: 29
+    m_outputPoints:
+    - id: 1145dc5b-c4ab-4354-90f6-c98a075b486f
+      label: +
+      parentId: ee5da342-d908-4303-9306-a5e24631874e
+      isInput: 0
+      buttonRect:
+        serializedVersion: 2
+        x: 111
+        y: 32.5
+        width: 10
+        height: 23
+    m_loaderLoadPath:
+      m_values: []
+    m_exporterExportPath:
+      m_values: []
+    m_groupingKeyword:
+      m_values: []
+    m_bundleConfigBundleNameTemplate:
+      m_values: []
+    m_scriptInstanceData:
+      m_values:
+      - targetGroup: 0
+        value: '{"doSomething":false}'
+    m_variants: []
+    m_bundleConfigUseGroupAsVariants: 0
+    m_bundleBuilderEnabledBundleOptions:
+      m_values: []
+    m_exporterExportOption:
+      m_values: []
+    m_prefabBuilderReplacePrefabOptions: 0
+  m_allConnections:
+  - m_id: 0c793f1b-4f3f-4dfa-844b-d2cb670c38d2
+    m_fromNodeId: 9af1f397-70e1-4933-b8ea-4940d6330c5c
+    m_fromNodeConnectionPointId: fac27462-3960-4cca-b187-6884fc43b19d
+    m_toNodeId: 00938e03-116b-44b5-a63e-4accdb6d7621
+    m_toNodeConnectionPoiontId: 2dc43a42-84f0-4c5e-b6b3-e8a8fca14e22
+    m_label: +
+  - m_id: b362c398-494f-418e-96dc-6ecfbb70a0c8
+    m_fromNodeId: 385254ae-7445-4c4a-a435-57571cd0ab64
+    m_fromNodeConnectionPointId: fb758aa5-7fe4-4fcb-8400-ecaa9c51e773
+    m_toNodeId: 9af1f397-70e1-4933-b8ea-4940d6330c5c
+    m_toNodeConnectionPoiontId: 6362d9b5-0c7e-4b3c-8541-67ad6dec956d
+    m_label: +
+  - m_id: f407386f-61fe-4c40-816c-a352b0b5dcbe
+    m_fromNodeId: 72a94867-2319-4500-a9d4-e2356e78bb0d
+    m_fromNodeConnectionPointId: 6d2ab7b9-13c8-4c88-9304-91173d1189eb
+    m_toNodeId: 385254ae-7445-4c4a-a435-57571cd0ab64
+    m_toNodeConnectionPoiontId: 7c401368-5407-4e3b-9a36-509f9c7e7280
+    m_label: +
+  - m_id: b4acfd9a-0a5b-4895-8e98-4f71ae849e43
+    m_fromNodeId: 97c583b9-e1de-4dd8-927d-d2f13b9e664b
+    m_fromNodeConnectionPointId: 5da53d12-8f64-44fa-98b8-5dad61902751
+    m_toNodeId: 38abdc98-0aea-4fe5-8cf1-5c3540984ead
+    m_toNodeConnectionPoiontId: 292bac63-9736-4034-80f1-6ed43e202216
+    m_label: +
+  - m_id: 2e01be18-a5c3-408b-a1d9-e9cfc109db52
+    m_fromNodeId: 38abdc98-0aea-4fe5-8cf1-5c3540984ead
+    m_fromNodeConnectionPointId: 526e3adb-dfa2-4c59-a9e7-c53a6d8ce9f0
+    m_toNodeId: b280cba8-a56c-4209-b15f-1b7cc8379c5d
+    m_toNodeConnectionPoiontId: e1fbc6d7-1d8b-48f0-a268-a629666ac72a
+    m_label: +
+  - m_id: 5d10bf40-2f7d-47bd-bc1c-315af6bce78a
+    m_fromNodeId: c476f897-b4c5-401d-b5db-985add2db7cb
+    m_fromNodeConnectionPointId: 2b214d13-f0d3-49b4-9b89-5888cb830f6a
+    m_toNodeId: 4ac742e2-c616-4848-9520-35686b9a069f
+    m_toNodeConnectionPoiontId: 73954a89-6afe-4738-8a9e-ba0e949c2a07
+    m_label: +
+  - m_id: b7308159-4bc9-4a1e-9ecc-97739dc297de
+    m_fromNodeId: 4ac742e2-c616-4848-9520-35686b9a069f
+    m_fromNodeConnectionPointId: a6924abf-a792-46fc-98d7-9b4c25b878f3
+    m_toNodeId: 0096d1b9-2a97-40c0-8312-0bd1023448a2
+    m_toNodeConnectionPoiontId: 2e0547ca-51f7-45cb-972b-9394bfa49c43
+    m_label: bg[TextureImporter]
+  - m_id: 3919e2ec-7408-4887-a9cf-7e302dbbcea4
+    m_fromNodeId: 0096d1b9-2a97-40c0-8312-0bd1023448a2
+    m_fromNodeConnectionPointId: 19e97a00-ef30-4eba-a2f9-8190f295e747
+    m_toNodeId: ee5da342-d908-4303-9306-a5e24631874e
+    m_toNodeConnectionPoiontId: ecaf6881-bc6f-4779-ad77-581e726e55a3
+    m_label: +
+  - m_id: 0c950798-49b5-406f-80e5-bc1149c23478
+    m_fromNodeId: ee5da342-d908-4303-9306-a5e24631874e
+    m_fromNodeConnectionPointId: 1145dc5b-c4ab-4354-90f6-c98a075b486f
+    m_toNodeId: 97c583b9-e1de-4dd8-927d-d2f13b9e664b
+    m_toNodeConnectionPoiontId: 6707efe5-6ddb-4021-ba58-a75cb69e1197
+    m_label: +
+  m_lastModified: 131402405310061214
+  m_version: 1
