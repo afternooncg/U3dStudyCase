@@ -11,8 +11,8 @@
 		 
 		// Pass {
 		//Tags{ "Queue" = "Geometry+100" }
-	    ZWrite Off		 
-		ZTest Off
+	    ZWrite on	 
+		ZTest on
 		//}
 
 

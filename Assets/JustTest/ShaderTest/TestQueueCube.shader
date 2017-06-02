@@ -11,8 +11,8 @@
 
 	
 		//Tags{ "Queue" = "Geometry" }
-	   // ZWrite Off
-		//ZTest Always
+	    ZWrite on
+		ZTest on
 	
 
 		CGPROGRAM
