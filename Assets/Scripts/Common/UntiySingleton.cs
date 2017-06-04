@@ -31,7 +31,7 @@ public class UntiySingleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             return true;
         }
-        Debug.Log("重复挂载GameObject");
+        Debug.Log("重复挂载GameObject" + gameObject.name);
         UnityEngine.Object.Destroy(this.gameObject);
         //UnityEngine.Object.Destroy(this);
         return false;
