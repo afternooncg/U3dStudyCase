@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 447610}
-  - 114: {fileID: 11429340}
+  - component: {fileID: 447610}
+  - component: {fileID: 11429340}
   m_Layer: 8
   m_Name: Overlay
   m_TagString: Untagged
@@ -21,9 +21,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 406922}
+  - component: {fileID: 406922}
   m_Layer: 8
   m_Name: Thumb
   m_TagString: Untagged
@@ -36,11 +36,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 407990}
-  - 114: {fileID: 11477826}
-  - 114: {fileID: 11448574}
+  - component: {fileID: 407990}
+  - component: {fileID: 11477826}
+  - component: {fileID: 11448574}
   m_Layer: 8
   m_Name: Control - Colored Progress Bar
   m_TagString: Untagged
@@ -53,10 +53,10 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 461248}
-  - 114: {fileID: 11411010}
+  - component: {fileID: 461248}
+  - component: {fileID: 11411010}
   m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
@@ -69,9 +69,9 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 497156}
+  - component: {fileID: 497156}
   m_Layer: 8
   m_Name: NGUI Snapshot Point 30
   m_TagString: Untagged
@@ -84,10 +84,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 460524}
-  - 114: {fileID: 11463388}
+  - component: {fileID: 460524}
+  - component: {fileID: 11463388}
   m_Layer: 8
   m_Name: Backdrop
   m_TagString: Untagged
@@ -109,6 +109,7 @@ Transform:
   - {fileID: 497156}
   m_Father: {fileID: 407990}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &407990
 Transform:
   m_ObjectHideFlags: 1
@@ -124,6 +125,7 @@ Transform:
   - {fileID: 447610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &447610
 Transform:
   m_ObjectHideFlags: 1
@@ -136,6 +138,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 407990}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &460524
 Transform:
   m_ObjectHideFlags: 1
@@ -148,6 +151,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 407990}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &461248
 Transform:
   m_ObjectHideFlags: 1
@@ -160,6 +164,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 406922}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &497156
 Transform:
   m_ObjectHideFlags: 1
@@ -172,6 +177,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 406922}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11411010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +211,7 @@ MonoBehaviour:
   mWidth: 38
   mHeight: 20
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -223,7 +230,6 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 2
-  mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
@@ -233,6 +239,8 @@ MonoBehaviour:
   mFloatSpacingX: 0
   mFloatSpacingY: 0
   mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mModifier: 0
   mShrinkToFit: 0
   mMaxLineWidth: 0
   mMaxLineHeight: 0
@@ -271,6 +279,7 @@ MonoBehaviour:
   mWidth: 292
   mHeight: 14
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -280,6 +289,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -347,6 +359,7 @@ MonoBehaviour:
   mWidth: 292
   mHeight: 14
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -356,6 +369,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -397,6 +413,7 @@ MonoBehaviour:
   mWidth: 300
   mHeight: 22
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -406,6 +423,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1

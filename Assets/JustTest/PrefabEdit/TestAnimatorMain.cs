@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestAnimatorMain : MonoBehaviour {
 
@@ -15,19 +16,56 @@ public class TestAnimatorMain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        if (isAttack)
+        {
+            AnimatorStateInfo stateInfo = m_animator.GetCurrentAnimatorStateInfo(0);
+            if ((stateInfo.shortNameHash == Animator.StringToHash("Attack")))
+            {
+                //isAttack = false;
+                //Debug.Log(m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime); 
+                int a = (int)m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                float f = m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime - (float)a;
+
+                if (f > 0.9f && f < 1f)
+                {
+                    Debug.Log("Catch:" + m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime + " " + f);
+                    m_animator.speed = 0;
+                   // m_animator.Rebind();
+                    isAttack = false;
+                }
+                
+            
+            }
+
+            
+
+
+
+ 
+        }
+            
 	}
 
 
     public void HandleBtnIdle()
     {
 
-        m_animator.SetBool("isIdle", true);
+       m_animator.SetBool("isIdle", true);
+
+     
     }
+
+    bool isAttack = false;
 
     public void HandleBtnAttck()
     {
         m_animator.SetBool("isAttack", true);
+        m_animator.Play("Attack", 0, 0.5f);
+        
+        
+        isAttack = true;
+        
     }
 
 
@@ -73,5 +111,13 @@ public class TestAnimatorMain : MonoBehaviour {
         m_animator.SetLayerWeight(1, 0.5f);    
     }
 
+
+    public void PlayByTime()
+    {
+        
+
+
+
+    }
     
 }

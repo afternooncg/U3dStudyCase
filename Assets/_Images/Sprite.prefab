@@ -5,12 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 401612}
-  - 114: {fileID: 11462428}
-  - 114: {fileID: 11466336}
-  - 65: {fileID: 6563096}
+  - component: {fileID: 401612}
+  - component: {fileID: 11462428}
+  - component: {fileID: 11466336}
+  - component: {fileID: 6563096}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -30,6 +30,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6563096
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -75,6 +76,7 @@ MonoBehaviour:
   mWidth: 90
   mHeight: 98
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -84,12 +86,15 @@ MonoBehaviour:
   mFillAmount: 0.849
   mInvert: 0
   mFlip: 1
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
   bottomType: 1
   topType: 1
-  mAtlas: {fileID: 11468078, guid: 8a66ae3b90e7fa3438a3665f10b42aa4, type: 2}
+  mAtlas: {fileID: 0}
   mSpriteName: 1173
   mFillCenter: 1
 --- !u!114 &11466336
@@ -116,13 +121,7 @@ MonoBehaviour:
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
   pixelSnap: 1
-  onClick:
-  - mTarget: {fileID: 0}
-    mMethodName: Test
-    mParameters:
-    - obj: {fileID: 0}
-      field: 
-    oneShot: 0
+  onClick: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

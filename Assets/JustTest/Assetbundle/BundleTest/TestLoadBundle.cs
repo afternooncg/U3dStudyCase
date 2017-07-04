@@ -24,6 +24,29 @@ public class TestLoadBundle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+#if UNITY_EDITOR
+
+        UnityEditor.AssetImporter import = UnityEditor.AssetImporter.GetAtPath("Assets/JustTest/UI/NGUITest/ngui1.cs");
+        if(import!=null)
+            Debug.Log(import.GetType());
+
+        import = UnityEditor.AssetImporter.GetAtPath("Assets/Scripts/testjs.js");
+        if (import != null)
+            Debug.Log(import.GetType());
+
+        string path = Application.dataPath.Replace("Assets", "PersiterData/AssetBundles") + "/bgetc4.unity3d";
+        AssetBundle ab  = AssetBundle.LoadFromFile(path);
+        if (ab != null)
+        {
+
+            Debug.Log(ab.mainAsset);
+            Debug.Log(ab.GetAllAssetNames()[0]);
+            Debug.Log(ab.LoadAsset<Texture2D>(ab.GetAllAssetNames()[0]));
+        }
+        
+
+#endif
+
         StartCoroutine("LoadFromCache");
         return;
         Debug.Log("Application.platform " + Application.platform);
@@ -115,6 +138,9 @@ public class TestLoadBundle : MonoBehaviour {
 			Debug.Log(www.error);
             yield return null;
 		}
+
+
+
 
         UIAtlas atlas = (www.assetBundle.LoadAsset("common") as GameObject ).GetComponent<UIAtlas>();
         Debug.Log("xxx:" + atlas.name + " ");

@@ -268,11 +268,14 @@ static public void SetShareAssetAbName<T>(List<T> coll)
    static public void SetAssetBundleName(string assetPath, string abname = "")
     {
         AssetImporter import = AssetImporter.GetAtPath(assetPath);
+        
 
         //Debug.Log(Path.GetDirectoryName(import.assetPath) + "   " + Path.GetFileNameWithoutExtension(import.assetPath));
 
         if (import != null)
         {
+            if (import is MonoImporter)
+                return;
             //Debug.Log(import.assetBundleName + "_" + abname);
 
             //已设置过的不处理
