@@ -10,7 +10,7 @@ public class TestSingeltonMain : MonoBehaviour {
     //    cube1.AddComponent<TestSingleton>();
      //   cube1.AddComponent<TestSingleton>();
 
-       
+        new GameObject().AddComponent<TestSingleton>();
 	}
 	
 	// Update is called once per frame
