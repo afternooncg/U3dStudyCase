@@ -2593,12 +2593,6 @@ MonoBehaviour:
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - m_assetDatabaseId: 10131bca99216344791cbc52bcd4e878
-    m_importFrom: Assets/JustTest/Editor/TestUtilPrefab/TestForCube.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   - m_assetDatabaseId: b4e1f417c1dbbf74bb28be25c581a27c
     m_importFrom: Assets/JustTest/Editor/TestUtilPrefab/TestUtilPrefab.unity
     m_exportTo: 
@@ -9501,12 +9495,6 @@ MonoBehaviour:
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEngine.MonoBehaviour, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: 44125b0703751ba49a03eadf581fe859
-    m_importFrom: Assets/Resources/CloseFrame 1.prefab
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEngine.GameObject, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: de1733a7172654345afc6fc6f3b6f4f9
     m_importFrom: Assets/Resources/CloseFrame.prefab

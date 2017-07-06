@@ -46,6 +46,33 @@ public class EditorTest  {
         Debug.Log(abc);
 	}
 
+
+   [MenuItem("QuickTest/EditorTest面板相关/CopySerialized")]
+   private static void TestCopySerialized()
+   {
+       string path1 = "Assets/Resources/CloseFrame.prefab";
+       string path2 = "Assets/Resources/CloseFrame1.prefab";
+
+       GameObject go1 = AssetDatabase.LoadAssetAtPath<GameObject>(path1);
+       PubCloseFrame pb1 = go1.GetComponent<PubCloseFrame>();
+
+       GameObject go2 = new GameObject();
+       PubCloseFrame pb2 = go2.AddComponent<PubCloseFrame>();
+      // EditorUtility.CopySerialized(go1, go2);        直接这样是空的
+        EditorUtility.CopySerialized(pb1, pb2);        
+      // AssetDatabase.CreateAsset(go2, path2);
+       PrefabUtility.CreatePrefab(path2, go2);
+
+       //如果是系统的asset controll matailer,应该可以直接copy
+
+       path1 = "Assets/Resources/MenuConfig.asset";
+       path2 = "Assets/Resources/MenuConfig1.asset";
+
+       MenuConfig m1 = AssetDatabase.LoadAssetAtPath<MenuConfig>(path1);
+       MenuConfig m2 = ScriptableObjectUtility.CreateAsset<MenuConfig>(path2);
+       EditorUtility.CopySerialized(m1, m2);      
+
+   }
   
 
    [MenuItem("Assets/ContextMenuItemDemo右键菜单,菜单路径只能放在Assets下")]
