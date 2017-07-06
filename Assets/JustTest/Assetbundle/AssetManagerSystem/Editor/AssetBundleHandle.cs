@@ -27,7 +27,15 @@ public class AbToolMenu
          Directory.CreateDirectory(AssetBundleHandle.PersistentDataPath);
 
         BuildPipeline.BuildAssetBundles(AssetBundleHandle.PersistentDataPath, BuildAssetBundleOptions.None, BuildTarget.Android);
-        Debug.Log("test");
+        
+        /*
+            PS.想打包进AssetBundle中的二进制文件，文件名的后缀必须为“.bytes”
+         * string.Format("file://{0}/{1}", Application.streamingAssetsPath, bundlePath); 
+            在安卓下路径不一样，如果是安卓平台的本地Bundle，需要用jar:file://作为前缀，并且需要设置特殊的路径才能加载 
+            string.Format("jar:file://{0}!/assets/{1}", Application.dataPath, bundlePath);
+         */ 
+
+
     }
 
     [MenuItem("JustTest/AssetBundle/生成指定Ab资源")]

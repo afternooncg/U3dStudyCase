@@ -732,12 +732,6 @@ MonoBehaviour:
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - m_assetDatabaseId: 69a970956785e334981e3268f644706d
-    m_importFrom: Assets/Editor/AbilityInfoUtility.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   - m_assetDatabaseId: 55b246a1d6805824eb541b50ea776363
     m_importFrom: Assets/JustTest/Editor/QuickTest/AutoBuild.cs
     m_exportTo: 
@@ -758,12 +752,6 @@ MonoBehaviour:
       PublicKeyToken=null
   - m_assetDatabaseId: 8e8596305b357af44a941e254f313148
     m_importFrom: Assets/Editor/TestEditor.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: 6cc163d2c26618244b80b8f244686096
-    m_importFrom: Assets/JustTest/Editor/MyEditorMenuAtAssets.cs
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
@@ -3168,12 +3156,6 @@ MonoBehaviour:
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEngine.GameObject, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: debc049501552bb4c88613332029cddc
-    m_importFrom: Assets/JustTest/ScriptObject/AbilityInfo.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: 10475df44f8c6ac46babfe427d8e4075
     m_importFrom: Assets/JustTest/SerializeTest/SerializeTest.cs
@@ -12263,12 +12245,6 @@ MonoBehaviour:
     m_variantName: 
     m_assetTypeString: UnityEngine.GameObject, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - m_assetDatabaseId: d70abd29f7e0e4c45bc506599e5b0324
-    m_importFrom: Assets/_Images/atlases/common_gray.mat
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEngine.Material, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   - m_assetDatabaseId: 4724681ecabda4e438204df15000e02b
     m_importFrom: Assets/_Images/atlases/common_gray.prefab
     m_exportTo: 
@@ -12292,12 +12268,6 @@ MonoBehaviour:
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEngine.GameObject, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: fa4cdd5b540ebbf4a8ec10a34d6f62a2
-    m_importFrom: Assets/_Images/atlases/hero_icon_gray.mat
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEngine.Material, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: bb89024f6893af8489ce966dd9da0a4f
     m_importFrom: Assets/_Images/atlases/hero_icon_gray.prefab
@@ -12328,12 +12298,6 @@ MonoBehaviour:
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEngine.GameObject, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: ecc90ea071e6e8c4d8700a821a222f2f
-    m_importFrom: Assets/_Images/atlases/toolsmaking_gray.mat
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEngine.Material, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: cda68468df7bae74ca0ba10f4fb62f8f
     m_importFrom: Assets/_Images/atlases/toolsmaking_gray.prefab

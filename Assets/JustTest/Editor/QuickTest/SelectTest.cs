@@ -15,7 +15,7 @@ public class SelectTest  {
             Debug.Log(transforms[iter].gameObject.name);
         }
     }
-
+    
 
     [MenuItem("QuickTest/Select/gameObjects")]
     //Selection.gameObjects 返回的是被你选中的游戏物体，可以包括预设。
@@ -109,6 +109,21 @@ public class SelectTest  {
         }
         Debug.Log("*****************************");
     }
+
+
+    [MenuItem("Assets/Select/GetTransforms 选取模式")]
+    static void GetTransformsAndAddChild()
+    {
+        Debug.Log("craet empty game object");
+        Transform[] transforms = Selection.GetTransforms(SelectionMode.TopLevel | SelectionMode.OnlyUserModifiable);
+
+        foreach (Transform transform in transforms)
+        {
+            GameObject newChild = new GameObject("_Child");
+            newChild.transform.parent = transform;
+        }
+    }
+
 
     enum SelectionType
     {

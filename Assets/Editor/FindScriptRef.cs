@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 
 public class FindScriptRef : EditorWindow
 {
-    [MenuItem("Assets/Find All Reference")]
+    [MenuItem("Assets/MyEditor/Find All Reference")]
     public static void ShowWindow()
     {
         //Show existing window instance. If one doesn't exist, make one.

@@ -97,13 +97,26 @@ public class MyWindow : EditorWindow {
         EditorGUILayout.HelpBox("什么东西啊", MessageType.Info);
 
         
-        //保存框
+        
+        GUILayout.BeginHorizontal();
 
+        //保存框
         if (GUILayout.Button("弹出保存提示窗", new GUILayoutOption[] { GUILayout.Width(200), GUILayout.Height(50) }))
         {
             string savePath = EditorUtility.SaveFilePanel("输出为AssetBundle", "", "New Resource", "unity3d");
             ShowNotification(new GUIContent("显示保存路径" +savePath));            
         }
+
+        if (GUILayout.Button("弹出确认提示窗", new GUILayoutOption[] { GUILayout.Width(200), GUILayout.Height(50) }))
+        {
+            bool doCreate = EditorUtility.DisplayDialog("测试DisplayDialog", "选择个吧", "Yes", "No");
+
+            if (doCreate)          
+                ShowNotification(new GUIContent("Yes"));               
+            else
+                ShowNotification(new GUIContent("No"));   
+        }
+        GUILayout.EndHorizontal();        
 
 
         EditorGUILayout.BeginHorizontal();

@@ -5,6 +5,54 @@ using System.IO;
 
 public class IoTest  {
 
+
+    [MenuItem("Assets/Io/新项目增加")]
+    static void AddFolder()
+    {
+        Debug.Log("hello");
+
+        if (!AssetDatabase.IsValidFolder("Assets/_Scenes"))
+            AssetDatabase.CreateFolder("Assets", "_Scenes");
+
+        if (!AssetDatabase.IsValidFolder("Assets/_Scripts"))
+            AssetDatabase.CreateFolder("Assets", "_Scripts");
+
+        if (!AssetDatabase.IsValidFolder("Assets/_Images"))
+            AssetDatabase.CreateFolder("Assets", "_Images");
+
+        if (!AssetDatabase.IsValidFolder("Assets/_Materials"))
+            AssetDatabase.CreateFolder("Assets", "_Materials");
+
+        if (!AssetDatabase.IsValidFolder("Assets/_Prefabs"))
+            AssetDatabase.CreateFolder("Assets", "_Prefabs");
+
+        if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+            AssetDatabase.CreateFolder("Assets", "Resources");
+
+        return;
+
+        //菜单方法必须声明为static
+        string name = "newScene";
+        string path = "";
+        if (Selection.activeObject)
+        {
+            path = AssetDatabase.GetAssetPath(Selection.activeObject);
+            //如何path所指向的对象不是文件夹，则获取其上一级的路径
+            if (Path.GetExtension(path) != "")
+            {
+                path = Path.GetDirectoryName(path);
+            }
+            path = Path.Combine(path + "/", name);
+        }
+
+        if (!Directory.Exists(path) && !string.IsNullOrEmpty(name))
+        {
+            //AssetDatabase.CreateAsset(sinfo,path);
+            // Selection.activeObject=sinfo;
+        }
+
+    }
+
     [MenuItem("QuickTest/Io/CheckPathExists")]
     public static void CheckExists()
     {

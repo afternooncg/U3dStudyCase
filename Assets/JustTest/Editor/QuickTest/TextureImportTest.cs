@@ -7,6 +7,41 @@ using UnityEngine;
 public class TextureImportTest
 {
 
+    [MenuItem("QuickTest/Texture/给对象加入userdata数据")]
+    static public void AssetImporterAddUserData()
+    {
+        string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+        AssetImporter import = AssetImporter.GetAtPath(path);
+        import.userData = "MyDataSaveInMetaFile";
+        import.SaveAndReimport();
+    }
+
+
+
+    [MenuItem("QuickTest/Texture/批量设置选中对象SetTextureImporter")]
+    public static void CreateAssetBunldes()
+    {
+        Object[] SelectedAsset = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+
+        foreach (Object obj in SelectedAsset)
+        {
+            Debug.Log(AssetDatabase.GetAssetPath(obj));
+            TextureImporter ti = (TextureImporter)TextureImporter.GetAtPath(AssetDatabase.GetAssetPath(obj));
+            if (ti != null)
+            {
+                ti.textureType = TextureImporterType.GUI;
+                ti.filterMode = FilterMode.Point;
+                //ti.textureFormat = TextureImporterFormat.RGBA32;                
+                ti.SaveAndReimport();
+            }
+            
+        }
+
+        AssetDatabase.Refresh();
+
+    }  
+
+
     [MenuItem("QuickTest/Texture/CheckFormat")]
     public static void CheckFormat()
     {

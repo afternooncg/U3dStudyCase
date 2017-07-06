@@ -111,4 +111,103 @@ public class AssetDataBaseTest {
     }
 
 	
+
+      //FindAsset By label
+    [MenuItem("QuickTest/AssetDataBase/列出所有AbName及包含的资源")]
+    public static void ListAllAbName()
+    {
+        var names = AssetDatabase.GetAllAssetBundleNames();
+
+        foreach (var name in names)
+        {
+            Debug.Log("AssetBundle Name: " + name);
+            var paths1 = AssetDatabase.GetAssetPathsFromAssetBundle(name);
+            foreach (var name1 in paths1)
+                Debug.Log("---------------Asset Path: " + name1);
+        }
+    }
+
+
+
+    [MenuItem("Assets/AssetDataBase/批量图片生成sprite预设")]
+    //读取路径的png图片，并生成prefab
+    static private void MakeAtlas()
+    {
+        Debug.Log("MakeAtlas Call...");
+        string spriteDir = Application.dataPath + "/Resources/Sprite";
+
+        if (!Directory.Exists(spriteDir))
+        {
+            Directory.CreateDirectory(spriteDir);
+        }
+
+        DirectoryInfo rootDirInfo = new DirectoryInfo(Application.dataPath + "/_Images/icons");
+
+        foreach (DirectoryInfo dirInfo in rootDirInfo.GetDirectories())
+        {
+            Debug.Log("dirInfo:" + dirInfo.Name + "  count:" + dirInfo.GetFiles("*.png", SearchOption.AllDirectories).Length);
+            foreach (FileInfo pngFile in dirInfo.GetFiles("*.png", SearchOption.AllDirectories))
+            {
+                string allPath = pngFile.FullName;
+                string assetPath = allPath.Substring(allPath.IndexOf("Assets"));
+                Debug.Log("assetPath:" + assetPath);
+
+                TextureImporter textureImporter = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+                //   Debug.Log("textureImporter:" + textureImporter.textureType + "    " + textureImporter.textureFormat);
+
+                Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(assetPath);
+                if (tex)
+                    Debug.Log("tex:" + tex.name);
+
+
+
+                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
+                if (sprite != null)
+                {
+                    GameObject go = new GameObject(sprite.name);
+                    go.AddComponent<SpriteRenderer>().sprite = sprite;
+                    allPath = spriteDir + "/" + sprite.name + ".prefab";
+                    string prefabPath = allPath.Substring(allPath.IndexOf("Assets"));
+                    PrefabUtility.CreatePrefab(prefabPath, go);
+                    GameObject.DestroyImmediate(go);
+                }
+
+
+
+            }
+        }
+
+
+        /*对应读取代码
+          void Start () 
+	        {
+		        CreatImage(loadSprite("image0"));
+		        CreatImage(loadSprite("image1"));
+	        }
+ 
+	        private void CreatImage(Sprite sprite ){
+		        GameObject go = new GameObject(sprite.name);
+		        go.layer = LayerMask.NameToLayer("UI");
+		        go.transform.parent = transform;
+		        go.transform.localScale= Vector3.one;
+		        Image image = go.AddComponent<Image>();
+		        image.sprite = sprite;
+		        image.SetNativeSize();
+	        }
+ 
+	        private Sprite loadSprite(string spriteName){
+		        return Resources.Load<GameObject>("Sprite/" + spriteName).GetComponent<SpriteRenderer>().sprite;
+	        }
+          */
+
+        //设置纹理格式
+        /*
+        string AtlasName = new DirectoryInfo(Path.GetDirectoryName(assetPath)).Name;
+        TextureImporter textureImporter = assetImporter as TextureImporter;
+        textureImporter.textureType = TextureImporterType.Sprite;
+        textureImporter.spritePackingTag = AtlasName;
+        textureImporter.mipmapEnabled = false;
+         */
+    }
+
 }
