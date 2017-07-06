@@ -30,12 +30,20 @@ public class MyWindow : EditorWindow {
     GUIContent[] options = new GUIContent[] { new GUIContent("Rigidbody"), new GUIContent("Box Collider"), new GUIContent("Sphere Collider") };
 	int index = 0;
 
+
+    Vector2 scrollPosi;
+    string t = "This is a string inside a Scroll view!";
+
+    Texture2D texture;
+
     [MenuItem("QuickTest/EditorWindow/OpenMyWindow")]
     public static void ShowWin()
     {
      
         MyWindow win = EditorWindow.GetWindow<MyWindow>();
-       // win.position = new Rect(100, 100, 300, 300);  // 窗口的坐标
+       
+        
+        //win.position = new Rect(100, 100, 800, 600);  // 窗口的坐标
     }
 
 
@@ -84,9 +92,64 @@ public class MyWindow : EditorWindow {
         EditorGUILayout.EndFadeGroup();
         index = EditorGUILayout.Popup(new GUIContent("测试列表"),index, options);
 
+
+        //提示文本区域
         EditorGUILayout.HelpBox("什么东西啊", MessageType.Info);
 
-        //EditorGUILayout.Popup(new GUIContent("测试列表1"), index);
+        
+        //保存框
+
+        if (GUILayout.Button("弹出保存提示窗", new GUILayoutOption[] { GUILayout.Width(200), GUILayout.Height(50) }))
+        {
+            string savePath = EditorUtility.SaveFilePanel("输出为AssetBundle", "", "New Resource", "unity3d");
+            ShowNotification(new GUIContent("显示保存路径" +savePath));            
+        }
+
+
+        EditorGUILayout.BeginHorizontal();
+
+        //滚动区域定义
+        scrollPosi = EditorGUILayout.BeginScrollView(scrollPosi, GUILayout.Width(100), GUILayout.Height(100));
+        EditorGUILayout.Space();
+        GUILayout.Label(t);
+        EditorGUILayout.EndScrollView();
+
+        if (GUILayout.Button("add more button"))
+        {
+            t += "add more string \n";
+        }
+
+        EditorGUILayout.EndHorizontal();
+
+        if (GUILayout.Button("Clear"))
+            t = "";
+
+
+        //自定义文本位置 对比Helpbox就少了图标貌似
+        GUILayout.Box("盒子-dalfja;fafkj adfj;adfja fjdalfjdadfjad f ", GUILayout.Width(200), GUILayout.Height(100));
+        GUILayout.Label("盒子里？");
+              
+        
+        GUILayout.BeginHorizontal();
+
+        //自定义隐形区域
+        GUILayout.BeginArea(new Rect(100, 500, 200, 200));
+        GUILayout.Label("Area");
+        GUI.Box(new Rect(100, 100, 100, 90), "Loader Menu 相对于 Area");
+        GUILayout.EndArea();
+
+        GUI.Box(new Rect(400, 500, 100, 90), "Loader Menu 想对于Win");
+        GUILayout.EndHorizontal();
+
+        //图集预览对象
+        GUILayout.BeginHorizontal();
+        texture = EditorGUILayout.ObjectField("add Texture:", texture, typeof(Texture), false) as Texture2D;        
+        if(texture!=null)
+            EditorGUI.DrawPreviewTexture(new Rect(25, 60, texture.width, texture.height), texture);
+        EditorGUILayout.EndHorizontal();
+        
+        
+
         
     }
 

@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor.SceneManagement;
 using System;
 
-public class TestExecuteMenu : ScriptableObject
+public class MyEditorMenuAtAssets : ScriptableObject
 {
 
     [MenuItem("Assets/MyEditor/AddChild")]
@@ -69,14 +69,7 @@ public class TestExecuteMenu : ScriptableObject
     }
 
 
-    [MenuItem("Assets/MyEditor/Test")]
-    static void ExportGameObjects()
-    {
-        //获取当前场景完整路径  scene资源路径
-        string scenePath = EditorSceneManager.GetActiveScene().name; //EditorApplication.currentScene;
-        string savePath = EditorUtility.SaveFilePanel("输出为AssetBundle", "", "New Resource", "unity3d");
-        Debug.Log("获取当前场景完整路径" + savePath);
-    }
+   
 
 
 

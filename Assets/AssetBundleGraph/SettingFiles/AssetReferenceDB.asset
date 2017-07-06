@@ -739,31 +739,13 @@ MonoBehaviour:
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: 55b246a1d6805824eb541b50ea776363
-    m_importFrom: Assets/Editor/AutoBuild.cs
+    m_importFrom: Assets/JustTest/Editor/QuickTest/AutoBuild.cs
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: 537dc494e1b652f40b73822353982396
-    m_importFrom: Assets/Editor/AutoSetDefine.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: 9f628e367175add4cb4419482f23408a
-    m_importFrom: Assets/Editor/BitmapFontImporter.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: 3979437b919045f449fd9f0ad6f82148
-    m_importFrom: Assets/Editor/CustomAssetUtility.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: a73871a84ed44a3469a752310b7789d0
-    m_importFrom: Assets/Editor/EditorGUILayoutPopup.cs
+    m_importFrom: Assets/JustTest/Editor/QuickTest/AutoSetDefine.cs
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
@@ -781,7 +763,7 @@ MonoBehaviour:
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - m_assetDatabaseId: 6cc163d2c26618244b80b8f244686096
-    m_importFrom: Assets/Editor/TestExecuteMenu.cs
+    m_importFrom: Assets/JustTest/Editor/MyEditorMenuAtAssets.cs
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
@@ -2557,12 +2539,6 @@ MonoBehaviour:
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - m_assetDatabaseId: 3e23cfb66c2c2764ebb650c34f89f504
-    m_importFrom: Assets/JustTest/Editor/QuickTest/BeginEndScrollView.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   - m_assetDatabaseId: 0f6261472155df7419d6232c297ecd3c
     m_importFrom: Assets/JustTest/Editor/QuickTest/CheckUpLowWin.cs
     m_exportTo: 
@@ -2595,12 +2571,6 @@ MonoBehaviour:
       PublicKeyToken=null
   - m_assetDatabaseId: bf99680f96183e74381784d3b3fd7170
     m_importFrom: Assets/JustTest/Editor/QuickTest/SelectTest.cs
-    m_exportTo: 
-    m_variantName: 
-    m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  - m_assetDatabaseId: 7d6ee3c9cbf2236428c4ac4054bc5716
-    m_importFrom: Assets/JustTest/Editor/QuickTest/TestMyWin.cs
     m_exportTo: 
     m_variantName: 
     m_assetTypeString: UnityEditor.MonoScript, UnityEditor, Version=0.0.0.0, Culture=neutral,
