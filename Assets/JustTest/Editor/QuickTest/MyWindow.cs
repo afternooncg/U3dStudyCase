@@ -156,6 +156,7 @@ public class MyWindow : EditorWindow {
 
         //图集预览对象
         GUILayout.BeginHorizontal();
+        
         texture = EditorGUILayout.ObjectField("add Texture:", texture, typeof(Texture), false) as Texture2D;        
         if(texture!=null)
             EditorGUI.DrawPreviewTexture(new Rect(25, 60, texture.width, texture.height), texture);
