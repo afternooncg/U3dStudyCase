@@ -21,6 +21,9 @@ public class GizmoAndDebugMain : MonoBehaviour {
         Debug.DrawRay(Vector3.zero, new Vector3(10f, 10f, 10f), Color.green);
 
 
+        DrawArrow.ForDebug(Vector3.zero, new Vector3(10f, 10f, 10f), Color.green,0.5f);
+
+
         Vector3 v1 = new Vector3(10f, 0f, 0);
 
 
