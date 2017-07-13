@@ -61,6 +61,17 @@
 				);
 				
 				//o.normal = UnityObjectToWorldNormal(v.normal); //上行等效果    法线 通过逆装置矩阵才能得到正确的值
+				//o.normal = mul(v.normal,(float3x3)unity_WorldToObject);  //也等效，原因在于mul对于点参数的顺序不同，采用的行列矩阵计算格式不同
+
+				/*
+				如果先传入矩阵,再传入矢量  按 matrix * 列矩阵
+				如果先传入矢量 按 行矩阵*列矩阵
+
+				mul(m,v)  => m * v => 列矩阵
+				mul(v,transpose(m))  =  (v行*transpose(m))TT  =   (m*v列)T =   真正得到结果数值是相同，多了个 T 只是影响行和列的区别，untiy会处理
+				
+
+				*/
 
 				o.normal = normalize(o.normal);
 

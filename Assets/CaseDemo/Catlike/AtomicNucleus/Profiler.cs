@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+namespace Catlike
+{
 public class Profiler : MonoBehaviour {
 
     int[] fpsbuff;
@@ -55,4 +58,5 @@ public class Profiler : MonoBehaviour {
         }
         this.GetComponent<Text>().text = ((int)((float)sum / 60)).ToString();
     }
+}
 }
