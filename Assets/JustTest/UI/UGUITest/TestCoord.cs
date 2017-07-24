@@ -7,6 +7,11 @@ public class TestCoord : MonoBehaviour {
 
     public GameObject prefab;
 	// Use this for initialization
+
+    static int rows = 20;
+    static int cols = 20;
+
+    bool[]   m_data = new bool[rows*cols];
 	void Start () {
 		
 	}
@@ -70,7 +75,7 @@ public class TestCoord : MonoBehaviour {
             {
                 if (hitInfo.collider.gameObject.name == "Quad")
                 {
-                    Debug.Log(hitInfo.point + "  " + mousePosiToGridPosi(hitInfo.point) + " " + mousePosiToGridPosi(transform, hitInfo.point));
+                    Debug.Log(hitInfo.point + "  " + mousePosiToGridPosi(hitInfo.point) + " " + mousePosiToGridPosi(transform, hitInfo.point) );
 
                     if (prefab != null)
                     {
@@ -79,6 +84,9 @@ public class TestCoord : MonoBehaviour {
                         g.transform.parent = transform;
                         Vector3 v = mousePosiToGridPosi(transform, hitInfo.point);
                         g.transform.localPosition = gridPosiTolocalPosi(v);
+
+                        int index = getIndexFormVec(mousePosiToGridPosi(transform, hitInfo.point));
+                        Debug.Log("Index:" + " " + index + "  vec2:" + getVecFormIndex(index));
                     }
                 }
             }
@@ -168,5 +176,16 @@ public class TestCoord : MonoBehaviour {
         v = v / 20 ;        
         return v;
     }
-    
+
+
+    int getIndexFormVec(Vector2 v)
+    {
+        return (int)(v.x+ v.y * cols);
+    }
+
+
+    Vector2 getVecFormIndex(int index)
+    {
+        return new Vector2((float)(index % cols), (float)(index/cols));
+    }
 }
