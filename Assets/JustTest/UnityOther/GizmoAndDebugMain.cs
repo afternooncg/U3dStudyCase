@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GizmoAndDebugMain : MonoBehaviour {
 
+    // Use this for initialization
+
+    public Vector3 pv1;
+    public Vector3 pv2;
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,9 +22,9 @@ public class GizmoAndDebugMain : MonoBehaviour {
        // DrawLine_static();
 
 
-        DrawLine_st();
-        
+      //DrawLine_st();
 
+        DrawLine_update();
 
 	}
 
@@ -65,5 +71,13 @@ public class GizmoAndDebugMain : MonoBehaviour {
 
         //结论 v1-v2 方向是v2到v1
     
+    }
+
+
+    void DrawLine_update()
+    {
+        DrawArrow.ForDebug(Vector3.zero, pv1, Color.black, 0.5f);
+        DrawArrow.ForDebug(Vector3.zero, pv2, Color.red, 0.5f);
+        DrawArrow.ForDebug(Vector3.zero, pv1-pv2, Color.green, 0.5f);
     }
 }

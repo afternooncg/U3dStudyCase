@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//[RequireComponent(typeof(MeshFilter))]
 public class CombineInstanceTest : MonoBehaviour {
 
 	// Use this for initialization
     void Start()
     {
+      
+
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
         MeshRenderer[] mr = GetComponentsInChildren<MeshRenderer>();
@@ -18,9 +22,16 @@ public class CombineInstanceTest : MonoBehaviour {
         }
 
         Debug.Log(mr[0]);
+
+        if (GetComponent<MeshFilter>() == null)
+            gameObject.AddComponent<MeshFilter>();
+
+        if (GetComponent<MeshRenderer>() == null)
+            gameObject.AddComponent<MeshRenderer>();
+
         transform.GetComponent<MeshFilter>().mesh = new Mesh();
         transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        gameObject.GetComponent<MeshRenderer>().materials[0] = mr[0].sharedMaterial;
+        gameObject.GetComponent<MeshRenderer>().materials[0] = mr[0].material;
         
         
     }
