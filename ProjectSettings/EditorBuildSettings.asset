@@ -34,4 +34,7 @@ EditorBuildSettings:
     guid: e4bbbd3c44d85d2469fd90c2610c6f40
   - enabled: 1
     path: Assets/JustTest/DOTween Examples/LoadedWithTween.unity
+    guid: 7ae235a7930df5a46ad29d74fc179d0b
+  - enabled: 1
+    path: Assets/JustTest/UI/UGUITest/AnotherScene.unity
     guid: 00000000000000000000000000000000

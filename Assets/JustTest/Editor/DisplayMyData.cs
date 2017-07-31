@@ -15,7 +15,7 @@ public class MyData
 
 //这个属性会被加到Component菜单下 %q ctrl+q  快捷方式
 [AddComponentMenu("项目常用代码/DisplayMyData_显示数据  %q")]
-
+[CreateAssetMenu]
 public class DisplayMyData : ScriptableObject {
 
     public MyData myData;
