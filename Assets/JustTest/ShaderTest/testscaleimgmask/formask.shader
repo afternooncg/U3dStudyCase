@@ -43,7 +43,7 @@
 			float _RadiuBlur;
 			float3 _Target;
 			//uniform float4 _Points[100];  // 数组变量
-			uniform float3 _Points[100];  // 数组变量
+			uniform float3 _Points[50];  // 数组变量
 			uniform float _Points_Num;  // 数组长度变量
 			
 			float countalpha1(float2 pos, float2 target)
@@ -55,7 +55,8 @@
 
 			float countalpha(float2 pos, float2 target, float3 nosie)
 			{
-				float attn = clamp(_Radiu - distance(pos+nosie*5,  target), 0.0, _Radiu);
+				//float attn = clamp(_Radiu - distance(pos+nosie*5,  target), 0.0, _Radiu);
+				float attn = clamp(_Radiu - distance(pos,  target), 0.0, _Radiu);
 				return 1.0/_RadiuBlur * attn /_Radiu;
 				
 			}
@@ -120,8 +121,8 @@
 				}
 
 				
-				col.rgba = float4(0,0,0,0.8);
-				col.a = (1.0-alpha)*0.8;
+				//col.rgba = float4(0,0,0,0.8);
+				col.a = (1.0-alpha);
 				/*
 				if(col.a<1)	
 				{	

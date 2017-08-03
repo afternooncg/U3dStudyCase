@@ -27,5 +27,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _alphavar: 1
-    - _openBit: 2128
+    - _openBit: 4552
     m_Colors: []
