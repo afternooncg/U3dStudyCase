@@ -64,11 +64,12 @@
 				//if(abs((mask.r - (_openBit/256))) <= 0.001)
 				//	col = fixed4(0,0,0,0);
 			
-
+				/* ps 3.0不支持位运算*/
 				int xx = (int)(mask.r*100000*256);
 				int ssss = xx%100000;
 				if( ((ssss)&_openBit)==0)
 					col = fixed4(0,0,0,0);
+					
 				return col;
 				
 					

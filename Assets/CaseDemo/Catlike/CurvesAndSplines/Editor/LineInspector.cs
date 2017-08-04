@@ -54,6 +54,11 @@ public class LineInspector : Editor
 
         Handles.DrawLine(p1, p2);
         Handles.DrawLine(p2, p3);
+
+        Handles.color = Color.blue;
+
+        Handles.DrawSolidArc(Vector3.zero, new Vector3( 0f,1f, 0f), new Vector3(1f, 0f, 0f), 360, 5);
+
     }
 
 }
