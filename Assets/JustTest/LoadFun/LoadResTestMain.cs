@@ -116,6 +116,8 @@ public class LoadResTestMain : MonoBehaviour {
         }
         else
             return true;
+
+                
     }
 
 

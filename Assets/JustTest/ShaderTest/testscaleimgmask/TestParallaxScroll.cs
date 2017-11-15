@@ -31,7 +31,7 @@ public class TestParallaxScroll : MonoBehaviour {
         var render = GetComponentInChildren<MeshRenderer>();
         var material = render.sharedMaterial;
         /*
-        //foreach (var material in render.materials)
+        //foreach (var material in render.materi    als)
         {
            material.SetInt("_Points_Num",points.Length);
            //material.SetVectorArray("_Points",points);

@@ -74,6 +74,8 @@ public class EditorTest  {
 
    }
   
+    
+
 
    [MenuItem("Assets/ContextMenuItemDemo右键菜单,菜单路径只能放在Assets下")]
    public static void ContextMenuItemDemo()
@@ -82,5 +84,47 @@ public class EditorTest  {
    }
 
 
+
+   [MenuItem("QuickTest/EditorTest面板相关/SerializedObject 读取测试")]
+   private static void TestSerializedObject()
+   {    
+       //SerializedObject  so =   new SerializedObject(AssetDatabase.LoadAssetAtPath("ProjectSettings/GraphicsSettings.asset",typeof(UnityEngine.Object)));
+       SerializedObject so = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/GraphicsSettings.asset")[0]);
+       SerializedProperty sps = so.GetIterator();
+       while (sps.NextVisible(true))
+       {        
+           if (sps.name.Equals("m_AlwaysIncludedShaders"))
+           {
+               Debug.Log(sps.name);
+
+              
+
+               for (int i = 0; i < sps.arraySize; i++)
+               {
+                   SerializedProperty item = sps.GetArrayElementAtIndex(i);
+                   Debug.Log(item.objectReferenceValue);
+
+
+                  //  item.objectReferenceValue = Shader.Find("shadername"); //设置值
+               }
+               /*
+               while (its.NextVisible(true))
+               {
+                   Debug.Log(its.name);
+               }*/
+
+           }
+
+
+       }
+
+       SerializedProperty m_Shader = so.FindProperty("m_Deferred" + ".m_Shader");
+       Debug.Log(m_Shader.GetArrayElementAtIndex(0));
+       Debug.Log(m_Shader.objectReferenceValue);
+       // so.ApplyModifiedProperties (); //save
+
+
+       
+   }
    
 }

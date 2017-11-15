@@ -18,6 +18,7 @@ public class MapRegion : MonoBehaviour
     //----------------------------------------------
     void Awake ()
 	{
+        
         m_Transform = transform;
         m_Regioner = FogSystem.CreateRevealer();
 	}

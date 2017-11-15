@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-//[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshFilter),typeof(MeshRenderer))]
 public class CombineInstanceTest : MonoBehaviour {
 
 	// Use this for initialization
