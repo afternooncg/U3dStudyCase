@@ -31,7 +31,7 @@ public class Grid : MonoBehaviour {
 		}
 		mesh.vertices = vertices;
 		mesh.uv = uv;
-		//mesh.tangents = tangents;
+		mesh.tangents = tangents;
 
 		int[] triangles = new int[xSize * ySize * 6];
 		for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++) {

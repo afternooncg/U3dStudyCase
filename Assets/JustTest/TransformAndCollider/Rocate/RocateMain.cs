@@ -11,6 +11,21 @@ public class RocateMain : MonoBehaviour {
 
         m_cube = GameObject.Find("Cube");
         m_sphere = GameObject.Find("Sphere");
+
+        //创建平移 旋转 缩放矩阵 可以理解为一个坐标系（不知道对不对。。）
+        Matrix4x4 mat = Matrix4x4.TRS(new Vector3(1, 1, 1), Quaternion.Euler(0, 90, 0), Vector3.one);
+        //得到在这个坐标系点（2,2,2）在世界坐标系的坐标
+        print(mat.MultiplyPoint(new Vector3(2, 2, 2)));
+        //在世界坐标系点（2,2,2）在mat变换下的坐标
+        //局部坐标*mat = 世界坐标
+        //世界坐标*mat的逆 = 局部坐标
+        print(mat.inverse.MultiplyPoint(new Vector3(3.0f, 3.0f, -1.0f)));
+
+        print(mat.inverse.MultiplyPoint(new Vector3(2, 2, 2)));
+        //MultiplyVector方法 感觉没啥用
+        //把方向向量dir 做了一个旋转
+        Vector3 dir = new Vector3(3, 2, 3);
+        print(mat.MultiplyVector(dir) == Quaternion.Euler(0, 90, 0) * dir);
 	}
 	
 	// Update is called once per frame

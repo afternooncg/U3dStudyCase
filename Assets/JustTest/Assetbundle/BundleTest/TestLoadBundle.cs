@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 //测试加载
 //AssetBundle.LoadFromFile(path);  直接本地加载,方便测试
@@ -42,6 +43,19 @@ public class TestLoadBundle : MonoBehaviour {
             Debug.Log(ab.mainAsset);
             Debug.Log(ab.GetAllAssetNames()[0]);
             Debug.Log(ab.LoadAsset<Texture2D>(ab.GetAllAssetNames()[0]));
+        }
+
+
+        string path1 = Application.dataPath.Replace("Assets", "PersiterData/AssetBundles") + "/assetbundlescene";
+        AssetBundle ab1 = AssetBundle.LoadFromFile(path1);
+        if (ab1 != null)
+        {
+            //SceneManager.LoadScene()
+            //Application.loadedLevelName("AssetBundleScene");
+            SceneManager.LoadScene("AssetbundleScene", LoadSceneMode.Additive);
+            ab1.Unload(true);
+            //Debug.Log("LoadScene:" + ab1.GetAllAssetNames()[0]);
+            //Debug.Log(ab.LoadAsset<Texture2D>(ab.GetAllAssetNames()[0]));
         }
         
 

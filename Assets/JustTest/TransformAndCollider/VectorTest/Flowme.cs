@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,14 @@ public class Flowme : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+        Debug.Log(DateTime.Now);
+        Debug.Log(DateTime.UtcNow);
+
+        Debug.Log(DateTime.Now.Ticks);
+        Debug.Log(new DateTime(DateTime.Now.Ticks));
+        
+
 	}
 	
 	// Update is called once per frame
